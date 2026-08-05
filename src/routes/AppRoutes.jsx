@@ -4,7 +4,7 @@ import {
 
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home"
-import AdminTutorial from "../pages/admin/AdminTutorial";
+import AdminTutorial from "../pages/AdminTutorial";
 import NotFound from "../pages/NotFound";
 
 const router = createBrowserRouter([
