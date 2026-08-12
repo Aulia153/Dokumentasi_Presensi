@@ -1,31 +1,47 @@
 import {
-    createBrowserRouter,
+    BrowserRouter,
+    Routes,
+    Route,
 } from "react-router-dom";
 
-import MainLayout from "../layouts/MainLayout";
-import Home from "../pages/Home"
+import Home from "../pages/Home";
 import AdminTutorial from "../pages/AdminTutorial";
 import NotFound from "../pages/NotFound";
 
-const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <MainLayout />,
-        children: [
-            {
-                index: true,
-                element: <Home />,
-            },
-            {
-                path: "admin",
-                element: <AdminTutorial />,
-            },
-        ],
-    },
-    {
-        path: "*",
-        element: <NotFound />,
-    },
-]);
+const AppRoutes = () => {
 
-export default router;
+    return (
+        <BrowserRouter>
+
+            <Routes>
+
+                {/* LANDING PAGE */}
+
+                <Route
+                    path="/"
+                    element={<Home />}
+                />
+
+
+                {/* TUTORIAL ADMIN */}
+
+                <Route
+                    path="/admin"
+                    element={<AdminTutorial />}
+                />
+
+
+                {/* 404 */}
+
+                <Route
+                    path="*"
+                    element={<NotFound />}
+                />
+
+            </Routes>
+
+        </BrowserRouter>
+    );
+};
+
+export default AppRoutes;

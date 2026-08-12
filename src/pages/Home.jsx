@@ -27,15 +27,16 @@ const Home = () => {
 
                     <div className="mt-20 grid md:grid-cols-2 gap-10">
                         < RoleCard icon={<HiUserGroup />}
-                            title="Admin"
-                            description="Panduan Penggunaan Aplikasi Untuk Admin"
+                            title="Admin OPD"
+                            description="Panduan Penggunaan Aplikasi Untuk Admin OPD/Kepala Sub Bagian Umum dan Kepegawaian yang bertugas
+                                        mengelola presensi pegawai pada dinas masing-masing."
                             button="Tutorial"
                             to="/admin"
                         />
 
                         <RoleCard icon={<HiUser />}
                             title="Pengguna"
-                            description="Tutorial Pengguaan Aplikasi Untuk Pengguna"
+                            description="Tutorial Pengguaan Aplikasi Untuk Pengguna yaitu PNS dan PPPK merupakan individu atau peorangan yang melakukan presensi."
                             button="Tutorial"
                             to="/"
                         />

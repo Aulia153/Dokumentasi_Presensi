@@ -1,35 +1,47 @@
 import { useState } from "react";
-import Navbar from "../components/layout/Navbar";
+
 import Sidebar from "../components/layout/Sidebar";
 import TutorialContent from "../components/tutorial/TutorialContent";
 
+import tutorialData from "../data/tutorialData";
+
 const AdminTutorial = () => {
-    const [activeItem, setActiveItem] = useState(null);
 
-    return(
-        <div className="min-h-screen bg-slate-100">
-            <Navbar />
+    // Tutorial pertama yang dibuka
+    const firstTutorial =
+        tutorialData[0]?.children?.[0] || null;
 
-            <div className="max-w-7xl mx-auto px-6 py-6">
-                <div className="grid grid-cols-12 gap-6">
+    const [selectedTutorial, setSelectedTutorial] =
+        useState(firstTutorial);
 
-                    {/* Sidebar */}
-                    <div className="col-span-3">
-                        <Sidebar
-                            activeItem={activeItem}
-                            setActiveItem={setActiveItem}
-                        />
-                    </div>
 
-                    { /* Content */ }
-                    <div className="col-span-9">
-                        <TutorialContent
-                         activeItem={activeItem}
-                        />
-                    </div>
+    return (
+        <div className="min-h-screen bg-[#eef5ff]">
+
+            <div className="flex min-h-screen">
+
+                {/* SIDEBAR */}
+
+                <Sidebar
+                    data={tutorialData}
+                    selectedTutorial={selectedTutorial}
+                    onSelectTutorial={setSelectedTutorial}
+                />
+
+
+                {/* CONTENT */}
+
+                <div className="flex-1 min-w-0">
+
+                    <TutorialContent
+                        key={selectedTutorial?.id}
+                        tutorial={selectedTutorial}
+                    />
 
                 </div>
+
             </div>
+
         </div>
     );
 };
