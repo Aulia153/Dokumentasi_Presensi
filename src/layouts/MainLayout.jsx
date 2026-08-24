@@ -1,14 +1,19 @@
-import Navbar from "../components/layout/Navbar";
-import Footer from "../components/layout/Footer";
+import Sidebar from "../components/layout/Sidebar";
 
-export default function MainLayout({ children }) {
+const MainLayout = ({ children }) => {
     return (
-        <>
-            <Navbar />
+        <div className="min-h-screen bg-slate-100 text-slate-800">
+            <div className="flex min-h-screen">
+                <Sidebar />
 
-            {children}
+                {/* CONTENT */}
+                <main className="flex-1 min-w-0">
+                    {children}
+                </main>
 
-            <Footer />
-        </>
+            </div>
+        </div>
     );
-}
+};
+
+export default MainLayout;

@@ -1,311 +1,168 @@
 import {
-    HiOutlineLightBulb,
-    HiOutlineInformationCircle,
+  HiOutlineInformationCircle,
+  HiOutlineLightBulb,
+  HiOutlineArrowRight,
 } from "react-icons/hi2";
 
-const TutorialContent = ({ tutorial }) => {
-
-    if (!tutorial) {
-        return (
-            <div className="flex min-h-screen items-center justify-center">
-
-                <div className="text-center">
-
-                    <HiOutlineInformationCircle className="mx-auto text-4xl text-slate-300" />
-
-                    <p className="mt-3 text-sm text-slate-500">
-                        Pilih tutorial dari menu di sebelah kiri.
-                    </p>
-
-                </div>
-
-            </div>
-        );
-    }
-
-
+function TutorialContent({ tutorial }) {
+  if (!tutorial) {
     return (
-        <main className="min-h-screen bg-[#eef5ff]">
+      <div className="flex min-h-screen items-center justify-center bg-slate-50">
+        <div className="text-center">
+          <h2 className="text-xl font-semibold text-slate-800">
+            Tutorial tidak ditemukan
+          </h2>
 
-            {/* TOP HEADER */}
-
-            <div className="bg-white border-b border-slate-200">
-
-                <div className="max-w-6xl mx-auto px-8 py-6">
-
-                    <p className="text-xs font-medium text-slate-400">
-                        Tutorial Admin
-                        <span className="mx-2">
-                            /
-                        </span>
-                        {tutorial.title}
-                    </p>
-
-                    <h1 className="mt-2 text-2xl font-bold text-slate-900">
-                        {tutorial.title}
-                    </h1>
-
-                    <p className="mt-2 text-sm text-slate-500">
-                        {tutorial.description}
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            {/* CONTENT */}
-
-            <div className="max-w-6xl mx-auto px-8 py-8">
-
-                {tutorial.type === "overview" && (
-                    <Overview tutorial={tutorial} />
-                )}
-
-                {tutorial.type === "steps" && (
-                    <Steps tutorial={tutorial} />
-                )}
-
-            </div>
-
-        </main>
-    );
-};
-
-
-// ======================================================
-// OVERVIEW
-// ======================================================
-
-function Overview({ tutorial }) {
-
-    return (
-        <div className="space-y-6">
-
-            {/* SCREENSHOT */}
-
-            {tutorial.image && (
-
-                <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-[0_4px_15px_rgba(15,23,42,0.07)]">
-
-                    <div className="overflow-hidden rounded-xl bg-slate-100 border border-slate-200">
-
-                        <img
-                            src={tutorial.image}
-                            alt={tutorial.title}
-                            className="w-full h-auto object-contain"
-                        />
-
-                    </div>
-
-                </div>
-
-            )}
-
-
-            {/* DESCRIPTION */}
-
-            <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-[0_4px_15px_rgba(15,23,42,0.07)]">
-
-                <h2 className="text-lg font-bold text-slate-900">
-                    Tentang Halaman
-                </h2>
-
-                <p className="mt-3 text-sm leading-7 text-slate-600">
-                    {tutorial.description}
-                </p>
-
-            </div>
-
-
-            {/* SECTIONS */}
-
-            {tutorial.sections?.length > 0 && (
-
-                <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-[0_4px_15px_rgba(15,23,42,0.07)]">
-
-                    <h2 className="text-lg font-bold text-slate-900">
-                        Bagian pada Halaman
-                    </h2>
-
-                    <div className="mt-5 space-y-3">
-
-                        {tutorial.sections.map((section, index) => (
-
-                            <div
-                                key={index}
-                                className="flex gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100"
-                            >
-
-                                <div className="flex-shrink-0">
-
-                                    <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-sm font-bold">
-                                        {index + 1}
-                                    </div>
-
-                                </div>
-
-                                <div>
-
-                                    <h3 className="text-sm font-semibold text-slate-800">
-                                        {section.title}
-                                    </h3>
-
-                                    <p className="mt-1 text-sm leading-6 text-slate-500">
-                                        {section.description}
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        ))}
-
-                    </div>
-
-                </div>
-            )}
-
-
-            {/* TIPS */}
-
-            {tutorial.tips && (
-                <Tips text={tutorial.tips} />
-            )}
-
+          <p className="mt-2 text-slate-500">
+            Silakan pilih menu tutorial di sebelah kiri.
+          </p>
         </div>
+      </div>
     );
-}
+  }
 
+  return (
+    <main className="min-h-screen bg-slate-50">
+      {/* HEADER */}
+      <div className="border-b border-slate-200 bg-white px-8 py-7">
+        <p className="text-sm font-medium text-blue-600">
+          Tutorial Admin
+        </p>
 
-// ======================================================
-// STEPS
-// ======================================================
+        <h1 className="mt-1 text-3xl font-bold text-slate-900">
+          {tutorial.title}
+        </h1>
 
-function Steps({ tutorial }) {
+        <p className="mt-2 max-w-4xl text-base leading-7 text-slate-500">
+          {tutorial.description}
+        </p>
+      </div>
 
-    return (
-        <div className="space-y-6">
+      {/* CONTENT */}
+      <div className="mx-auto max-w-6xl px-8 py-8">
 
-            {/* INTRO */}
+        {/* DESKRIPSI */}
+        {tutorial.description && (
+          <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="flex gap-4">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                <HiOutlineInformationCircle className="h-6 w-6" />
+              </div>
 
-            <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-[0_4px_15px_rgba(15,23,42,0.07)]">
-
-                <h2 className="text-lg font-bold text-slate-900">
-                    Panduan
+              <div>
+                <h2 className="text-xl font-semibold text-slate-900">
+                  Tentang Halaman Ini
                 </h2>
 
-                <p className="mt-2 text-sm leading-7 text-slate-600">
-                    {tutorial.description}
+                <p className="mt-2 leading-7 text-slate-600">
+                  {tutorial.description}
                 </p>
-
+              </div>
             </div>
+          </section>
+        )}
 
+        {/* GAMBAR UTAMA */}
+        {tutorial.image && (
+          <section className="mt-8">
+            <h2 className="text-xl font-semibold text-slate-900">
+              Tampilan Halaman
+            </h2>
 
-            {/* STEP */}
+            <p className="mt-1 text-slate-500">
+              Berikut merupakan tampilan halaman aplikasi.
+            </p>
 
-            {tutorial.steps?.map((step, index) => (
+            <div className="mt-4 overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+              <img
+                src={tutorial.image}
+                alt={tutorial.title}
+                className="mx-auto max-h-[650px] w-full rounded-xl object-contain"
+              />
+            </div>
+          </section>
+        )}
 
+        {/* STEPS */}
+        {tutorial.steps?.length > 0 && (
+          <section className="mt-8">
+            <h2 className="text-xl font-semibold text-slate-900">
+              Langkah Penggunaan
+            </h2>
+
+            <p className="mt-1 text-slate-500">
+              Ikuti langkah berikut secara berurutan.
+            </p>
+
+            <div className="mt-5 space-y-5">
+              {tutorial.steps.map((step, index) => (
                 <div
-                    key={`${tutorial.id}-${step.number}-${index}`}
-                    className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-[0_4px_15px_rgba(15,23,42,0.07)]"
+                  key={index}
+                  className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
                 >
+                  <div className="flex gap-4 p-6">
 
-                    {/* STEP HEADER */}
-
-                    <div className="px-6 py-4 border-b border-slate-100 flex items-center gap-4">
-
-                        <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold">
-                            {step.number || index + 1}
-                        </div>
-
-                        <div>
-
-                            <p className="text-xs text-blue-600 font-semibold">
-                                LANGKAH {step.number || index + 1}
-                            </p>
-
-                            <h3 className="text-base font-bold text-slate-900">
-                                {step.title}
-                            </h3>
-
-                        </div>
-
+                    {/* NOMOR */}
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-600 font-bold text-white">
+                      {index + 1}
                     </div>
 
+                    {/* TEKS */}
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-slate-900">
+                        {step.title}
+                      </h3>
 
-                    {/* STEP BODY */}
-
-                    <div className="p-6">
-
-                        <p className="text-sm leading-7 text-slate-600">
-                            {step.description}
-                        </p>
-
-
-                        {/* IMAGE */}
-
-                        {step.image && (
-
-                            <div className="mt-5 rounded-xl overflow-hidden border border-slate-200 bg-slate-50">
-
-                                <img
-                                    src={step.image}
-                                    alt={step.title}
-                                    className="w-full h-auto object-contain"
-                                />
-
-                            </div>
-
-                        )}
-
+                      <p className="mt-1 leading-7 text-slate-600">
+                        {step.description}
+                      </p>
                     </div>
+                  </div>
 
+                  {/* GAMBAR STEP */}
+                  {step.image && (
+                    <div className="border-t border-slate-100 bg-slate-50 p-5">
+                      <img
+                        src={step.image}
+                        alt={step.title}
+                        className="mx-auto max-h-[550px] max-w-full rounded-xl border border-slate-200 object-contain shadow-sm"
+                      />
+                    </div>
+                  )}
                 </div>
-
-            ))}
-
-
-            {/* TIPS */}
-
-            {tutorial.tips && (
-                <Tips text={tutorial.tips} />
-            )}
-
-        </div>
-    );
-}
-
-
-// ======================================================
-// TIPS
-// ======================================================
-
-function Tips({ text }) {
-
-    return (
-        <div className="rounded-2xl border border-blue-100 bg-blue-50 p-5">
-
-            <div className="flex gap-3">
-
-                <HiOutlineLightBulb className="text-xl text-blue-600 flex-shrink-0" />
-
-                <div>
-
-                    <h3 className="text-sm font-bold text-blue-900">
-                        Tips
-                    </h3>
-
-                    <p className="mt-1 text-sm leading-6 text-blue-700">
-                        {text}
-                    </p>
-
-                </div>
-
+              ))}
             </div>
+          </section>
+        )}
 
+        {/* TIPS */}
+        {tutorial.tips && (
+          <section className="mt-8 rounded-2xl border border-amber-200 bg-amber-50 p-5">
+            <div className="flex gap-3">
+              <HiOutlineLightBulb className="mt-0.5 h-6 w-6 shrink-0 text-amber-500" />
+
+              <div>
+                <h3 className="font-semibold text-amber-900">
+                  Tips
+                </h3>
+
+                <p className="mt-1 leading-6 text-amber-800">
+                  {tutorial.tips}
+                </p>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* FOOTER */}
+        <div className="mt-10 flex items-center justify-center gap-2 pb-8 text-sm text-slate-400">
+          <span>{tutorial.title}</span>
+          <HiOutlineArrowRight className="h-4 w-4" />
+          <span>Dokumentasi Presensi Digital</span>
         </div>
-    );
+      </div>
+    </main>
+  );
 }
 
 export default TutorialContent;
