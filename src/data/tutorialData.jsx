@@ -33,7 +33,7 @@ const tutorialData = [
                 type: "overview",
                 
                 description:
-                    "Halaman login digunakan untuk mengakses Sistem Presensi Digital Kabupaten Sidoarjo menggunakan akun yang telah terdaftar.",
+                    "Halaman login merupakan halaman awal untuk mengakses Sistem Presensi Digital Kabupaten Sidoarjo menggunakan akun yang telah terdaftar.",
 
                 image: image("login", "login-page.png"),
 
@@ -42,82 +42,33 @@ const tutorialData = [
                         title: "NIP",
                         description:
                             "Masukkan Nomor Induk Pegawai (NIP) yang telah terdaftar pada sistem.",
+                        image: image("login", "login-nip.png")
                     },
 
                     {
                         title: "Password",
                         description:
-                            "Masukkan password akun SSO yang digunakan untuk mengakses sistem.",
+                            "Gunakan password yang sama dengan akun SSO.",
+                        image: image("login", "login-password.png")
                     },
 
                     {
-                        title: "Ingat Saya",
+                        title: "Verifikasi",
                         description:
-                            "Centang pilihan ini apabila ingin menyimpan sesi login pada perangkat.",
-                    },
-
-                    {
-                        title: "Geser untuk Verifikasi",
-                        description:
-                            "Geser tombol verifikasi untuk melakukan verifikasi keamanan.",
+                            "Geser tombol verifikasi untuk memastikan proses login yang dilakukan oleh pengguna.",
+                        image: image("login", "login-verifikasi.png")
                     },
 
                     {
                         title: "Masuk ke Sistem",
                         description:
                             "Klik tombol Masuk ke Sistem setelah seluruh data dan verifikasi selesai.",
+                        image: image("login", "login-masuk.png")
                     },
                 ],
 
                 tips:
-                    "Pastikan NIP, password, dan verifikasi keamanan sudah benar sebelum melakukan login.",
-            },
-
-            {
-                id: "login-system",
-                title: "Login ke Sistem",
-                type: "steps",
-
-                description:
-                    "Ikuti langkah berikut untuk masuk ke Sistem Presensi Digital Kabupaten Sidoarjo.",
-
-                steps: [
-
-                    {
-                        number: 1,
-                        title: "Masukkan NIP",
-                        description:
-                            "Masukkan Nomor Induk Pegawai (NIP) pada kolom NIP.",
-                        image: image("login", "login-nip.png"),
-                    },
-
-                    {
-                        number: 2,
-                        title: "Masukkan Password",
-                        description:
-                            "Masukkan password akun SSO pada kolom password.",
-                        image: image("login", "login-password.png"),
-                    },
-
-                    {
-                        number: 3,
-                        title: "Lakukan Verifikasi",
-                        description:
-                            "Geser tombol verifikasi keamanan hingga proses verifikasi berhasil.",
-                        image: image("login", "login-verifikasi.png"),
-                    },
-
-                    {
-                        number: 4,
-                        title: "Masuk ke Sistem",
-                        description:
-                            "Klik tombol masuk ke sistem.",
-                        image: image("login", "login-masuk.png"),
-                    },
-                ],
-
-                tips:
-                    "Jika login gagal, periksa kembali NIP, password, dan proses verifikasi keamanan.",
+                    "Pastikan NIP dan password sudah sesuai dengan akun SSO sebelum melakukan login.",
             },
 
             {
@@ -127,19 +78,29 @@ const tutorialData = [
                 description:
                     "Logout digunakan untuk keluar dari Sistem Presensi Digital setelah selesai menggunakan aplikasi.",
 
-                steps: [
+                sections: [
                     {
                         number: 1,
                         title: "Pilih Logout",
                         description:
                             "Klik tombol Logout pada bagian kanan atas aplikasi.",
+                        image: image("logout", "tombol-logout.png"),
                     },
 
                     {
                         number: 2,
+                        title: "Pop Up Logout",
+                        description: 
+                            "Setelah tombol Logout di klik, akan muncul pop up Keluar dari Sistem?",
+                        image: image("logout", "tanya-logout.png"),
+                    },
+
+                    {
+                        number: 3,
                         title: "Kembali ke Halaman Login",
                         description:
                             "Setelah berhasil logout, sistem akan mengarahkan kembali ke halaman login.",
+                        image: image("logout", "berhasil-logout.png")
                     },
                 ],
 
@@ -157,18 +118,19 @@ const tutorialData = [
         
         children: [
             {
-                id: "dashboard-overview",
-                title: "Dashboard Utama",
+                id: "dashboard-monitoring",
+                title: "Dashboard Monitoring",
                 type: "dashboard",
                 description: 
-                    "Dashboard merupakan halaman utama setelah pengguna berhasil llogin. Halaman ini dapat memantau kondisi presensi pegawai berdasarkan tanggal dan OPD yang dipilih.",
-                image: image("dashboard", "dashboard.png"),
+                    "Dashboard merupakan halaman utama setelah pengguna berhasil login. Halaman ini digunakan untuk memantau kondisi presensi pegawai berdasarkan tanggal dan OPD yang dipilih.",
+                image: image("dashboard", "dashboard-overview.png"),
 
                 sections: [
                     {
                         title: "Filter Tanggal",
                         description: 
                             "Digunakan untuk memilih tanggal data presensi yang ingin ditampilkan.",
+                        image: image("dashboard", "filter-tanggal.png")
                     },
 
                     {
@@ -240,7 +202,7 @@ const tutorialData = [
                 description:
                     "Menu peta lokasi digunakan untuk membuat dan melihat lokasi tempat kerja.",
 
-                steps: [
+                sections: [
                     {
                         number: 1,
                         title: "Buka Peta Lokasi",
@@ -296,7 +258,7 @@ const tutorialData = [
                 description:
                     "Menu Titik Presensi Pegawai digunakan untuk mengetahui titik lokasi tempat kerja yang dapat digunakan oleh pegawai untuk melakukan presensi.",
                 
-                steps: [
+                sections: [
                     {
                         number: 1,
                         title: "Buka Titik Presensi",
@@ -343,7 +305,7 @@ const tutorialData = [
                 description:
                     "Menu Hari Kerja digunakan untuk mengelola dan menetapkan jadwal hari kerja bagi pegawai dengan sistem kerja shift.",
 
-                steps: [
+                sections: [
                     {
                         number: 1,
                         title: "Buka Hari Kerja",
@@ -395,7 +357,7 @@ const tutorialData = [
                 description: 
                     "Menu Kebijakan Jadwal Presensi digunakan untuk mengelola kebijakan jadwal kerja sebagai acuan proses presensi.",
                 
-                steps: [
+                sections: [
                     {
                         number: 1,
                         title: "Bukan Kebijakan Jadwal.",
@@ -443,7 +405,7 @@ const tutorialData = [
                 description: 
                     "Menu Manajemen Shift Pegawai digunakan untuk mengatur pembagian shift kerja setiap hari kepada pegawai.",
                 
-                steps: [
+                sections: [
                     {
                         number: 1,
                         title: "Buka Manajemen Shift",
@@ -528,7 +490,7 @@ const tutorialData = [
                 description:
                     "Menu Laporan Presensi Pegawai digunakan untuk menyajikan rekapitulasi data presensi pegawai berdasarkan periode yang dipilih.",
 
-                steps: [
+                sections: [
                     {
                         number: 1,
                         title: "Buka Menu Laporan Presensi",
@@ -583,7 +545,7 @@ const tutorialData = [
                 description:
                     "Menu Laporan Skor Disiplin digunakan untuk menampilkan dan mencetak laporan skor disiplin pegawai berdasarkan periode yang dipilih.",
 
-                steps: [
+                sections: [
                     {
                         number: 1,
                         title: "Buka Skor Displin",
@@ -642,7 +604,7 @@ const tutorialData = [
         children: [
             {
                 id: "faq-presensi",
-                title: "Cara Melakukan Presensi",
+                title: "FAQ Admin",
                 type: "faq",
                 description:
                     "Panduan melakukan Presensi Masuk dan Presensi Keluar melalui halaman Beranda aplikasi Presensi Sidoarjo.",

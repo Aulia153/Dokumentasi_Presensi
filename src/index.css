@@ -14,3 +14,83 @@ body {
     background: #eef5ff;
     color: #0f172a;
 }
+
+/* =========================================
+   GLOBAL
+========================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #f8fafc;
+    color: #0f172a;
+}
+
+
+/* =========================================
+   TUTORIAL PAGE ANIMATION
+========================================= */
+
+@keyframes tutorialFade {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tutorial-page {
+    animation: tutorialFade 0.35s ease-out;
+}
+
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+
+/* =========================================
+   SELECTION
+========================================= */
+
+::selection {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 1023px) {
+    body {
+        overflow-x: hidden;
+    }
+}
