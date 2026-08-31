@@ -1,11 +1,8 @@
 import { useState } from "react";
 
 import {
-    HiOutlineInformationCircle,
-    HiOutlineLightBulb,
-    HiOutlineChevronDown,
-    HiOutlineArrowRight,
-    HiOutlineCheckCircle,
+    HiOutlineInformationCircle, HiOutlineLightBulb,
+    HiOutlineChevronDown, HiOutlineArrowRight, HiOutlineCheckCircle,
 } from "react-icons/hi2";
 
 const TutorialContent = ({ tutorial }) => {
@@ -40,7 +37,6 @@ const TutorialContent = ({ tutorial }) => {
                             {tutorial.description}
                         </p>
                     )}
-
                 </div>
 
             </header>
@@ -57,7 +53,6 @@ const TutorialContent = ({ tutorial }) => {
                             description={tutorial.description}
                         />
                     )}
-
 
                     {/* FAQ */}
                     {tutorial.type === "faq" ? (
@@ -76,7 +71,6 @@ const TutorialContent = ({ tutorial }) => {
                                 </div>
                             )}
 
-
                             {/* SECTIONS */}
                             {tutorial.sections?.length > 0 && (
                                 <TutorialSections
@@ -87,12 +81,10 @@ const TutorialContent = ({ tutorial }) => {
                         </>
                     )}
 
-
                     {/* TIPS */}
                     {tutorial.tips && (
                         <TipsCard tips={tutorial.tips} />
                     )}
-
 
                     {/* FOOTER */}
                     <footer className="mt-16 border-t border-slate-200 bg-white">
@@ -109,44 +101,17 @@ const TutorialContent = ({ tutorial }) => {
                           <div className="text-xs text-slate-400">
                             © 2026 Presensi Digital Kabupaten Sidoarjo
                           </div>
-                          
                         </div>
                       </div>
                     </footer>
 
                 </div>
-
             </main>
-
         </div>
     );
 };
 
-const OverviewCard = ({ description }) => {
-    return (
-        <section className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md sm:p-7">
-
-            <div className="flex gap-4 sm:gap-5">
-
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-50 sm:h-12 sm:w-12">
-                    <HiOutlineInformationCircle className="h-6 w-6 text-blue-600" />
-                </div>
-
-                <div>
-                    <h2 className="text-xl font-bold text-slate-900">
-                        Tentang Halaman Ini
-                    </h2>
-
-                    <p className="mt-3 text-sm leading-7 text-slate-600 sm:text-base">
-                        {description}
-                    </p>
-                </div>
-
-            </div>
-
-        </section>
-    );
-};
+const OverviewCard = ({ description }) => {};
 
 //TUTORIAL SECTIONS
 const TutorialSections = ({ sections, type }) => {
@@ -169,9 +134,7 @@ const TutorialSections = ({ sections, type }) => {
 
             </div>
 
-
             <div className="space-y-8">
-
                 {sections.map((section, index) => (
                     <TutorialSection
                         key={`${section.title}-${index}`}
@@ -180,7 +143,6 @@ const TutorialSections = ({ sections, type }) => {
                         index={index}
                     />
                 ))}
-
             </div>
 
         </section>
@@ -197,9 +159,7 @@ const TutorialSection = ({
 
             {/* SECTION HEADER */}
             <div className="p-6 sm:p-7">
-
                 <div className="flex gap-4">
-
                     {isSteps && section.number ? (
                         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white shadow-sm">
                             {section.number}
@@ -221,11 +181,8 @@ const TutorialSection = ({
                         </p>
 
                     </div>
-
                 </div>
-
             </div>
-
 
             {/* IMAGE */}
             {section.image && (
@@ -252,7 +209,6 @@ const ImagePreview = ({ src, alt }) => {
                 <span className="h-2.5 w-2.5 rounded-full bg-red-300" />
                 <span className="h-2.5 w-2.5 rounded-full bg-yellow-300" />
                 <span className="h-2.5 w-2.5 rounded-full bg-green-300" />
-
                 <span className="ml-2 text-xs font-medium text-slate-400">
                     Tampilan Sistem
                 </span>
@@ -260,14 +216,12 @@ const ImagePreview = ({ src, alt }) => {
             </div>
 
             <div className="overflow-hidden p-3 sm:p-5">
-
                 <img
                     src={src}
                     alt={alt}
                     loading="lazy"
                     className="w-full rounded-xl border border-slate-200 bg-white object-contain transition-transform duration-500 group-hover:scale-[1.01]"
                 />
-
             </div>
 
         </div>
@@ -278,7 +232,6 @@ const ImagePreview = ({ src, alt }) => {
 const FAQContent = ({ questions }) => {
     return (
         <section className="mt-10">
-
             <div className="mb-6">
 
                 <p className="text-sm font-semibold text-blue-600">
@@ -295,16 +248,13 @@ const FAQContent = ({ questions }) => {
 
             </div>
 
-
             <div className="space-y-3">
-
                 {questions.map((item, index) => (
                     <FAQItem
                         key={`${item.question}-${index}`}
                         item={item}
                     />
                 ))}
-
             </div>
 
         </section>
@@ -332,9 +282,7 @@ const FAQItem = ({ item }) => {
             >
 
                 <div className="flex items-start gap-4">
-
-                    <div
-                        className={`mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-sm font-bold ${
+                    <div className={`mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-sm font-bold ${
                             open
                                 ? "bg-blue-600 text-white"
                                 : "bg-blue-50 text-blue-600"
@@ -349,7 +297,6 @@ const FAQItem = ({ item }) => {
 
                 </div>
 
-
                 <HiOutlineChevronDown
                     className={`h-5 w-5 shrink-0 text-slate-400 transition-transform duration-300 ${
                         open ? "rotate-180 text-blue-600" : ""
@@ -358,10 +305,8 @@ const FAQItem = ({ item }) => {
 
             </button>
 
-
             {/* ANSWER */}
-            <div
-                className={`grid transition-all duration-300 ease-in-out ${
+            <div className={`grid transition-all duration-300 ease-in-out ${
                     open
                         ? "grid-rows-[1fr]"
                         : "grid-rows-[0fr]"
@@ -369,7 +314,6 @@ const FAQItem = ({ item }) => {
             >
 
                 <div className="min-h-0 overflow-hidden">
-
                     <div className="border-t border-slate-100 px-5 pb-6 pt-5 sm:px-6">
 
                         {/* ANSWER */}
@@ -379,11 +323,9 @@ const FAQItem = ({ item }) => {
                             </p>
                         )}
 
-
                         {/* ITEMS */}
                         {item.items && (
                             <div className="space-y-4">
-
                                 {item.items.map(
                                     (subItem, index) => (
                                         <div
@@ -402,15 +344,12 @@ const FAQItem = ({ item }) => {
                                         </div>
                                     )
                                 )}
-
                             </div>
                         )}
-
 
                         {/* STEPS */}
                         {item.steps && (
                             <div className="space-y-3">
-
                                 {item.steps.map(
                                     (step, index) => (
                                         <div
@@ -427,29 +366,19 @@ const FAQItem = ({ item }) => {
                                         </div>
                                     )
                                 )}
-
                             </div>
                         )}
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
     );
 };
 
-
-/* =====================================================
-   TIPS
-===================================================== */
-
+//TIPS
 const TipsCard = ({ tips }) => {
     return (
         <section className="mt-10 rounded-2xl border border-amber-200 bg-amber-50/70 p-6 sm:p-7">
-
             <div className="flex gap-4">
 
                 <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-100">
@@ -457,7 +386,6 @@ const TipsCard = ({ tips }) => {
                 </div>
 
                 <div>
-
                     <h2 className="text-lg font-bold text-amber-900">
                         Tips
                     </h2>
@@ -465,11 +393,9 @@ const TipsCard = ({ tips }) => {
                     <p className="mt-2 text-sm leading-7 text-amber-800 sm:text-base">
                         {tips}
                     </p>
-
                 </div>
 
             </div>
-
         </section>
     );
 };

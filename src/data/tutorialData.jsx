@@ -127,58 +127,45 @@ const tutorialData = [
 
                 sections: [
                     {
-                        title: "Filter Tanggal",
+                        title: "Monitoring Presensi ASN",
                         description: 
-                            "Digunakan untuk memilih tanggal data presensi yang ingin ditampilkan.",
-                        image: image("dashboard", "filter-tanggal.png")
-                    },
-
-                    {
-                        title: "Satker",
-                        description: 
-                            "Digunakan untuk memilih satuan kerja dan OPD yang akan dipantau.",
+                            "Pilih tanggal dan satuan kerja yang ingin di monitoring.",
+                        image: image("dashboard", "monitoring-dashboard.png"),
                     },
 
                     {
                         title: "Total ASN Aktif",
                         description:
                             "Menampilkan jumlah ASN yang aktif pada data yang sedang dipantau.",
+                        image: image("dashboard", "total-asn.png"),
                     },
 
                     {
                         title: "Hadir Hari Ini",
                         description: 
                             "Menampilkan jumlah pegawai yang hadir pada tanggal yang dipilih.",
+                        image: image("dashboard", "hadir-hari-ini.png"),
                     },
 
                     {
                         title: "Terlambat",
                         description: 
                             "Menampilkan jumlah pegawai yang melakukan presensi melewati waktu yang telah ditentukan.",
+                        image: image("dashboard", "terlambat.png"),
+                    },
+
+                    {
+                        title: "Cuti",
+                        description:
+                            "Menampilkan jumlah pegawai yang cuti pada tanggal yang dipilih",
+                        image: image("dashboard", "cuti.png"),
                     },
 
                     {
                         title: "Tanpa Keterangan",
                         description:
                             "Menampilkan jumlah pegawai yang belum melakukan presensi atau tidak memiliki keterangan.",
-                    },
-
-                    {
-                        title: "Tren Kehadiran",
-                        description:
-                            "Menampilkan perkembangan atau tren kehadiran pegawai berdasarkan periode yang dipilih.",
-                    },
-
-                    {
-                        title: "Status Kehadiran",
-                        description:
-                            "Menampilkan perbandingan status kehadiran pegawai seperti tepat waktu, terlambat, izin/cuti, dan alpa.",
-                    },
-
-                    {
-                        title: "Daftar ASN Hadir",
-                        description: 
-                            "Menampilkan daftar pegawai yang melakukan presensi beserta informasi waktu dan status presensinya.",
+                        image: image("dashboard", "tanpa-keterangan.png"),
                     },
                 ],
 
@@ -201,48 +188,48 @@ const tutorialData = [
                 type: "steps",
                 description:
                     "Menu peta lokasi digunakan untuk membuat dan melihat lokasi tempat kerja.",
+                image: image("lokasi-kerja", "tampilan-peta-lokasi.png"),
 
                 sections: [
                     {
-                        number: 1,
                         title: "Buka Peta Lokasi",
                         description:
                             "Pilih menu Lokasi Kerja > Peta Lokasi.",
+                        image: image("lokasi-kerja", "peta-lokasi.png"),
                     },
 
                     {
-                        number: 2,
                         title: "Tambah Lokasi",
                         description:
                             "Klik tombol Tambah Lokasi Baru untuk menambahkan lokasi tempat kerja .",
+                        image: image("lokasi-kerja", "tambah-lokasi.png"),
                     },
 
                     {
-                        number: 3,
                         title: "Isi Data Lokasi",
                         description: 
                             "Masukkan informasi lokasi tempat kerja sesuai data yang diperlukan.",
+                        image: image("lokasi-kerja", "isi-data-lokasi.png"),
                     },
 
                     {
-                        number: 4,
                         title: "Simpan Lokasi",
                         description:
-                            "Klik tombol Simpan lokasi untuk menyimpan data.",
+                            "Setelah data lokasi  diisi dan sudah sesuai, klik tombol Simpan lokasi untuk menyimpan data.",
+                        image: image("lokasi-kerja", "simpan-lokasi.png"),
                     },
 
                     {
-                        number: 5,
                         title: "Menunggu Persetujuan",
                         description: 
                             "Setelah berhasil ditambahkan, status lokasi menjadi Belum Disetujui. Data selanjutnya diproses oleh BKD dan dapat digunakan setelah memperoleh persetujuan.",
                     },
 
                     {
-                        number: 6,
                         title: "Lihat peta semua kantor",
                         description:
                             "Gunakan tombol Peta Semua Kantor untuk melihat lokasi kantor yang tersedia.",
+                        image: image("lokasi-kerja", "peta-semua-kantor.png"),
                     },
                 ],
 
@@ -257,31 +244,29 @@ const tutorialData = [
 
                 description:
                     "Menu Titik Presensi Pegawai digunakan untuk mengetahui titik lokasi tempat kerja yang dapat digunakan oleh pegawai untuk melakukan presensi.",
+                image: image("lokasi-kerja", "lokasi-absensi.png"),
                 
                 sections: [
                     {
-                        number: 1,
                         title: "Buka Titik Presensi",
                         description: 
                             "Pilih menu Lokasi Kerja > Titik Presensi Pegawai.",
+                        image: image("lokasi-kerja", "titik-presensi.png"),
                     },
 
                     {
-                        number: 2,
                         title: "Cari Pegawai",
                         description: 
                             "Masukkan nama pegawai pada kolom Cari Pegawai.",
                     },
 
                     {
-                        number: 3,
                         title: "Tampilkan data",
                         description:
                             "Klik tombol pencarian atau Refresh. Sistem akan menampilkan pegawai yang sesuai dengan kata kunci.",
                     },
 
                     {
-                        number: 4,
                         title: "Lihat Titik Presensi",
                         description:
                             "Periksa lokasi tempat kerja yang dapat digunakan oleh pegawai tersebut.",
@@ -307,42 +292,36 @@ const tutorialData = [
 
                 sections: [
                     {
-                        number: 1,
                         title: "Buka Hari Kerja",
                         description:
                             "Pilih menu Jadwal Kerja > Hari Kerja.",
                     },
 
                     {
-                        number: 2,
                         title: "Tambah Template",
                         description:
                             "Klik tombol Tambah Template untuk menambahkan data shift.",
                     },
 
                     {
-                        number: 3,
                         title: "Isi data template",
                         description: 
                             "Masukkan informasi template, OPD, tipe, status, serta konfigurasi hari dan jam kerja.",
                     },
 
                     {
-                        number: 4,
                         title: "Buat template",
                         description: 
                             "Klik tombol Buat Template. Jika berhasil, data shift akan tersimpan.",
                     },
 
                     {
-                        number: 5,
                         title: "Edit Template",
                         description: 
                             "Klik tombol edit pada data yang ingin diperbarui, kemudian lakukan perubahan.",
                     },
 
                     {
-                        number: 6,
                         title: "Simpan Perubahan",
                         description: 
                             "Klik tombol Update Template untuk menyimpan perubahan.",
