@@ -33,22 +33,28 @@ const tutorialData = [
                 type: "overview",
                 
                 description:
-                    "Halaman login merupakan halaman awal untuk mengakses Sistem Presensi Digital Kabupaten Sidoarjo menggunakan akun yang telah terdaftar.",
+                    "Halaman login merupakan halaman awal yang digunakan untuk mengakses Sistem Presensi Digital Kabupaten Sidoarjo menggunakan akun yang telah terdaftar.",
 
                 image: image("login", "login-page.png"),
 
                 sections: [
                     {
+                        title: "Akses Sistem",
+                        description: 
+                            "Aplikasi Presensi Digital Kabupaten Sidoarjo, dapat diakses melalui: https://presensi.sidoarjokab.go.id",
+                    },
+
+                    {
                         title: "NIP",
                         description:
-                            "Masukkan Nomor Induk Pegawai (NIP) yang telah terdaftar pada sistem.",
+                            "Untuk melakukan login, masukkan Nomor Induk Pegawai (NIP) yang telah terdaftar pada sistem.",
                         image: image("login", "login-nip.png")
                     },
 
                     {
                         title: "Password",
                         description:
-                            "Gunakan password yang sama dengan akun SSO.",
+                            "Setelah itu, masukkan password. Password pada aplikasi presensi sama dengan password yang terdaftar pada aplikasi SSO.",
                         image: image("login", "login-password.png")
                     },
 
@@ -65,6 +71,13 @@ const tutorialData = [
                             "Klik tombol Masuk ke Sistem setelah seluruh data dan verifikasi selesai.",
                         image: image("login", "login-masuk.png")
                     },
+
+                    {
+                        title: "Berhasil Login",
+                        description:
+                            "Jika proses login berhasil, sistem akan masuk ke halaman Dashboard",
+                        image: image("dashboard", "dashboard-overview.png"),
+                    },
                 ],
 
                 tips:
@@ -80,7 +93,6 @@ const tutorialData = [
 
                 sections: [
                     {
-                        number: 1,
                         title: "Pilih Logout",
                         description:
                             "Klik tombol Logout pada bagian kanan atas aplikasi.",
@@ -88,7 +100,6 @@ const tutorialData = [
                     },
 
                     {
-                        number: 2,
                         title: "Pop Up Logout",
                         description: 
                             "Setelah tombol Logout di klik, akan muncul pop up Keluar dari Sistem?",
@@ -96,7 +107,6 @@ const tutorialData = [
                     },
 
                     {
-                        number: 3,
                         title: "Kembali ke Halaman Login",
                         description:
                             "Setelah berhasil logout, sistem akan mengarahkan kembali ke halaman login.",
@@ -215,20 +225,20 @@ const tutorialData = [
                     {
                         title: "Simpan Lokasi",
                         description:
-                            "Setelah data lokasi  diisi dan sudah sesuai, klik tombol Simpan lokasi untuk menyimpan data.",
+                            "Setelah data lokasi diisi dan sudah sesuai, klik tombol Simpan lokasi untuk menyimpan data.",
                         image: image("lokasi-kerja", "simpan-lokasi.png"),
                     },
 
                     {
                         title: "Menunggu Persetujuan",
                         description: 
-                            "Setelah berhasil ditambahkan, status lokasi menjadi Belum Disetujui. Data selanjutnya diproses oleh BKD dan dapat digunakan setelah memperoleh persetujuan.",
+                            "Setelah proses penambahan lokasi berhasil dilakukan, status data akan menjadi 'Belum Disetujui'. Selanjutnya, data akan diproses oleh Badan Kepegawaian Daerah (BKD) dan dapat digunakan setelah memperoleh persetujuan",
                     },
 
                     {
                         title: "Lihat peta semua kantor",
                         description:
-                            "Gunakan tombol Peta Semua Kantor untuk melihat lokasi kantor yang tersedia.",
+                            "Gunakan tombol Peta Semua Kantor untuk melihat peta semua kantor yang tersedia.",
                         image: image("lokasi-kerja", "peta-semua-kantor.png"),
                     },
                 ],
@@ -257,7 +267,7 @@ const tutorialData = [
                     {
                         title: "Cari Pegawai",
                         description: 
-                            "Masukkan nama pegawai pada kolom Cari Pegawai.",
+                            "Untuk melihat titik presensi salah satu pegawai, masukkan nama pegawai pada kolom 'Cari Pegawai'.",
                     },
 
                     {
@@ -289,42 +299,46 @@ const tutorialData = [
                 type: "steps",
                 description:
                     "Menu Hari Kerja digunakan untuk mengelola dan menetapkan jadwal hari kerja bagi pegawai dengan sistem kerja shift.",
+                image: image("jadwal-kerja", "tampilan-hari-kerja.png"),
 
                 sections: [
                     {
                         title: "Buka Hari Kerja",
                         description:
                             "Pilih menu Jadwal Kerja > Hari Kerja.",
+                        image: image("jadwal-kerja", "hari-kerja.png"),
                     },
 
                     {
                         title: "Tambah Template",
                         description:
                             "Klik tombol Tambah Template untuk menambahkan data shift.",
+                        image: image("jadwal-kerja", "hari-tambah-template.png"),
                     },
 
                     {
                         title: "Isi data template",
                         description: 
                             "Masukkan informasi template, OPD, tipe, status, serta konfigurasi hari dan jam kerja.",
+                        image: image("jadwal-kerja", "hari-isidata.png"),
                     },
 
                     {
                         title: "Buat template",
                         description: 
-                            "Klik tombol Buat Template. Jika berhasil, data shift akan tersimpan.",
+                            "Klik tombol Buat Template. Jika berhasil, data shift akan tersimpan dan berhasil dibuat oleh sistem.",
                     },
 
                     {
                         title: "Edit Template",
                         description: 
-                            "Klik tombol edit pada data yang ingin diperbarui, kemudian lakukan perubahan.",
+                            "Untuk mengudah bata, klik tombol edit pada data yang ingin diperbarui, kemudian lakukan perubahan pada data yang diperlukan.",
                     },
 
                     {
                         title: "Simpan Perubahan",
                         description: 
-                            "Klik tombol Update Template untuk menyimpan perubahan.",
+                            "Klik tombol Update Template untuk menyimpan hasil perubahan.",
                     },
                 ],
             },
@@ -334,39 +348,39 @@ const tutorialData = [
                 title: "Kebijakan Jadwal Presensi",
                 type: "steps",
                 description: 
-                    "Menu Kebijakan Jadwal Presensi digunakan untuk mengelola kebijakan jadwal kerja sebagai acuan proses presensi.",
+                    "Menu Kebijakan Jadwal Presensi digunakan untuk mengelola dan menetapkan kebijakan jadwal kerja pegawai sebagai acuan proses presensi.",
+                image: image("jadwal-kerja", "tampilan-kebijakan.png"),
                 
                 sections: [
                     {
-                        number: 1,
-                        title: "Bukan Kebijakan Jadwal.",
+                        title: "Buka Kebijakan Jadwal.",
                         description: 
                             "Pilih menu Jadwal Kerja > Kebijakan Jadwal Presensi.",
+                        image: image("jadwal-kerja", "kebijakan-jadwal.png"),
                     },
 
                     {
-                        number: 2,
                         title: "Pilih Kebijakan",
                         description: 
                             "Masukkan atau pilih nama shift pada kolom Pilih Kebijakan Presensi.",
+                        image: image("jadwal-kerja", "kebijakan-pilih-kebijakan.png"),
                     },
 
                     {
-                        number: 3,
                         title: "Pilih OPD",
                         description:
                             "Pilih OPD diinginkan.",
+                        image: image("jadwal-kerja", "kebijakan-pilih-opd.png"),
                     },
 
                     {
-                        number: 4,
                         title: "Pilih Pegawai",
                         description:
                             "Pilih pegawai yang akan ditetapkan atau dipilih.",
+                        image: image("jadwal-kerja", "kebijakan-pilih-pegawai.png"),
                     },
 
                     {
-                        number: 5,
                         title: "Simpan",
                         description:
                             "Centang nama pegawai yang dipilih kemudian klik tombol penetapan kebijakan untuk menyimpan data.",
@@ -382,70 +396,68 @@ const tutorialData = [
                 title: "Manajemen Shift Pegawai",
                 type: "steps",
                 description: 
-                    "Menu Manajemen Shift Pegawai digunakan untuk mengatur pembagian shift kerja setiap hari kepada pegawai.",
+                    "Menu Manajemen Shift Pegawai digunakan untuk mengatur dan mengelola penjadwalan pegawai yang menggunakan sistem shift.",
+                image: image("jadwal-kerja", "tampilan-manajemen.png"),
                 
                 sections: [
                     {
-                        number: 1,
                         title: "Buka Manajemen Shift",
                         description:
                             "Pilih menu Jadwal Kerja > Manajemen Shift Pegawai.",
+                        image: image("jadwal-kerja", "manajemen-shift.png"),
                     },
 
                     {
-                        number: 2,
                         title: "Pilih OPD",
                         description:
                             "Pilih OPD yang ingin dikelola.",
+                        image: image("jadwal-kerja", "manajemen-pilih-opd.png"),
                     },
 
                     {
-                        number: 3, 
                         title: "Filter Jam Kerja",
                         description:
                             "Pilih Filter Jam Kerja sesuai dengan kebutuhan.",
+                        image: image("jadwal-kerja", "manajemen-filter-jam.png"),
                     },
 
                     {
-                        number: 4,
                         title: "Pilih Pegawai",
                         description:
                             "Pilih pegawai yang jadwal shift-nya ingin diubah.",
+                        image: image("jadwal-kerja", "manajemen-pegawai.png"),
                     },
 
                     {
-                        number: 5,
                         title: "Ubah Jadwal Shift",
                         description: 
                         "Lakukan perubahan jadwal shift pegawai sesuai dengan kebutuhan.",
                     },
 
                     {
-                        number: 6,
                         title: "Simpan Perubahan",
                         description:
                             "Klik tombol Simpan untuk menyimpan perubahan jadwal shift.",
                     },
 
                     {
-                        number: 7,
                         title: "Import Excel",
                         description: 
-                            "Perubahan jadwal juga dapat dilakukan menggunakan fitur Import Excel.",
+                            "Perubahan jadwal shift juga dapat dilakukan menggunakan fitur Import Excel.",
+                        image: image("jadwal-kerja", "manajemen-import-excel.png"),
                     },
 
                     {
-                        number: 8,
                         title: "Download Template",
                         description: 
-                            "Unduh template Excel yang disediakan kemudian isi data pegawai dan jadwal shift.",
+                            "Unduh template Excel yang disediakan kemudian isi data pegawai dan jadwal shift yang akan diubah pada file template tersebut.",
+                        image: image("jadwal-kerja", "manajemen-download-template.png"),
                     },
 
                     {
-                        number: 9,
                         title: "Upload & Import",
                         description:
-                            "Unggah file Excel yang sudah diisi kemudian klik Upload & Import untuk memproses perubahan.",
+                            "Unggah file Excel yang telah diisi, kemudian klik Upload & Import untuk memproses perubahan data.",
                     },
                 ],
 
@@ -471,45 +483,39 @@ const tutorialData = [
 
                 sections: [
                     {
-                        number: 1,
                         title: "Buka Menu Laporan Presensi",
                         description:
                             "Pilih menu Laporan > Laporan Presensi Pegawai.",
                     },
 
                     {
-                        number: 2,
                         title: "Pilih Periode",
                         description:
                             "Tentukan periode laporan yang ingin ditampilkan.",
                     },
 
                     {
-                        number: 3,
                         title: "Pilih OPD",
                         description: 
                             "Pilih OPD yang ingin ditampilkan datanya.",
                     },
 
                     {
-                        number: 4,
                         title: "Export Excel",
                         description:
                             "Gunakan tombol export untuk mengunduh laporan dalam format Excel.",
                     },
 
                     {
-                        number: 5,
                         title: "Cari Pegawai",
                         description: 
-                            "Masukkan Nama Pegawai atau NIP Pegawai pada kolom pencarian.",
+                            "Untuk mencari data pegawai, masukkan Nama Pegawai atau NIP Pegawai pada kolom pencarian.",
                     },
 
                     {
-                        number: 6,
                         title: "Verifikasi Foto",
                         description:
-                            "Untuk melakukan verifikasi foto, pilih data yang diperlukan kemudian pilih Tindakan Persetujuan, masukkan Catatan Verifikasi, lalu simpan.",
+                            "Untuk melakukan verifikasi foto, klik tombol 'Verifikasi' kemudian pilih Tindakan Persetujuan, masukkan Catatan Verifikasi, lalu klik tombol 'Simpan Hasil Verifikasi'.",
                     },
                 ],
 
@@ -522,54 +528,45 @@ const tutorialData = [
                 title: "Laporan Skor Disiplin",
                 type: "steps",
                 description:
-                    "Menu Laporan Skor Disiplin digunakan untuk menampilkan dan mencetak laporan skor disiplin pegawai berdasarkan periode yang dipilih.",
+                    "Menu Laporan Skor Disiplin digunakan untuk menampilkan dan mencetak laporan skor disiplin pegawai berdasarkan periode yang dipilih dan digunakan sebagai bukti dukung perhitungan TPP.",
 
                 sections: [
                     {
-                        number: 1,
                         title: "Buka Skor Displin",
                         description:
                             "Pilih menu Laporan > Skor Disiplin.",
                     },
 
                     {
-                        number: 2,
                         title: "Pilih Periode",
                         description:
                             "Pilih Bulan dan Tahun yang ingin ditampilkan.",
                     },
 
                     {
-                        number: 3,
                         title: "Pilih OPD",
                         description:
                             "Pilih OPD yang ingin ditampilakan",
                     },
 
                     {
-                        number: 4,
                         title: "Export Laporan",
                         description: 
                             "Gunakan tombol export untuk mengunduh laporan dalam format dalam format Excel.",
                     },
 
                     {
-                        number: 5,
                         title: "Lihat dashboard skor",
                         description:
-                            "Dashboard menampilkan Total Pegawai, rata-rata skor disiplin, jumlah pegawai tepat waktu, terlambat, lupa check out, dan tidak presensi/alpa.",
+                            "Pada menu 'Laporan Skor Disiplin', pengguna dapat melihat dashboard yang menampilkan informasi Total Pegawai, rata-rata skor disiplin, jumlah pegawai tepat waktu, terlambat, lupa check out, dan tidak presensi/alpa.",
                     },
 
                     {
-                        number: 6, 
                         title: "Lihat skor pegawai",
                         description:
-                            "Pengguna dapat melihat skor disiplin masing-masing pegawai yang digunakan sebagao bukti dukung perhitungan TPP.",
+                            "Pengguna dapat melihat skor disiplin masing-masing pegawai yang digunakan sebagai bukti dukung perhitungan TPP (Tambahan Penghasilan Pegawai).",
                     },
                 ],
-
-                tips:
-                    "Skor disiplin digunakan sebagai bukti dukung dalam perhitungan Tambahan Pengahasilan Pegawai (TPP).",
             },
         ],
     },
