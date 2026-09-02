@@ -88,21 +88,21 @@ const TutorialContent = ({ tutorial }) => {
 
                     {/* FOOTER */}
                     <footer className="mt-16 border-t border-slate-200 bg-white">
-                      <div className="mx-auto max-w-7xl px-5 py-8 sm:px-8 lg:px-10">
+                        <div className="mx-auto max-w-7xl px-5 py-8 sm:px-8 lg:px-10">
 
-                        <div className="flex flex-col items-center justify-between gap-3 text-center sm:flex-row sm:text-left">
+                            <div className="flex flex-col items-center justify-between gap-3 text-center sm:flex-row sm:text-left">
 
-                          <div>
-                            <p className="text-sm font-semibold text-slate-700">
-                              Dokumentasi Presensi Digital  
-                            </p>
-                          </div>
+                                <div>
+                                    <p className="text-sm font-semibold text-slate-700">
+                                        Dokumentasi Presensi Digital
+                                    </p>
+                                </div>
 
-                          <div className="text-xs text-slate-400">
-                            © 2026 Presensi Digital Kabupaten Sidoarjo
-                          </div>
+                                <div className="text-xs text-slate-400">
+                                    © 2026 Presensi Digital Kabupaten Sidoarjo
+                                </div>
+                            </div>
                         </div>
-                      </div>
                     </footer>
 
                 </div>
@@ -111,7 +111,7 @@ const TutorialContent = ({ tutorial }) => {
     );
 };
 
-const OverviewCard = ({ description }) => {};
+const OverviewCard = ({ description }) => { };
 
 //TUTORIAL SECTIONS
 const TutorialSections = ({ sections, type }) => {
@@ -267,11 +267,10 @@ const FAQItem = ({ item }) => {
 
     return (
         <div
-            className={`overflow-hidden rounded-2xl border bg-white transition-all duration-300 ${
-                open
-                    ? "border-blue-200 shadow-sm"
-                    : "border-slate-200 hover:border-slate-300"
-            }`}
+            className={`overflow-hidden rounded-2xl border bg-white transition-all duration-300 ${open
+                ? "border-blue-200 shadow-sm"
+                : "border-slate-200 hover:border-slate-300"
+                }`}
         >
 
             {/* QUESTION */}
@@ -282,10 +281,9 @@ const FAQItem = ({ item }) => {
             >
 
                 <div className="flex items-start gap-4">
-                    <div className={`mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-sm font-bold ${
-                            open
-                                ? "bg-blue-600 text-white"
-                                : "bg-blue-50 text-blue-600"
+                    <div className={`mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-sm font-bold ${open
+                        ? "bg-blue-600 text-white"
+                        : "bg-blue-50 text-blue-600"
                         }`}
                     >
                         ?
@@ -298,18 +296,16 @@ const FAQItem = ({ item }) => {
                 </div>
 
                 <HiOutlineChevronDown
-                    className={`h-5 w-5 shrink-0 text-slate-400 transition-transform duration-300 ${
-                        open ? "rotate-180 text-blue-600" : ""
-                    }`}
+                    className={`h-5 w-5 shrink-0 text-slate-400 transition-transform duration-300 ${open ? "rotate-180 text-blue-600" : ""
+                        }`}
                 />
 
             </button>
 
             {/* ANSWER */}
-            <div className={`grid transition-all duration-300 ease-in-out ${
-                    open
-                        ? "grid-rows-[1fr]"
-                        : "grid-rows-[0fr]"
+            <div className={`grid transition-all duration-300 ease-in-out ${open
+                ? "grid-rows-[1fr]"
+                : "grid-rows-[0fr]"
                 }`}
             >
 

@@ -17,9 +17,9 @@ const Home = () => {
                         </h1>
 
                         <p className="text-slate-500 mt-3">
-                            Sistem Informasi Dokumentasi 
+                            Sistem Informasi Dokumentasi
                         </p>
-                        
+
                         <p className="text-slate-500">
                             Kabupaten Sidoarjo
                         </p>
@@ -38,7 +38,7 @@ const Home = () => {
                             title="Pengguna"
                             description="Tutorial Pengguaan Aplikasi Untuk Pengguna yaitu PNS dan PPPK merupakan individu atau peorangan yang melakukan presensi."
                             button="Tutorial"
-                            to="/"
+                            to="/user"
                         />
                     </div>
                 </div>

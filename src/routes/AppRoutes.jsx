@@ -6,6 +6,7 @@ import {
 
 import Home from "../pages/Home";
 import AdminTutorial from "../pages/AdminTutorial";
+import UserTutorial from "../pages/UserTutorial";
 import NotFound from "../pages/NotFound";
 
 const AppRoutes = () => {
@@ -28,6 +29,13 @@ const AppRoutes = () => {
                 <Route
                     path="/admin"
                     element={<AdminTutorial />}
+                />
+
+                {/* TUTORIAL USER */}
+
+                <Route
+                    path="/user"
+                    element={<UserTutorial />}
                 />
 
 

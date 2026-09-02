@@ -1,10 +1,9 @@
 import {
-    HiOutlineLockClosed, HiOutlineHome, 
-    HiOutlineMapPin, HiOutlineCalendarDays, 
+    HiOutlineLockClosed, HiOutlineHome,
+    HiOutlineMapPin, HiOutlineCalendarDays,
     HiOutlineDocumentText, HiOutlineCog6Tooth, HiOutlineQuestionMarkCircle,
 } from "react-icons/hi2";
 
-//Import Gambar
 const images = import.meta.glob(
     "../assets/tutorial/**/*.{png,jpg,jpeg,webp}",
     {
@@ -13,14 +12,12 @@ const images = import.meta.glob(
     }
 );
 
-// Helper mengambil gambar
 const image = (folder, file) => {
     return images[`../assets/tutorial/${folder}/${file}`] || null;
 };
 
 const tutorialData = [
-    
-    //LOGIN
+
     {
         id: "login",
         title: "Login",
@@ -31,7 +28,7 @@ const tutorialData = [
                 id: "login-overview",
                 title: "Halaman Login",
                 type: "overview",
-                
+
                 description:
                     "Halaman login merupakan halaman awal yang digunakan untuk mengakses Sistem Presensi Digital Kabupaten Sidoarjo menggunakan akun yang telah terdaftar.",
 
@@ -40,7 +37,7 @@ const tutorialData = [
                 sections: [
                     {
                         title: "Akses Sistem",
-                        description: 
+                        description:
                             "Aplikasi Presensi Digital Kabupaten Sidoarjo, dapat diakses melalui: https://presensi.sidoarjokab.go.id",
                     },
 
@@ -101,7 +98,7 @@ const tutorialData = [
 
                     {
                         title: "Pop Up Logout",
-                        description: 
+                        description:
                             "Setelah tombol Logout di klik, akan muncul pop up Keluar dari Sistem?",
                         image: image("logout", "tanya-logout.png"),
                     },
@@ -125,20 +122,20 @@ const tutorialData = [
         id: "dashboard",
         title: "Dashboard",
         icon: HiOutlineHome,
-        
+
         children: [
             {
                 id: "dashboard-monitoring",
                 title: "Dashboard Monitoring",
                 type: "dashboard",
-                description: 
+                description:
                     "Dashboard merupakan halaman utama setelah pengguna berhasil login. Halaman ini digunakan untuk memantau kondisi presensi pegawai berdasarkan tanggal dan OPD yang dipilih.",
                 image: image("dashboard", "dashboard-overview.png"),
 
                 sections: [
                     {
                         title: "Monitoring Presensi ASN",
-                        description: 
+                        description:
                             "Pilih tanggal dan satuan kerja yang ingin di monitoring.",
                         image: image("dashboard", "monitoring-dashboard.png"),
                     },
@@ -152,14 +149,14 @@ const tutorialData = [
 
                     {
                         title: "Hadir Hari Ini",
-                        description: 
+                        description:
                             "Menampilkan jumlah pegawai yang hadir pada tanggal yang dipilih.",
                         image: image("dashboard", "hadir-hari-ini.png"),
                     },
 
                     {
                         title: "Terlambat",
-                        description: 
+                        description:
                             "Menampilkan jumlah pegawai yang melakukan presensi melewati waktu yang telah ditentukan.",
                         image: image("dashboard", "terlambat.png"),
                     },
@@ -179,7 +176,7 @@ const tutorialData = [
                     },
                 ],
 
-                tips: 
+                tips:
                     "Gunakan filter tanggal dan satker terlebih dahulu agar informasi dashboard sesuai dengan data yang ingin dipantau.",
             },
         ],
@@ -217,7 +214,7 @@ const tutorialData = [
 
                     {
                         title: "Isi Data Lokasi",
-                        description: 
+                        description:
                             "Masukkan informasi lokasi tempat kerja sesuai data yang diperlukan.",
                         image: image("lokasi-kerja", "isi-data-lokasi.png"),
                     },
@@ -231,7 +228,7 @@ const tutorialData = [
 
                     {
                         title: "Menunggu Persetujuan",
-                        description: 
+                        description:
                             "Setelah proses penambahan lokasi berhasil dilakukan, status data akan menjadi 'Belum Disetujui'. Selanjutnya, data akan diproses oleh Badan Kepegawaian Daerah (BKD) dan dapat digunakan setelah memperoleh persetujuan",
                     },
 
@@ -255,18 +252,18 @@ const tutorialData = [
                 description:
                     "Menu Titik Presensi Pegawai digunakan untuk mengetahui titik lokasi tempat kerja yang dapat digunakan oleh pegawai untuk melakukan presensi.",
                 image: image("lokasi-kerja", "lokasi-absensi.png"),
-                
+
                 sections: [
                     {
                         title: "Buka Titik Presensi",
-                        description: 
+                        description:
                             "Pilih menu Lokasi Kerja > Titik Presensi Pegawai.",
                         image: image("lokasi-kerja", "titik-presensi.png"),
                     },
 
                     {
                         title: "Cari Pegawai",
-                        description: 
+                        description:
                             "Untuk melihat titik presensi salah satu pegawai, masukkan nama pegawai pada kolom 'Cari Pegawai'.",
                     },
 
@@ -318,26 +315,26 @@ const tutorialData = [
 
                     {
                         title: "Isi data template",
-                        description: 
+                        description:
                             "Masukkan informasi template, OPD, tipe, status, serta konfigurasi hari dan jam kerja.",
                         image: image("jadwal-kerja", "hari-isidata.png"),
                     },
 
                     {
                         title: "Buat template",
-                        description: 
+                        description:
                             "Klik tombol Buat Template. Jika berhasil, data shift akan tersimpan dan berhasil dibuat oleh sistem.",
                     },
 
                     {
                         title: "Edit Template",
-                        description: 
+                        description:
                             "Untuk mengudah bata, klik tombol edit pada data yang ingin diperbarui, kemudian lakukan perubahan pada data yang diperlukan.",
                     },
 
                     {
                         title: "Simpan Perubahan",
-                        description: 
+                        description:
                             "Klik tombol Update Template untuk menyimpan hasil perubahan.",
                     },
                 ],
@@ -347,21 +344,21 @@ const tutorialData = [
                 id: "kebijakan-jadwal",
                 title: "Kebijakan Jadwal Presensi",
                 type: "steps",
-                description: 
+                description:
                     "Menu Kebijakan Jadwal Presensi digunakan untuk mengelola dan menetapkan kebijakan jadwal kerja pegawai sebagai acuan proses presensi.",
                 image: image("jadwal-kerja", "tampilan-kebijakan.png"),
-                
+
                 sections: [
                     {
                         title: "Buka Kebijakan Jadwal.",
-                        description: 
+                        description:
                             "Pilih menu Jadwal Kerja > Kebijakan Jadwal Presensi.",
                         image: image("jadwal-kerja", "kebijakan-jadwal.png"),
                     },
 
                     {
                         title: "Pilih Kebijakan",
-                        description: 
+                        description:
                             "Masukkan atau pilih nama shift pada kolom Pilih Kebijakan Presensi.",
                         image: image("jadwal-kerja", "kebijakan-pilih-kebijakan.png"),
                     },
@@ -395,10 +392,10 @@ const tutorialData = [
                 id: "manajemen-shift",
                 title: "Manajemen Shift Pegawai",
                 type: "steps",
-                description: 
+                description:
                     "Menu Manajemen Shift Pegawai digunakan untuk mengatur dan mengelola penjadwalan pegawai yang menggunakan sistem shift.",
                 image: image("jadwal-kerja", "tampilan-manajemen.png"),
-                
+
                 sections: [
                     {
                         title: "Buka Manajemen Shift",
@@ -430,8 +427,8 @@ const tutorialData = [
 
                     {
                         title: "Ubah Jadwal Shift",
-                        description: 
-                        "Lakukan perubahan jadwal shift pegawai sesuai dengan kebutuhan.",
+                        description:
+                            "Lakukan perubahan jadwal shift pegawai sesuai dengan kebutuhan.",
                     },
 
                     {
@@ -442,14 +439,14 @@ const tutorialData = [
 
                     {
                         title: "Import Excel",
-                        description: 
+                        description:
                             "Perubahan jadwal shift juga dapat dilakukan menggunakan fitur Import Excel.",
                         image: image("jadwal-kerja", "manajemen-import-excel.png"),
                     },
 
                     {
                         title: "Download Template",
-                        description: 
+                        description:
                             "Unduh template Excel yang disediakan kemudian isi data pegawai dan jadwal shift yang akan diubah pada file template tersebut.",
                         image: image("jadwal-kerja", "manajemen-download-template.png"),
                     },
@@ -461,7 +458,7 @@ const tutorialData = [
                     },
                 ],
 
-                tips: 
+                tips:
                     "Pastikan data Excel sudah seusai dengan template sebelum melakukan Upload & Import.",
             },
         ],
@@ -496,7 +493,7 @@ const tutorialData = [
 
                     {
                         title: "Pilih OPD",
-                        description: 
+                        description:
                             "Pilih OPD yang ingin ditampilkan datanya.",
                     },
 
@@ -508,7 +505,7 @@ const tutorialData = [
 
                     {
                         title: "Cari Pegawai",
-                        description: 
+                        description:
                             "Untuk mencari data pegawai, masukkan Nama Pegawai atau NIP Pegawai pada kolom pencarian.",
                     },
 
@@ -551,7 +548,7 @@ const tutorialData = [
 
                     {
                         title: "Export Laporan",
-                        description: 
+                        description:
                             "Gunakan tombol export untuk mengunduh laporan dalam format dalam format Excel.",
                     },
 
@@ -588,7 +585,7 @@ const tutorialData = [
                 questions: [
                     {
                         question: "Bagaimana cara melakukan Presensi Masuk dan Presensi Keluar?",
-                        answer: 
+                        answer:
                             `Presensi harian dilakukan langsung dari halaman Beranda aplikasi Presensi Sidoarjo. Pengguna dapat melakukan 
                             Presensi Masuk maupun Presensi Leluar dengan menggunakan deteksi lokasi GPS dan foto wajah secara langsung.`.trim(),
                     },
@@ -598,7 +595,7 @@ const tutorialData = [
                         items: [
                             {
                                 label: "Abu-abu - Nonaktif",
-                                description: 
+                                description:
                                     "Presensi tidak dapat dilakukan karena jadwal kerja OFF, hari libur resmi, cuti, tugas belajar, atau proses banding administratif.",
                             },
 
@@ -610,7 +607,7 @@ const tutorialData = [
 
                             {
                                 label: "Hijau - Done / Selesai",
-                                description: 
+                                description:
                                     "Menunjukkan bahwa Presensi Masuk dan Presensi Keluar telah selesai dilakukan.",
                             },
                         ],
@@ -624,10 +621,10 @@ const tutorialData = [
                                 description:
                                     "Menampilkan waktu sistem secara real-time.",
                             },
-                            
+
                             {
                                 label: "Jadwal Kerja",
-                                description: 
+                                description:
                                     "Menampilkan jam jadwal kerja pengguna.",
                             },
 
