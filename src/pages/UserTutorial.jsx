@@ -25,9 +25,10 @@ const UserTutorial = () => {
                 setActiveItem={setActiveItem}
             />
 
-            <main className="ml-80 min-h-screen min-w-0 flex-1 overflow-x-hidden">
+            <main className="min-h-screen min-w-0 transition-all duration-300 lg:ml-80">
                 {activeTutorial ? (
-                    <TutorialContent tutorial={activeTutorial} />
+                    <TutorialContent
+                        tutorial={activeTutorial} />
                 ) : (
                     <WelcomeUser
                         tutorialUser={tutorialUser}

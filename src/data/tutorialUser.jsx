@@ -36,7 +36,7 @@ const tutorialUser = [
                     "Halaman login digunakan untuk mengakses Sistem Presensi Digital Kabupaten Sidoarjo menggunakan akun yang telah terdaftar.",
                 image: image("login-page.png"),
 
-                steps: [
+                sections: [
                     {
                         title: "Isi NIP dan Password",
                         description:
@@ -82,7 +82,7 @@ const tutorialUser = [
                 type: "dashboard",
                 description:
                     "Dashboard merupakan halaman utama setelah pengguna berhasil login. Halaman ini digunakan untuk melakukan Presensi Masuk dan Presensi Keluar",
-                steps: [
+                sections: [
                     {
                         title: "Presensi",
                         description:
@@ -123,11 +123,11 @@ const tutorialUser = [
             {
                 id: "rpresen",
                 title: "Rekap Kehadiran",
-                type: "steps",
+                type: "rekap kehadiran",
                 description:
                     "Panduan melihat dan filterisasi riwayat presensi harian, mingguan, dan bulanan",
 
-                steps: [
+                sections: [
                     {
                         number: 1,
                         title: "Status Presensi",
@@ -182,10 +182,10 @@ const tutorialUser = [
             {
                 id: "hari-kerja",
                 title: "Hari Kerja",
-                type: "steps",
+                type: "hari kerja",
                 description:
                     "Panduan melihat jadwal kerja, shift, dan hari libur yang berlaku untuk Anda",
-                steps: [
+                sections: [
                     {
                         number: 1,
                         title: "Status Riwayat Jadwal",
@@ -233,7 +233,7 @@ const tutorialUser = [
                 type: "profil",
                 description:
                     "Panduan mengelola data profil pegawai dan pengaturan akun",
-                steps: [
+                sections: [
                     {
                         number: 1,
                         title: "Informasi Data Diri",
