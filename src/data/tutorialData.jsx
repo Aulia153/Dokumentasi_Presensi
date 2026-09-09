@@ -477,42 +477,42 @@ const tutorialData = [
                 type: "steps",
                 description:
                     "Menu Laporan Presensi Pegawai digunakan untuk menyajikan rekapitulasi data presensi pegawai berdasarkan periode yang dipilih.",
+                image: image("laporan", "tampilan-presensi-pegawai.png"),
 
                 sections: [
                     {
                         title: "Buka Menu Laporan Presensi",
                         description:
                             "Pilih menu Laporan > Laporan Presensi Pegawai.",
+                        image: image("laporan", "presensi-pegawai.png"),
                     },
 
                     {
                         title: "Pilih Periode",
                         description:
                             "Tentukan periode laporan yang ingin ditampilkan.",
+                        image: image("laporan", "presensi-periode.png"),
                     },
 
                     {
                         title: "Pilih OPD",
                         description:
                             "Pilih OPD yang ingin ditampilkan datanya.",
-                    },
-
-                    {
-                        title: "Export Excel",
-                        description:
-                            "Gunakan tombol export untuk mengunduh laporan dalam format Excel.",
+                        image: image("laporan", "presensi-opd.png"),
                     },
 
                     {
                         title: "Cari Pegawai",
                         description:
                             "Untuk mencari data pegawai, masukkan Nama Pegawai atau NIP Pegawai pada kolom pencarian.",
+                        image: image("laporan", "presensi-cari.png"),
                     },
 
                     {
-                        title: "Verifikasi Foto",
+                        title: "Export Excel",
                         description:
-                            "Untuk melakukan verifikasi foto, klik tombol 'Verifikasi' kemudian pilih Tindakan Persetujuan, masukkan Catatan Verifikasi, lalu klik tombol 'Simpan Hasil Verifikasi'.",
+                            "Gunakan tombol export untuk mengunduh laporan dalam format Excel.",
+                        image: image("laporan", "presensi-export.png"),
                     },
                 ],
 
@@ -526,12 +526,14 @@ const tutorialData = [
                 type: "steps",
                 description:
                     "Menu Laporan Skor Disiplin digunakan untuk menampilkan dan mencetak laporan skor disiplin pegawai berdasarkan periode yang dipilih dan digunakan sebagai bukti dukung perhitungan TPP.",
+                image: image("laporan", "tampilan-skor.png"),
 
                 sections: [
                     {
                         title: "Buka Skor Displin",
                         description:
                             "Pilih menu Laporan > Skor Disiplin.",
+                        image: image("laporan", "skor-disiplin.png"),
                     },
 
                     {
