@@ -7,7 +7,7 @@ import {
     HiOutlineXMark,
 } from "react-icons/hi2";
 
-import tutorialData from "../../data/tutorialData";
+import tutorialAdmin from "../../data/tutorialAdmin";
 
 const Sidebar = ({ activeItem, setActiveItem }) => {
     const [openMenus, setOpenMenus] = useState({});
@@ -40,7 +40,7 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
     useEffect(() => {
         if (!activeItem) return;
 
-        const parentMenu = tutorialData.find((menu) =>
+        const parentMenu = tutorialAdmin.find((menu) =>
             menu.children?.some((child) => child.id === activeItem)
         );
 
@@ -133,7 +133,7 @@ const Sidebar = ({ activeItem, setActiveItem }) => {
 
                     <div className="space-y-1">
 
-                        {tutorialData.map((menu) => {
+                        {tutorialAdmin.map((menu) => {
                             const Icon = menu.icon;
                             const isOpen = !!openMenus[menu.id];
 

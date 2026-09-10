@@ -1,11 +1,11 @@
 import {
     HiOutlineLockClosed, HiOutlineHome,
     HiOutlineMapPin, HiOutlineCalendarDays,
-    HiOutlineDocumentText, HiOutlineCog6Tooth, HiOutlineQuestionMarkCircle,
+    HiOutlineDocumentText,
 } from "react-icons/hi2";
 
 const images = import.meta.glob(
-    "../assets/tutorial/**/*.{png,jpg,jpeg,webp}",
+    "../assets/admin/**/*.{png,jpg,jpeg,webp}",
     {
         eager: true,
         import: "default",
@@ -13,10 +13,10 @@ const images = import.meta.glob(
 );
 
 const image = (folder, file) => {
-    return images[`../assets/tutorial/${folder}/${file}`] || null;
+    return images[`../assets/admin/${folder}/${file}`] || null;
 };
 
-const tutorialData = [
+const tutorialAdmin = [
 
     {
         id: "login",
@@ -540,18 +540,21 @@ const tutorialData = [
                         title: "Pilih Periode",
                         description:
                             "Pilih Bulan dan Tahun yang ingin ditampilkan.",
+                        image: image("laporan", "skor-periode.png"),
                     },
 
                     {
                         title: "Pilih OPD",
                         description:
                             "Pilih OPD yang ingin ditampilakan",
+                        image: image("laporan", "skor-opd.png"),
                     },
 
                     {
                         title: "Export Laporan",
                         description:
                             "Gunakan tombol export untuk mengunduh laporan dalam format dalam format Excel.",
+                        image: image("laporan", "skor-export.png"),
                     },
 
                     {
@@ -572,4 +575,4 @@ const tutorialData = [
     
 ];
 
-export default tutorialData;
+export default tutorialAdmin;

@@ -1,50 +1,120 @@
-import { HiUserGroup } from "react-icons/hi";
-import { HiUser } from "react-icons/hi";
+import {
+    HiUserGroup,
+    HiUser,
+    HiArrowRight,
+    HiOutlineBookOpen,
+    HiOutlineShieldCheck,
+} from "react-icons/hi";
 
 import RoleCard from "../components/common/RoleCard";
 
 const Home = () => {
     return (
-        <div className="min-h-screen bg-slate-100">
-            <div className="container mx-auto">
-                <div className="py-20">
-                    <div className="text-center">
-                        {/* Logo */}
-                        {/* <img src={logo} className="mx-auto w-24" /> */}
+        <div className="home-page min-h-screen">
+            {/* Background Decoration */}
+            <div className="home-decoration decoration-one"></div>
+            <div className="home-decoration decoration-two"></div>
 
-                        <h1 className="mt-5 text-5xl font-bold">
-                            Presensi Digital
+            <div className="container mx-auto px-5">
+                <div className="home-content">
+
+                    {/* HEADER */}
+                    <section className="home-header">
+
+                        <div className="header-badge">
+                            <HiOutlineBookOpen />
+                            <span>PANDUAN APLIKASI</span>
+                        </div>
+
+                        <h1>
+                            Presensi <span>Digital</span>
                         </h1>
 
-                        <p className="text-slate-500 mt-3">
+                        <p className="header-description">
                             Sistem Informasi Dokumentasi
                         </p>
 
-                        <p className="text-slate-500">
+                        <p className="header-location">
                             Kabupaten Sidoarjo
                         </p>
+
+                        <div className="header-line"></div>
+                    </section>
+
+
+                    {/* ROLE CARDS */}
+                    <section className="role-section">
+
+                        <div className="role-section-title">
+                            <div>
+                                <h2>
+                                    Pilih Panduan Pengguna
+                                </h2>
+
+                                <p>
+                                    Silakan pilih jenis pengguna untuk melihat
+                                    panduan penggunaan aplikasi.
+                                </p>
+                            </div>
+
+                            <div className="guide-icon">
+                                <HiOutlineBookOpen />
+                            </div>
+                        </div>
+
+
+                        <div className="role-grid">
+
+                            {/* ADMIN */}
+                            <RoleCard
+                                icon={<HiUserGroup />}
+                                title="Admin OPD"
+                                description="Panduan penggunaan aplikasi untuk Admin OPD atau Kepala Sub Bagian Umum dan Kepegawaian yang bertugas mengelola presensi pegawai pada dinas masing-masing."
+                                button={
+                                    <>
+                                        Lihat Tutorial
+                                        <HiArrowRight />
+                                    </>
+                                }
+                                to="/admin"
+                                badge="Panduan Admin"
+                                iconColor="blue"
+                            />
+
+
+                            {/* USER */}
+                            <RoleCard
+                                icon={<HiUser />}
+                                title="Pengguna"
+                                description="Panduan penggunaan aplikasi untuk PNS dan PPPK sebagai individu yang melakukan presensi melalui sistem Presensi Digital."
+                                button={
+                                    <>
+                                        Lihat Tutorial
+                                        <HiArrowRight />
+                                    </>
+                                }
+                                to="/user"
+                                badge="Panduan Pengguna"
+                                iconColor="indigo"
+                            />
+
+                        </div>
+                    </section>
+
+
+                    {/* FOOTER INFO */}
+                    <div className="home-footer">
+                        <HiOutlineShieldCheck />
+
+                        <span>
+                            Sistem Presensi Digital Kabupaten Sidoarjo
+                        </span>
                     </div>
 
-                    <div className="mt-20 grid md:grid-cols-2 gap-10">
-                        < RoleCard icon={<HiUserGroup />}
-                            title="Admin OPD"
-                            description="Panduan Penggunaan Aplikasi Untuk Admin OPD/Kepala Sub Bagian Umum dan Kepegawaian yang bertugas
-                                        mengelola presensi pegawai pada dinas masing-masing."
-                            button="Tutorial"
-                            to="/admin"
-                        />
-
-                        <RoleCard icon={<HiUser />}
-                            title="Pengguna"
-                            description="Tutorial Pengguaan Aplikasi Untuk Pengguna yaitu PNS dan PPPK merupakan individu atau peorangan yang melakukan presensi."
-                            button="Tutorial"
-                            to="/user"
-                        />
-                    </div>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Home
+export default Home;

@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
 
-import Sidebar from "../components/layout/Sidebar";
+import Sidebar from "../components/layout/SidebarAdmin";
 import TutorialContent from "../components/tutorial/TutorialContent";
-import tutorialData from "../data/tutorialData";
+import tutorialAdmin from "../data/tutorialAdmin";
 
 import {
     HiOutlineArrowRight,
@@ -14,7 +14,7 @@ const AdminTutorial = () => {
     const [activeItem, setActiveItem] = useState(null);
 
     const allItems = useMemo(() => {
-        return tutorialData.flatMap(
+        return tutorialAdmin.flatMap(
             (menu) => menu.children || []
         );
     }, []);
@@ -40,7 +40,7 @@ const AdminTutorial = () => {
                     />
                 ) : (
                     <WelcomeAdmin
-                        tutorialData={tutorialData}
+                        tutorialAdmin={tutorialAdmin}
                         setActiveItem={setActiveItem}
                     />
                 )}
@@ -57,13 +57,13 @@ const AdminTutorial = () => {
 ===================================================== */
 
 const WelcomeAdmin = ({
-    tutorialData,
+    tutorialAdmin,
     setActiveItem,
 }) => {
 
-    const totalMenu = tutorialData.length;
+    const totalMenu = tutorialAdmin.length;
 
-    const totalTutorial = tutorialData.reduce(
+    const totalTutorial = tutorialAdmin.reduce(
         (total, menu) =>
             total + (menu.children?.length || 0),
         0
@@ -123,7 +123,7 @@ const WelcomeAdmin = ({
                             type="button"
                             onClick={() => {
                                 const first =
-                                    tutorialData[0]?.children?.[0];
+                                    tutorialAdmin[0]?.children?.[0];
 
                                 if (first) {
                                     setActiveItem(first.id);
@@ -198,7 +198,7 @@ const WelcomeAdmin = ({
                     {/* GRID */}
                     <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
 
-                        {tutorialData.map((menu) => {
+                        {tutorialAdmin.map((menu) => {
 
                             const Icon = menu.icon;
 
