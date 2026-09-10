@@ -83,29 +83,49 @@ const tutorialUser = [
                 description:
                     "Dashboard merupakan halaman utama setelah pengguna berhasil login. Halaman ini digunakan untuk melakukan Presensi Masuk dan Presensi Keluar",
                 sections: [
+
                     {
-                        title: "Presensi",
+                        number: 1,
+                        title: "Tombol Presensi",
                         description:
                             "Digunakan untuk Presensi Masuk dan Presensi Keluar",
                         image: image("dashboard.png"),
                     },
 
                     {
+                        number: 2,
                         title: "Presensi Masuk",
                         description:
                             "Klik Tombol 'Masuk' di bawah ini untuk melakukan Absensi Masuk yang nantinya akan diarahkan Absensi berdasarkan potret diri dan Live Location yang telah ditentukan secara real-time",
+                        image: image("ambilfoto.jpg"),
+                    },
+                    {
+                        description:
+                            "Jika Anda berada di dalam radius lokasi, setelah selesai potret diri akan menampilkan jenis kehadiran Anda. Terdapat 2 Jenis Kehadiran yaitu FWA dan Perjalanan Dinas",
+                        image: image("dashboard.png"),
+                    },
+                    {
+                        description:
+                            "Jika Anda berada di luar radius lokasi, setelah selesai potret diri akan menampilkan jenis kehadiran Anda. Terdapat 2 Jenis Kehadiran yaitu FWA dan Perjalanan Dinas",
+                        image: image("jenis-hadir.jpg"),
+                    },
+                    {
+                        description:
+                            "Jika sudah memilih jenis kehadiran maka bisa klik tombol konfirmasi yang anntinya akan menampilkan pop up bahwa absensi telah terverifikasi tercatat",
+                        image: image("verifhadir.jpg"),
                     },
 
                     {
                         title: "Presensi Keluar",
                         description:
-                            "Klik Tombol 'Keluar' di bawah ini untuk melakukan Absensi Masuk yang nantinya akan diarahkan Absensi berdasarkan potret diri dan Live Location yang telah ditentukan secara real-time",
+                            "Klik Tombol 'Keluar' di bawah ini untuk melakukan Absensi Keluar yang nantinya akan diarahkan Absensi berdasarkan potret diri dan Live Location yang telah ditentukan secara real-time",
+                        image: image("dashboard.png"),
                     },
 
                     {
                         title: "Peta Lokasi",
                         description:
-                            "Fitur ini diugunakan untuk menampilkan Lokasi Anda saat ini secara real-time",
+                            "Fitur Peta Lokasi digunakan untuk menampilkan Lokasi Anda saat ini secara real-time",
                         image: image("petalokasi.png"),
                     },
                 ]
@@ -166,8 +186,7 @@ const tutorialUser = [
 
                 ],
 
-                // tips:]
-                //     "Pastikan data lokasi yang dimasukkan sudah sesuai sebelum menyimpan.",
+
             },
         ],
     },
