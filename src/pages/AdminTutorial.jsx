@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 import Sidebar from "../components/layout/SidebarAdmin";
 import TutorialContent from "../components/tutorial/TutorialContent";
@@ -7,37 +7,36 @@ import tutorialAdmin from "../data/tutorialAdmin";
 import {
     HiOutlineArrowRight,
     HiOutlineBookOpen,
+    HiOutlineShieldCheck,
 } from "react-icons/hi2";
 
+// Ambil semua tutorial dari children
+const allTutorials = tutorialAdmin.flatMap(
+    (menu) => menu.children || []
+);
+
 const AdminTutorial = () => {
-
     const [activeItem, setActiveItem] = useState(null);
-
-    const allItems = useMemo(() => {
-        return tutorialAdmin.flatMap(
-            (menu) => menu.children || []
-        );
-    }, []);
-
-    const activeTutorial = allItems.find(
+    // Cari tutorial yang sedang aktif
+    const activeTutorial = allTutorials.find(
         (item) => item.id === activeItem
     );
+
+    useEffect(() => {
+        if (activeItem) {
+            window.scrollTo({top: 0, behavior: "smooth",});
+        }}, [activeItem]);
 
     return (
         <div className="min-h-screen bg-slate-50">
 
-            <Sidebar
-                activeItem={activeItem}
-                setActiveItem={setActiveItem}
-            />
+            {/* SIDEBAR */}
+            <Sidebar activeItem={activeItem} setActiveItem={setActiveItem}/>
 
             {/* MAIN */}
-            <main className="min-h-screen min-w-0 transition-all duration-300 lg:ml-80">
-
+            <main className="min-h-screen min-w-0 lg:ml-80">
                 {activeTutorial ? (
-                    <TutorialContent
-                        tutorial={activeTutorial}
-                    />
+                    <TutorialContent tutorial={activeTutorial}/>
                 ) : (
                     <WelcomeAdmin
                         tutorialAdmin={tutorialAdmin}
@@ -46,162 +45,137 @@ const AdminTutorial = () => {
                 )}
 
             </main>
-
         </div>
     );
 };
 
-
-/* =====================================================
-   WELCOME
-===================================================== */
-
-const WelcomeAdmin = ({
-    tutorialAdmin,
-    setActiveItem,
-}) => {
-
+//WELCOME ADMIN
+const WelcomeAdmin = ({tutorialAdmin, setActiveItem, }) => {
     const totalMenu = tutorialAdmin.length;
-
     const totalTutorial = tutorialAdmin.reduce(
         (total, menu) =>
             total + (menu.children?.length || 0),
-        0
-    );
+        0);
+
+    const firstTutorial =
+        tutorialAdmin[0]?.children?.[0];
+    const handleStart = () => {
+        if (firstTutorial) {
+            setActiveItem(firstTutorial.id);}
+    };
 
     return (
         <div className="min-h-screen">
-
             {/* HERO */}
-            <section className="relative overflow-hidden border-b border-slate-200 bg-white">
+            <section className="border-b border-slate-200 bg-white">
+                <div className="mx-auto max-w-6xl px-6 py-10 sm:px-8 lg:px-10">
+                    <div className="grid items-center gap-8 lg:grid-cols-[1fr_260px]">
+                        {/* LEFT */}
+                        <div>
+                            {/* Label */}
+                            <div className="inline-flex items-center gap-2 rounded-lg border border-blue-100 bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-700">
+                                <HiOutlineBookOpen className="h-4 w-4" />
+                                Dokumentasi Sistem
+                            </div>
 
-                {/* Background decoration */}
-                <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-blue-100/60 blur-3xl" />
+                            {/* Title */}
+                            <h1 className=" mt-5 text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-5xl">
+                                Selamat Datang di
+                                <span className="block text-blue-600">
+                                    Dokumentasi Presensi
+                                </span>
+                            </h1>
 
-                <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
+                            {/* Description */}
+                            <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
+                                Panduan penggunaan Sistem Presensi Digital
+                                Kabupaten Sidoarjo untuk Admin OPD dalam
+                                mengelola dan memantau presensi pegawai.
+                            </p>
 
-                    <div className="max-w-4xl">
+                            <p className="mt-2 text-sm text-slate-400">
+                                Pilih menu tutorial pada sidebar untuk
+                                mempelajari fitur yang tersedia.
+                            </p>
 
-                        <div className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-4 py-2 text-xs font-semibold text-blue-600 sm:text-sm">
-
-                            <HiOutlineBookOpen className="h-4 w-4" />
-
-                            Dokumentasi Sistem
-
+                            {/* Button */}
+                            <button
+                                type="button"
+                                onClick={handleStart}
+                                className="mt-6 inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700">
+                                Mulai Tutorial
+                                <HiOutlineArrowRight className="h-4 w-4" />
+                            </button>
                         </div>
 
-
-                        <h1 className="mt-6 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
-
-                            Selamat Datang di
-
-                            <span className="mt-2 block text-blue-600">
-                                Dokumentasi Presensi
-                            </span>
-
-                        </h1>
-
-
-                        <p className="mt-6 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
-
-                            Panduan penggunaan Sistem Presensi Digital
-                            Kabupaten Sidoarjo untuk Admin.
-
-                        </p>
-
-
-                        <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-400 sm:text-base">
-
-                            Pilih menu tutorial di sebelah kiri untuk
-                            mempelajari fitur yang tersedia.
-
-                        </p>
-
-
-                        {/* BUTTON */}
-                        <button
-                            type="button"
-                            onClick={() => {
-                                const first =
-                                    tutorialAdmin[0]?.children?.[0];
-
-                                if (first) {
-                                    setActiveItem(first.id);
-                                }
-                            }}
-                            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-blue-700 hover:shadow-md active:translate-y-0"
-                        >
-                            Mulai Tutorial
-
-                            <HiOutlineArrowRight className="h-4 w-4" />
-                        </button>
-
-
-                        {/* STATS */}
-                        <div className="mt-10 flex flex-wrap gap-8">
-
-                            <div>
-                                <p className="text-2xl font-bold text-slate-900">
-                                    {totalMenu}
+                        {/* RIGHT SUMMARY */}
+                        <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                            <div className="border-b border-slate-200 pb-4">
+                                <p className="text-xs font-bold uppercase tracking-wider text-blue-700">
+                                    Dokumentasi Admin
                                 </p>
 
-                                <p className="text-sm text-slate-500">
-                                    Menu
+                                <p className="mt-1 text-sm text-slate-500">
+                                    Panduan penggunaan sistem
                                 </p>
                             </div>
 
+                            {/* Statistics */}
+                            <div className="grid grid-cols-2 divide-x divide-slate-200 py-5">
+                                <div className="text-center">
+                                    <p className="text-2xl font-bold text-slate-900">
+                                        {totalMenu}
+                                    </p>
 
-                            <div className="h-10 w-px bg-slate-200" />
+                                    <p className="mt-1 text-xs text-slate-500">
+                                        Menu
+                                    </p>
+                                </div>
 
+                                <div className="text-center">
+                                    <p className="text-2xl font-bold text-slate-900">
+                                        {totalTutorial}
+                                    </p>
 
-                            <div>
-                                <p className="text-2xl font-bold text-slate-900">
-                                    {totalTutorial}
-                                </p>
+                                    <p className="mt-1 text-xs text-slate-500">
+                                        Tutorial
+                                    </p>
+                                </div>
 
-                                <p className="text-sm text-slate-500">
-                                    Tutorial
-                                </p>
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
-
             </section>
 
 
-            {/* TUTORIAL LIST */}
-            <section className="bg-slate-50 px-5 py-12 sm:px-8 sm:py-16 lg:px-10">
-
-                <div className="mx-auto max-w-7xl">
-
-                    <div className="mb-8">
-
-                        <p className="text-sm font-semibold text-blue-600">
-                            Jelajahi Dokumentasi
+            {/* QUICK ACCESS */}
+            <section className="bg-slate-50 px-6 py-8 sm:px-8 lg:px-10">
+                <div className="mx-auto max-w-6xl">
+                    {/* Section Heading */}
+                    <div className="mb-5">
+                        <p className="text-xs font-bold uppercase tracking-[0.12em] text-blue-700">
+                            Akses Cepat
                         </p>
 
-                        <h2 className="mt-1 text-2xl font-bold text-slate-900 sm:text-3xl">
-                            Mulai dari mana?
-                        </h2>
+                        <div className="mt-1 flex items-center justify-between">
+                            <div>
+                                <h2 className=" text-2xl font-bold text-slate-900">
+                                    Mulai dari sini
+                                </h2>
 
-                        <p className="mt-2 text-sm text-slate-500 sm:text-base">
-                            Pilih fitur yang ingin kamu pelajari.
-                        </p>
+                                <p className="mt-1 text-sm text-slate-500">
+                                    Pilih bagian dokumentasi yang ingin dipelajari.
+                                </p>
+                            </div>
+                        </div>
 
                     </div>
 
-
-                    {/* GRID */}
-                    <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-
+                    {/* Cards */}
+                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                         {tutorialAdmin.map((menu) => {
-
                             const Icon = menu.icon;
-
                             const firstTutorial =
                                 menu.children?.[0];
 
@@ -216,62 +190,58 @@ const WelcomeAdmin = ({
                                             );
                                         }
                                     }}
-                                    className="group rounded-2xl border border-slate-200 bg-white p-5 text-left shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg sm:p-6"
-                                >
+                                    className="group rounded-xl border border-slate-200 bg-white p-5 text-left transition duration-200 hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-md">
 
-                                    <div className="flex items-start justify-between">
-
-                                        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition-all duration-300 group-hover:scale-105 group-hover:bg-blue-600 group-hover:text-white">
-
+                                    {/* Icon + Arrow */}
+                                    <div className="flex items-center justify-between">
+                                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-700">
                                             {Icon && (
-                                                <Icon className="h-6 w-6" />
+                                                <Icon className="h-5 w-5" />
                                             )}
-
                                         </div>
 
-
-                                        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-slate-50 text-slate-400 transition-all duration-300 group-hover:bg-blue-50 group-hover:text-blue-600">
-
-                                            <HiOutlineArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-
-                                        </div>
-
+                                        <HiOutlineArrowRight className=" h-4 w-4 text-slate-300 transition group-hover:translate-x-1 group-hover:text-blue-600"/>
                                     </div>
 
-
-                                    <h3 className="mt-5 text-lg font-bold text-slate-900">
+                                    {/* Title */}
+                                    <h3 className="mt-4 text-base font-bold text-slate-900">
                                         {menu.title}
                                     </h3>
 
-
-                                    <p className="mt-2 line-clamp-2 text-sm leading-6 text-slate-500">
+                                    {/* Description */}
+                                    <p className="mt-1.5 line-clamp-2 text-sm leading-5 text-slate-500">
                                         {firstTutorial?.description ||
                                             `Pelajari fitur ${menu.title}.`}
                                     </p>
 
-
-                                    <div className="mt-5 flex items-center justify-between">
-
-                                        <span className="text-sm font-semibold text-blue-600">
-                                            Lihat Tutorial
+                                    {/* Bottom */}
+                                    <div className="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
+                                        <span className="text-xs font-semibold text-blue-700">
+                                            Buka Panduan
                                         </span>
 
                                         <span className="text-xs text-slate-400">
-                                            {menu.children?.length || 0}{" "}
-                                            tutorial
+                                            {menu.children?.length || 0} tutorial
                                         </span>
-
                                     </div>
-
                                 </button>
                             );
                         })}
-
                     </div>
-
                 </div>
-
             </section>
+
+            {/* FOOTER */}
+
+            <footer className="border-t border-slate-200 bg-white">
+                <div className="mx-auto flex items-center justify-center gap-2 px-6 py-5 text-xs text-slate-400">
+                    <HiOutlineShieldCheck className="h-4 w-4 text-blue-600"/>
+
+                    <span>
+                        Sistem Presensi Digital Kabupaten Sidoarjo
+                    </span>
+                </div>
+            </footer>
 
         </div>
     );
