@@ -7,8 +7,17 @@ import tutorialUser from "../data/tutorialUser";
 const UserTutorial = () => {
     const [activeItem, setActiveItem] = useState(null);
 
-    // Cari langsung dari tutorialUser
-    const activeTutorial = tutorialUser.find((item) => item.id === activeItem);
+    // Cari parent dulu
+    const activeParent = tutorialUser.find((item) => item.id === activeItem);
+
+    // Cari child di dalam semua parent
+    const activeChild = tutorialUser
+        .flatMap((item) => item.children ?? [])
+        .find((child) => child.id === activeItem);
+
+    // Tentukan tutorial yang ditampilkan
+    // Prioritas: child → parent → null
+    const activeTutorial = activeChild || activeParent || null;
 
     return (
         <div className="flex min-h-screen bg-slate-50">
@@ -33,7 +42,10 @@ const UserTutorial = () => {
 
 const WelcomeUser = ({ tutorialUser, setActiveItem }) => {
     const totalMenu = tutorialUser.length;
-    const totalTutorial = tutorialUser.length; // karena 1 menu = 1 tutorial
+    const totalTutorial = tutorialUser.reduce(
+        (acc, item) => acc + (item.children?.length ?? 1),
+        0
+    );
 
     return (
         <div className="min-h-screen">
@@ -63,7 +75,7 @@ const WelcomeUser = ({ tutorialUser, setActiveItem }) => {
 
                     <div className="mt-8 flex flex-wrap gap-3">
                         <button
-                            onClick={() => setActiveItem("login")}
+                            onClick={() => setActiveItem("login-overview")}
                             className="rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-blue-700 hover:shadow-md"
                         >
                             Mulai Tutorial
@@ -104,10 +116,15 @@ const WelcomeUser = ({ tutorialUser, setActiveItem }) => {
                         {tutorialUser.map((menu) => {
                             const Icon = menu.icon;
 
+                            // Kalau punya children, klik parent → buka child pertama
+                            const targetId = menu.children?.length
+                                ? menu.children[0].id
+                                : menu.id;
+
                             return (
                                 <button
                                     key={menu.id}
-                                    onClick={() => setActiveItem(menu.id)}
+                                    onClick={() => setActiveItem(targetId)}
                                     className="group rounded-2xl border border-slate-200 bg-white p-6 text-left shadow-sm transition duration-200 hover:-translate-y-1 hover:border-blue-200 hover:shadow-md"
                                 >
                                     <div className="flex items-start justify-between">
@@ -125,7 +142,8 @@ const WelcomeUser = ({ tutorialUser, setActiveItem }) => {
                                     </h3>
 
                                     <p className="mt-2 line-clamp-2 text-sm leading-6 text-slate-500">
-                                        {menu.description || `Pelajari fitur ${menu.title}.`}
+                                        {menu.description ||
+                                            `Pelajari fitur ${menu.title}.`}
                                     </p>
 
                                     <div className="mt-4 text-sm font-semibold text-blue-600">

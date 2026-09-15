@@ -1,4 +1,4 @@
-import SidebarUser from "../components/layout/SidebarUser";
+import SidebarAdmin from "../components/layout/SidebarUser";
 
 const MainLayoutUser = ({ children }) => {
     return (

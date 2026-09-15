@@ -155,7 +155,7 @@ const TutorialSections = ({ sections, type }) => {
                     <TutorialSection
                         key={`${section.title}-${index}`}
                         section={section}
-                        isSteps={isSteps}/>
+                        isSteps={isSteps} />
                 ))}
             </div>
         </section>
@@ -171,7 +171,7 @@ const TutorialSection = ({
         <article className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
             <div className="p-5 sm:p-6">
                 <div className="flex items-start gap-4">
-                    <SectionIcon isSteps={isSteps}/>
+                    <SectionIcon isSteps={isSteps} />
 
                     {/* Content */}
                     <div className="min-w-0 flex-1">
@@ -221,7 +221,7 @@ const ImagePreview = ({
 
     if (!src) return null;
 
- //Menentukan ukuran beradasarkan screenshoot asli
+    //Menentukan ukuran beradasarkan screenshoot asli
     const handleImageLoad = (event) => {
         const {
             naturalWidth,
@@ -252,17 +252,17 @@ const ImagePreview = ({
 
     const imageSize = main
         ? {
-              portrait:"max-h-[480px] max-w-[420px]",
-              landscape:"max-h-[380px] max-w-[900px]",
-              wide:"max-h-[320px] max-w-[950px]",
-              square:"max-h-[420px] max-w-[620px]",
-          }
+            portrait: "max-h-[480px] max-w-[420px]",
+            landscape: "max-h-[380px] max-w-[900px]",
+            wide: "max-h-[320px] max-w-[950px]",
+            square: "max-h-[420px] max-w-[620px]",
+        }
         : {
-              portrait:"max-h-[500px] max-w-[420px]",
-              landscape:"max-h-[400px] max-w-[850px]",
-              wide:"max-h-[330px] max-w-[950px]",
-              square:"max-h-[430px] max-w-[620px]",
-          };
+            portrait: "max-h-[500px] max-w-[420px]",
+            landscape: "max-h-[400px] max-w-[850px]",
+            wide: "max-h-[330px] max-w-[950px]",
+            square: "max-h-[430px] max-w-[620px]",
+        };
 
     return (
         <div className={` overflow-hidden rounded-xl border border-slate-200 bg-white ${main ? "mb-7" : ""}`}>
@@ -289,7 +289,7 @@ const ImagePreview = ({
                     loading="lazy"
                     onLoad={handleImageLoad}
                     className={`block h-auto w-auto max-w-full rounded-lg border border-slate-200 bg-white object-contain shadow-sm transition-transform duration-300 hover:scale-[1.01]
-                        ${imageSize[imageType]}`}/>
+                        ${imageSize[imageType]}`} />
             </div>
         </div>
     );
