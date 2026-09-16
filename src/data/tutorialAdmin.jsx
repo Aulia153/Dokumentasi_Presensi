@@ -38,47 +38,47 @@ const tutorialAdmin = [
                     {
                         title: "Akses Sistem",
                         description:
-                            "Aplikasi Presensi Digital Kabupaten Sidoarjo, dapat diakses melalui: https://presensi.sidoarjokab.go.id",
+                            "Buka Sistem Presensi Digital Kabupaten Sidoarjo melalui alamat yang telah disediakan.",
                     },
 
                     {
-                        title: "NIP",
+                        title: "Masukkan NIP",
                         description:
-                            "Untuk melakukan login, masukkan Nomor Induk Pegawai (NIP) yang telah terdaftar pada sistem.",
+                            "Pada halaman login, masukkan Nomor Induk Pegawai (NIP) pada kolom yang telah disediakan.",
                         image: image("login", "login-nip.png")
                     },
 
                     {
-                        title: "Password",
+                        title: "Masukkan Password",
                         description:
-                            "Setelah itu, masukkan password. Password pada aplikasi presensi sama dengan password yang terdaftar pada aplikasi SSO.",
+                            "Masukkan password akun SSO yang digunakan untuk mengakses sistem.",
                         image: image("login", "login-password.png")
                     },
 
                     {
-                        title: "Verifikasi",
+                        title: "Lakukan Verifikasi",
                         description:
-                            "Geser tombol verifikasi untuk memastikan proses login yang dilakukan oleh pengguna.",
+                            "Geser tombol verifikasi dari kiri ke kanan sampai proses verifikasi berhasil.",
                         image: image("login", "login-verifikasi.png")
                     },
 
                     {
                         title: "Masuk ke Sistem",
                         description:
-                            "Klik tombol Masuk ke Sistem setelah seluruh data dan verifikasi selesai.",
+                            "Setelah NIP, password, dan verifikasi sudah benar, klik tombol Masuk ke Sistem.",
                         image: image("login", "login-masuk.png")
                     },
 
                     {
-                        title: "Berhasil Login",
+                        title: "Masuk ke Dashboard",
                         description:
-                            "Jika proses login berhasil, sistem akan masuk ke halaman Dashboard",
+                            "Jika login berhasil, Anda akan langsung diarahkan ke halaman dashboard untuk melihat informasi presensi.",
                         image: image("dashboard", "dashboard-overview.png"),
                     },
                 ],
 
                 tips:
-                    "Pastikan NIP dan password sudah sesuai dengan akun SSO sebelum melakukan login.",
+                    "Pastikan NIP dan password yang dimasukkan sudah benar. Jika verifikasi belum berhasil, ulangi dengan menggeser tombol verifikasi sampai selesai.",
             },
 
             {
@@ -92,27 +92,27 @@ const tutorialAdmin = [
                     {
                         title: "Pilih Logout",
                         description:
-                            "Klik tombol Logout pada bagian kanan atas aplikasi.",
+                            "Setelah selesai menggunakan sistem, klik tombol Logout pada bagian kanan atas aplikasi.",
                         image: image("logout", "tombol-logout.png"),
                     },
 
                     {
-                        title: "Pop Up Logout",
+                        title: "Konfirmasi Logout",
                         description:
-                            "Setelah tombol Logout di klik, akan muncul pop up Keluar dari Sistem?",
+                            "Setelah tombol Logout di klik, akan muncul konfirmasi \"Keluar dari Sistem?\". Periksa kembali sebelum melanjutkan",
                         image: image("logout", "tanya-logout.png"),
                     },
 
                     {
                         title: "Kembali ke Halaman Login",
                         description:
-                            "Setelah berhasil logout, sistem akan mengarahkan kembali ke halaman login.",
+                            "Jika logout berhasil, sistem akan mengakhiri sesi Anda dan mengarahkan kembali ke halaman login.",
                         image: image("logout", "berhasil-logout.png")
                     },
                 ],
 
                 tips:
-                    "Selalu lakukan logout setelah selesai menggunakan sistem, terutama ketika menggunakan komputer bersama.",
+                    "Lakukan logout setelah selesai menggunakan sistem, terutama ketika menggunakan komputer bersama.",
             },
         ],
     },
@@ -129,55 +129,55 @@ const tutorialAdmin = [
                 title: "Dashboard Monitoring",
                 type: "dashboard",
                 description:
-                    "Dashboard merupakan halaman utama setelah pengguna berhasil login. Halaman ini digunakan untuk memantau kondisi presensi pegawai berdasarkan tanggal dan OPD yang dipilih.",
+                    "Dashboard merupakan halaman utama yang ditampilkan setelah berhasil login. Halaman ini digunakan untuk melihat ringkasan data presensi pegawai sesuai tanggal dan OPD yang dipilih.",
                 image: image("dashboard", "dashboard-overview.png"),
 
                 sections: [
                     {
                         title: "Monitoring Presensi ASN",
                         description:
-                            "Pilih tanggal dan satuan kerja yang ingin di monitoring.",
+                            "Pilih tanggal dan dan OPD yang ingin dipantau. Setelah pilihan ditentukan, sistem akan menampilkan data presensi sesuai dengan pilihan tersebut.",
                         image: image("dashboard", "monitoring-dashboard.png"),
                     },
 
                     {
                         title: "Total ASN Aktif",
                         description:
-                            "Menampilkan jumlah ASN yang aktif pada data yang sedang dipantau.",
+                            "Menampilkan jumlah seluruh ASN yang masih aktif pada OPD yang dipilih. Kotak Total ASN Aktif dapat diklik untuk melihat daftar ASN yang termasuk dalam jumlah tersebut.",
                         image: image("dashboard", "total-asn.png"),
                     },
 
                     {
                         title: "Hadir Hari Ini",
                         description:
-                            "Menampilkan jumlah pegawai yang hadir pada tanggal yang dipilih.",
+                            "Menampilkan jumlah ASN yang melakukan presensi hadir pada tanggal yang dipilih. Klik kotak Hadir Hari Ini untuk melihat daftar ASN yang tercatat hadir.",
                         image: image("dashboard", "hadir-hari-ini.png"),
                     },
 
                     {
                         title: "Terlambat",
                         description:
-                            "Menampilkan jumlah pegawai yang melakukan presensi melewati waktu yang telah ditentukan.",
+                            "Menampilkan jumlah ASN yang melakukan presensi setelah waktu yang telah ditentukan. Klik kotak Terlambat untuk melihat daftar ASN yang tercatat terlambat.",
                         image: image("dashboard", "terlambat.png"),
                     },
 
                     {
                         title: "Cuti",
                         description:
-                            "Menampilkan jumlah pegawai yang cuti pada tanggal yang dipilih",
+                            "Menampilkan jumlah ASN yang sedang cuti pada tanggal yang dipilih. Klik kotak Cuti untuk melihat daftar ASN yang tercatat sedang cuti.",
                         image: image("dashboard", "cuti.png"),
                     },
 
                     {
                         title: "Tanpa Keterangan",
                         description:
-                            "Menampilkan jumlah pegawai yang belum melakukan presensi atau tidak memiliki keterangan.",
+                            "Menampilkan jumlah ASN yang belum melakukan presensi atau belum memiliki keterangan pada tanggal yang dipilih. Klik kotak Tanpa Keterangan untuk melihat daftar ASN yang termasuk dalam data tersebut.",
                         image: image("dashboard", "tanpa-keterangan.png"),
                     },
                 ],
 
                 tips:
-                    "Gunakan filter tanggal dan satker terlebih dahulu agar informasi dashboard sesuai dengan data yang ingin dipantau.",
+                    "Pilih tanggal dan OPD terlebih dahulu untuk menyesuaikan data yang ingin dipantau. Klik kotak informasi untuk melihat daftar ASN secara lebih detail.",
             },
         ],
     },
