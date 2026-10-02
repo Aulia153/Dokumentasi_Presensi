@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 
 import {
-    HiOutlineCheckCircle,
     HiOutlineChevronDown,
     HiOutlineInformationCircle,
     HiOutlineLightBulb,
 } from "react-icons/hi2";
 
-const TutorialContent = ({ tutorial }) => {
+const TutorialContent = ({
+    tutorial,
+    role = "admin",
+}) => {
     useEffect(() => {
         window.scrollTo({
             top: 0,
@@ -18,28 +20,38 @@ const TutorialContent = ({ tutorial }) => {
     if (!tutorial) return null;
 
     const isFaq = tutorial.type === "faq";
+    const isSteps = tutorial.type === "steps";
+
+    const roleLabel =
+        role === "user"
+            ? "Tutorial Pengguna"
+            : "Tutorial Admin";
 
     return (
         <div className="min-h-screen bg-slate-50">
-            <TutorialHeader tutorial={tutorial} />
+            <TutorialHeader
+                tutorial={tutorial}
+                roleLabel={roleLabel}
+            />
 
             <main>
                 <div className="mx-auto w-full max-w-6xl px-5 py-8 sm:px-8 lg:px-10">
-                    {/* deskripsi */}
+
+                    {/* INFORMASI HALAMAN */}
                     {tutorial.description && (
                         <OverviewCard
                             description={tutorial.description}
                         />
                     )}
 
-                    {/* faq */}
+                    {/* FAQ */}
                     {isFaq ? (
                         <FAQContent
                             questions={tutorial.questions ?? []}
                         />
                     ) : (
                         <>
-                            {/* Image */}
+                            {/* GAMBAR UTAMA */}
                             {tutorial.image && (
                                 <ImagePreview
                                     src={tutorial.image}
@@ -48,37 +60,45 @@ const TutorialContent = ({ tutorial }) => {
                                 />
                             )}
 
-                            {/* Sections */}
+                            {/* PANDUAN */}
                             {tutorial.sections?.length > 0 && (
                                 <TutorialSections
                                     sections={tutorial.sections}
-                                    type={tutorial.type}
+                                    isSteps={isSteps}
                                 />
                             )}
                         </>
                     )}
 
-                    {/* Tips */}
+                    {/* TIPS */}
                     {tutorial.tips && (
                         <TipsCard tips={tutorial.tips} />
                     )}
                 </div>
             </main>
 
-            {/* Footer */}
             <TutorialFooter />
         </div>
     );
 };
 
-const TutorialHeader = ({ tutorial }) => {
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+const TutorialHeader = ({
+    tutorial,
+    roleLabel,
+}) => {
     return (
         <header className="border-b border-slate-200 bg-white">
             <div className="mx-auto w-full max-w-6xl px-5 py-6 sm:px-8 lg:px-10">
-                {/* Breadcrumb */}
+
+                {/* BREADCRUMB */}
                 <div className="flex items-center gap-2 text-sm">
                     <span className="font-semibold text-blue-600">
-                        Tutorial Admin
+                        {roleLabel}
                     </span>
 
                     <span className="text-slate-300">
@@ -90,14 +110,14 @@ const TutorialHeader = ({ tutorial }) => {
                     </span>
                 </div>
 
-                {/* Title */}
+                {/* TITLE */}
                 <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
                     {tutorial.title}
                 </h1>
 
-                {/* Description */}
+                {/* DESCRIPTION */}
                 {tutorial.description && (
-                    <p className="mt-2 max-w-4xl text-sm leading-6 text-slate-500 sm:text-base">
+                    <p className="mt-2 max-w-4xl text-sm leading-7 text-slate-500 sm:text-base">
                         {tutorial.description}
                     </p>
                 )}
@@ -106,22 +126,26 @@ const TutorialHeader = ({ tutorial }) => {
     );
 };
 
+
+/* ============================================================
+   OVERVIEW
+============================================================ */
+
 const OverviewCard = ({ description }) => {
     return (
-        <section className="mb-7 rounded-2xl border border-slate-200 bg-white shadow-sm">
+        <section className="rounded-2xl border border-slate-200 bg-white shadow-sm">
             <div className="flex items-start gap-4 p-5 sm:p-6">
-                {/* Icon */}
+
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50">
                     <HiOutlineInformationCircle className="h-5 w-5 text-blue-600" />
                 </div>
 
-                {/* Text */}
                 <div className="min-w-0">
-                    <h2 className="text-lg font-bold text-slate-900">
+                    <h2 className="text-lg font-bold text-slate-900 sm:text-xl">
                         Tentang Halaman Ini
                     </h2>
 
-                    <p className="mt-1.5 text-sm leading-6 text-slate-600 sm:text-base">
+                    <p className="mt-2 text-sm leading-7 text-slate-600 sm:text-base">
                         {description}
                     </p>
                 </div>
@@ -130,177 +154,373 @@ const OverviewCard = ({ description }) => {
     );
 };
 
-const TutorialSections = ({ sections, type }) => {
-    const isSteps = type === "steps";
 
+/* ============================================================
+   TUTORIAL SECTIONS
+============================================================ */
+
+const TutorialSections = ({
+    sections,
+    isSteps,
+}) => {
     return (
-        <section className="mt-7">
-            {/* Section Heading */}
-            <div className="mb-4">
+        <section className="mt-8">
 
-                <p className="text-xs font-bold uppercase tracking-wider text-blue-600">
+            {/* JUDUL */}
+            <div className="mb-5">
+                <p className="text-xs font-bold uppercase tracking-[0.12em] text-blue-600">
                     Panduan Penggunaan
                 </p>
 
-                <h2 className="mt-1 text-2xl font-bold text-slate-900">
+                <h2 className="mt-1 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
                     {isSteps
-                        ? "Langkah-langkah"
-                        : "Informasi Fitur"}
+                        ? "Langkah-langkah Penggunaan"
+                        : "Informasi dan Penggunaan"}
                 </h2>
+
+                {!isSteps && (
+                    <p className="mt-2 text-sm leading-6 text-slate-500 sm:text-base">
+                        Berikut penjelasan mengenai fitur, aturan, dan
+                        hal-hal yang perlu diperhatikan saat menggunakan
+                        aplikasi.
+                    </p>
+                )}
             </div>
 
-            {/* Sections */}
-            <div className="space-y-5">
+            {/* SATU FORM PANDUAN */}
+            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+
                 {sections.map((section, index) => (
                     <TutorialSection
                         key={`${section.title}-${index}`}
                         section={section}
-                        isSteps={isSteps} />
+                        isSteps={isSteps}
+                        isLast={index === sections.length - 1}
+                    />
                 ))}
             </div>
         </section>
     );
 };
 
+
+/* ============================================================
+   SINGLE SECTION
+============================================================ */
+
 const TutorialSection = ({
     section,
     isSteps,
+    isLast,
 }) => {
-
     return (
-        <article className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-            <div className="p-5 sm:p-6">
-                <div className="flex items-start gap-4">
-                    <SectionIcon isSteps={isSteps} />
+        <div
+            className={`
+                px-6 py-6
+                sm:px-8 sm:py-7
+                ${!isLast ? "border-b border-slate-100" : ""}
+            `}
+        >
+            <div className="flex items-start gap-4">
 
-                    {/* Content */}
-                    <div className="min-w-0 flex-1">
-
-                        <h3 className="text-lg font-bold text-slate-900 sm:text-xl">
-                            {section.title}
-                        </h3>
-
-                        {section.description && (
-                            <p className="mt-1.5 text-sm leading-6 text-slate-600 sm:text-base">
-                                {section.description}
-                            </p>
-                        )}
-
+                {/* NOMOR HANYA UNTUK LANGKAH */}
+                {isSteps && section.number && (
+                    <div className="
+                        flex h-8 w-8 shrink-0
+                        items-center justify-center
+                        rounded-full
+                        bg-blue-600
+                        text-sm font-bold
+                        text-white
+                    ">
+                        {section.number}
                     </div>
+                )}
+
+                {/* ISI */}
+                <div className="min-w-0 flex-1">
+
+                    <h3 className="text-lg font-bold leading-7 text-slate-900 sm:text-xl">
+                        {section.title}
+                    </h3>
+
+                    {section.description && (
+                        <p className="mt-2 text-sm leading-7 text-slate-600 sm:text-base">
+                            {section.description}
+                        </p>
+                    )}
+
+                    {/* GAMBAR PER BAGIAN */}
+                    {section.image && (
+                        <div className="mt-5">
+                            <ImagePreview
+                                src={section.image}
+                                alt={section.title}
+                            />
+                        </div>
+                    )}
                 </div>
             </div>
-
-            {/* image */}
-            {section.image && (
-                <div className="border-t border-slate-100 bg-slate-50 px-4 py-4 sm:px-6">
-                    <ImagePreview
-                        src={section.image}
-                        alt={section.title}
-                    />
-                </div>
-            )}
-        </article>
-    );
-};
-
-const SectionIcon = () => {
-    return (
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-50">
-            <HiOutlineCheckCircle className="h-5 w-5 text-blue-600" />
         </div>
     );
 };
+
+
+/* ============================================================
+   IMAGE PREVIEW
+============================================================ */
 
 const ImagePreview = ({
     src,
     alt,
     main = false,
 }) => {
-
-    const [imageType, setImageType] = useState("landscape");
-
     if (!src) return null;
 
-    //Menentukan ukuran beradasarkan screenshoot asli
-    const handleImageLoad = (event) => {
-        const {
-            naturalWidth,
-            naturalHeight,
-        } = event.currentTarget;
-
-        if (!naturalWidth || !naturalHeight) {
-            return;
-        }
-
-        const ratio =
-            naturalWidth / naturalHeight;
-
-        if (ratio < 0.8) {
-            // Portrait
-            setImageType("portrait");
-        } else if (ratio >= 1.8) {
-            // Sangat lebar
-            setImageType("wide");
-        } else if (ratio >= 1.2) {
-            // Landscape
-            setImageType("landscape");
-        } else {
-            // Square
-            setImageType("square");
-        }
-    };
-
-    const imageSize = main
-        ? {
-            portrait: "max-h-[480px] max-w-[420px]",
-            landscape: "max-h-[380px] max-w-[900px]",
-            wide: "max-h-[320px] max-w-[950px]",
-            square: "max-h-[420px] max-w-[620px]",
-        }
-        : {
-            portrait: "max-h-[500px] max-w-[420px]",
-            landscape: "max-h-[400px] max-w-[850px]",
-            wide: "max-h-[330px] max-w-[950px]",
-            square: "max-h-[430px] max-w-[620px]",
-        };
-
     return (
-        <div className={` overflow-hidden rounded-xl border border-slate-200 bg-white ${main ? "mb-7" : ""}`}>
+        <div
+            className={`
+                overflow-hidden
+                rounded-xl
+                border border-slate-200
+                bg-white
+                ${main ? "mb-7" : ""}
+            `}
+        >
 
-            {/* =================================================
-                BROWSER HEADER
-            ================================================= */}
-            <div className="flex items-center gap-2 border-b border-slate-200 bg-slate-50 px-4 py-2.5">
+            {/* BROWSER HEADER */}
+            <div className="
+                flex items-center gap-2
+                border-b border-slate-200
+                bg-slate-50
+                px-4 py-2.5
+            ">
                 <span className="h-2.5 w-2.5 rounded-full bg-red-300" />
                 <span className="h-2.5 w-2.5 rounded-full bg-yellow-300" />
                 <span className="h-2.5 w-2.5 rounded-full bg-green-300" />
+
                 <span className="ml-2 text-xs font-medium text-slate-400">
                     Tampilan Sistem
                 </span>
             </div>
 
-            {/* =================================================
-                IMAGE
-            ================================================= */}
-            <div className="flex justify-center overflow-hidden bg-slate-100 p-3 sm:p-5">
+            {/* IMAGE */}
+            <div className="
+                flex justify-center
+                overflow-hidden
+                bg-slate-100
+                p-3
+                sm:p-5
+            ">
                 <img
                     src={src}
                     alt={alt}
                     loading="lazy"
-                    onLoad={handleImageLoad}
-                    className={`block h-auto w-auto max-w-full rounded-lg border border-slate-200 bg-white object-contain shadow-sm transition-transform duration-300 hover:scale-[1.01]
-                        ${imageSize[imageType]}`} />
+                    className="
+                        block
+                        h-auto
+                        max-h-[460px]
+                        max-w-full
+                        rounded-lg
+                        border border-slate-200
+                        bg-white
+                        object-contain
+                        shadow-sm
+                    "
+                />
             </div>
         </div>
     );
 };
 
-//TIPS
+
+/* ============================================================
+   FAQ
+============================================================ */
+
+const FAQContent = ({ questions }) => {
+    if (!questions.length) return null;
+
+    return (
+        <section className="mt-8">
+
+            <div className="mb-5">
+                <p className="text-xs font-bold uppercase tracking-[0.12em] text-blue-600">
+                    Pertanyaan Umum
+                </p>
+
+                <h2 className="mt-1 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                    FAQ
+                </h2>
+
+                <p className="mt-2 text-sm text-slate-500 sm:text-base">
+                    Pilih pertanyaan untuk melihat penjelasannya.
+                </p>
+            </div>
+
+            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+                {questions.map((item, index) => (
+                    <FAQItem
+                        key={`${item.question}-${index}`}
+                        item={item}
+                        isLast={index === questions.length - 1}
+                    />
+                ))}
+            </div>
+        </section>
+    );
+};
+
+
+/* ============================================================
+   FAQ ITEM
+============================================================ */
+
+const FAQItem = ({
+    item,
+    isLast,
+}) => {
+    const [open, setOpen] = useState(false);
+
+    return (
+        <div
+            className={`
+                ${!isLast ? "border-b border-slate-100" : ""}
+            `}
+        >
+            <button
+                type="button"
+                onClick={() => setOpen((value) => !value)}
+                className="
+                    flex w-full
+                    items-center justify-between
+                    gap-4
+                    px-6 py-5
+                    text-left
+                    transition
+                    hover:bg-slate-50
+                    sm:px-8
+                "
+            >
+                <div className="flex min-w-0 items-start gap-3">
+
+                    <span
+                        className={`
+                            flex h-8 w-8 shrink-0
+                            items-center justify-center
+                            rounded-lg
+                            text-sm font-bold
+                            ${
+                                open
+                                    ? "bg-blue-600 text-white"
+                                    : "bg-blue-50 text-blue-600"
+                            }
+                        `}
+                    >
+                        ?
+                    </span>
+
+                    <span className="text-sm font-semibold leading-6 text-slate-800 sm:text-base">
+                        {item.question}
+                    </span>
+                </div>
+
+                <HiOutlineChevronDown
+                    className={`
+                        h-5 w-5 shrink-0
+                        transition-transform duration-200
+                        ${
+                            open
+                                ? "rotate-180 text-blue-600"
+                                : "text-slate-400"
+                        }
+                    `}
+                />
+            </button>
+
+            {open && (
+                <div className="px-6 pb-6 sm:px-8">
+                    <div className="border-l-2 border-blue-100 pl-4">
+
+                        {item.answer && (
+                            <p className="text-sm leading-7 text-slate-600 sm:text-base">
+                                {item.answer}
+                            </p>
+                        )}
+
+                        {item.items?.length > 0 && (
+                            <div className="space-y-3">
+                                {item.items.map(
+                                    (subItem, index) => (
+                                        <div key={index}>
+                                            <h4 className="text-sm font-semibold text-slate-800 sm:text-base">
+                                                {subItem.label}
+                                            </h4>
+
+                                            <p className="mt-1 text-sm leading-6 text-slate-600">
+                                                {subItem.description}
+                                            </p>
+                                        </div>
+                                    )
+                                )}
+                            </div>
+                        )}
+
+                        {item.steps?.length > 0 && (
+                            <div className="space-y-3">
+                                {item.steps.map(
+                                    (step, index) => (
+                                        <div
+                                            key={index}
+                                            className="flex items-start gap-3"
+                                        >
+                                            <span className="
+                                                flex h-6 w-6 shrink-0
+                                                items-center justify-center
+                                                rounded-full
+                                                bg-blue-50
+                                                text-xs font-bold
+                                                text-blue-600
+                                            ">
+                                                {index + 1}
+                                            </span>
+
+                                            <p className="text-sm leading-6 text-slate-600">
+                                                {step}
+                                            </p>
+                                        </div>
+                                    )
+                                )}
+                            </div>
+                        )}
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+};
+
+
+/* ============================================================
+   TIPS
+============================================================ */
+
 const TipsCard = ({ tips }) => {
     return (
-        <section className="mt-7 rounded-2xl border border-amber-200 bg-amber-50/70">
+        <section className="
+            mt-8
+            rounded-2xl
+            border border-amber-200
+            bg-amber-50/70
+        ">
             <div className="flex items-start gap-4 p-5 sm:p-6">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-100">
+
+                <div className="
+                    flex h-10 w-10 shrink-0
+                    items-center justify-center
+                    rounded-xl
+                    bg-amber-100
+                ">
                     <HiOutlineLightBulb className="h-5 w-5 text-amber-600" />
                 </div>
 
@@ -309,7 +529,7 @@ const TipsCard = ({ tips }) => {
                         Tips
                     </h2>
 
-                    <p className="mt-1.5 text-sm leading-6 text-amber-800 sm:text-base">
+                    <p className="mt-2 text-sm leading-7 text-amber-800 sm:text-base">
                         {tips}
                     </p>
                 </div>
@@ -318,11 +538,32 @@ const TipsCard = ({ tips }) => {
     );
 };
 
-//FOOTER
+
+/* ============================================================
+   FOOTER
+============================================================ */
+
 const TutorialFooter = () => {
     return (
         <footer className="mt-8 border-t border-slate-200 bg-white">
-            <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-5 py-5 text-center sm:flex-row sm:px-8 sm:text-left lg:px-10">
+            <div className="
+                mx-auto
+                flex max-w-6xl
+                flex-col
+                items-center
+                justify-between
+                gap-2
+                px-5 py-5
+                text-center
+                sm:flex-row
+                sm:px-8
+                sm:text-left
+                lg:px-10
+            ">
+                <p className="text-sm font-semibold text-slate-700">
+                    Dokumentasi Presensi Digital
+                </p>
+
                 <p className="text-xs text-slate-400">
                     © 2026 Presensi Digital Kabupaten Sidoarjo
                 </p>
