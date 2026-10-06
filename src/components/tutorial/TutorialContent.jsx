@@ -88,12 +88,14 @@ const TutorialContent = ({
 ============================================================ */
 
 const TutorialHeader = ({
-    tutorial,
-    roleLabel,
+    tutorial, roleLabel,
 }) => {
     return (
-        <header className="border-b border-slate-200 bg-white">
-            <div className="mx-auto w-full max-w-6xl px-5 py-6 sm:px-8 lg:px-10">
+        <header className="relative overflow-hidden border-b border-slate-200 bg-white">
+            <div className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-blue-50/70"/>
+            <div className="pointer-events-none absolute right-20 top-20 h-24 w-24 rounded-full bg-blue-100/40"/>
+
+            <div className="relative mx-auto w-full max-w-6xl px-5 py-7 sm:px-8 lg:px-10">
 
                 {/* BREADCRUMB */}
                 <div className="flex items-center gap-2 text-sm">
@@ -111,16 +113,24 @@ const TutorialHeader = ({
                 </div>
 
                 {/* TITLE */}
-                <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-                    {tutorial.title}
-                </h1>
+                <div className="mt-5 flex items-start gap-4">
+                    <div className="mt-1 h-10 w-1 shrink-0 rounded-full bg-blue-600"/>
 
-                {/* DESCRIPTION */}
-                {tutorial.description && (
-                    <p className="mt-2 max-w-4xl text-sm leading-7 text-slate-500 sm:text-base">
-                        {tutorial.description}
-                    </p>
-                )}
+                    <div>
+                        
+                        <p className="mb-1 text-xs font-bold uppercase tracking-[0.16em] text-blue-600">
+                            Panduan Sistem
+                        </p>
+
+                        <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+                            {tutorial.title}
+                        </h1>
+
+                        <p className="mt-2 text-sm text-slate-500">
+                            Panduan dan penjelasan penggunaan Sistem Presensi Digital Kabupaten Sidoarjo.
+                        </p>
+                    </div>
+                </div>
             </div>
         </header>
     );
@@ -133,19 +143,27 @@ const TutorialHeader = ({
 
 const OverviewCard = ({ description }) => {
     return (
-        <section className="rounded-2xl border border-slate-200 bg-white shadow-sm">
-            <div className="flex items-start gap-4 p-5 sm:p-6">
+        <section className="relative mt-1 overflow-hidden rounded-2xl border border-blue-100 bg-gradient-to-br from-white to-blue-50/50 shadow-sm">
+            <div className="absolute left-0 top-0 h-full w-1 bg-blue-600"/>
 
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50">
-                    <HiOutlineInformationCircle className="h-5 w-5 text-blue-600" />
+            <div className="flex items-start gap-4 p-6 sm:p-7">
+
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm shadow-blue-600/20">
+                    <HiOutlineInformationCircle className="h-5 w-5" />
                 </div>
 
                 <div className="min-w-0">
-                    <h2 className="text-lg font-bold text-slate-900 sm:text-xl">
-                        Tentang Halaman Ini
-                    </h2>
+                    <div className="flex flex-wrap items-center gap-3">
+                        <h2 className="text-lg font-bold text-slate-900 sm:text-xl">
+                            Tentang Halaman Ini
+                        </h2>
 
-                    <p className="mt-2 text-sm leading-7 text-slate-600 sm:text-base">
+                        <span className="rounded-full bg-blue-50 px-2.5 py-1 text-[11px] font-semibold text-blue-600">
+                            Informasi
+                        </span>
+                    </div>
+
+                    <p className="mt-3 max-w-4xl text-sm leading-7 text-slate-600 sm:text-base">
                         {description}
                     </p>
                 </div>
@@ -160,29 +178,26 @@ const OverviewCard = ({ description }) => {
 ============================================================ */
 
 const TutorialSections = ({
-    sections,
-    isSteps,
+    sections, isSteps,
 }) => {
     return (
         <section className="mt-8">
 
             {/* JUDUL */}
-            <div className="mb-5">
-                <p className="text-xs font-bold uppercase tracking-[0.12em] text-blue-600">
+            <div className="mb-6">
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-blue-600">
                     Panduan Penggunaan
                 </p>
 
-                <h2 className="mt-1 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+                <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
                     {isSteps
                         ? "Langkah-langkah Penggunaan"
                         : "Informasi dan Penggunaan"}
                 </h2>
 
                 {!isSteps && (
-                    <p className="mt-2 text-sm leading-6 text-slate-500 sm:text-base">
-                        Berikut penjelasan mengenai fitur, aturan, dan
-                        hal-hal yang perlu diperhatikan saat menggunakan
-                        aplikasi.
+                    <p className="mt-2 max-w-3xl text-sm leading-7 text-slate-500 sm:text-base">
+                        Berikut penjelasan mengenai fitur, aturan, dan hal-hal yang perlu diperhatikan saat menggunakan aplikasi.
                     </p>
                 )}
             </div>
@@ -214,25 +229,12 @@ const TutorialSection = ({
     isLast,
 }) => {
     return (
-        <div
-            className={`
-                px-6 py-6
-                sm:px-8 sm:py-7
-                ${!isLast ? "border-b border-slate-100" : ""}
-            `}
-        >
+        <div className={`relative px-6 py-7 sm:px-8 sm:py-8 ${!isLast ? "border-b border-slate-100" : ""}`}>
             <div className="flex items-start gap-4">
 
-                {/* NOMOR HANYA UNTUK LANGKAH */}
+                {/* NOMOR LANGKAH */}
                 {isSteps && section.number && (
-                    <div className="
-                        flex h-8 w-8 shrink-0
-                        items-center justify-center
-                        rounded-full
-                        bg-blue-600
-                        text-sm font-bold
-                        text-white
-                    ">
+                    <div className="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white shadow-sm shadow-blue-600/20">
                         {section.number}
                     </div>
                 )}
@@ -245,14 +247,14 @@ const TutorialSection = ({
                     </h3>
 
                     {section.description && (
-                        <p className="mt-2 text-sm leading-7 text-slate-600 sm:text-base">
+                        <p className="mt-2 max-w-4xl text-sm leading-7 text-slate-600 sm:text-base">
                             {section.description}
                         </p>
                     )}
 
-                    {/* GAMBAR PER BAGIAN */}
+                    {/* GAMBAR */}
                     {section.image && (
-                        <div className="mt-5">
+                        <div className="mt-6">
                             <ImagePreview
                                 src={section.image}
                                 alt={section.title}
@@ -271,30 +273,16 @@ const TutorialSection = ({
 ============================================================ */
 
 const ImagePreview = ({
-    src,
-    alt,
-    main = false,
+    src, alt, main = false,
 }) => {
     if (!src) return null;
 
     return (
         <div
-            className={`
-                overflow-hidden
-                rounded-xl
-                border border-slate-200
-                bg-white
-                ${main ? "mb-7" : ""}
-            `}
-        >
+            className={`overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm ${main ? "mb-8" : ""}`}>
 
             {/* BROWSER HEADER */}
-            <div className="
-                flex items-center gap-2
-                border-b border-slate-200
-                bg-slate-50
-                px-4 py-2.5
-            ">
+            <div className="flex items-center gap-2 border-b border-slate-200 bg-slate-50 px-4 py-2.5">
                 <span className="h-2.5 w-2.5 rounded-full bg-red-300" />
                 <span className="h-2.5 w-2.5 rounded-full bg-yellow-300" />
                 <span className="h-2.5 w-2.5 rounded-full bg-green-300" />
@@ -305,29 +293,12 @@ const ImagePreview = ({
             </div>
 
             {/* IMAGE */}
-            <div className="
-                flex justify-center
-                overflow-hidden
-                bg-slate-100
-                p-3
-                sm:p-5
-            ">
+            <div className="flex justify-center overflow-hidden bg-slate-100 p-3 sm:p-5">
                 <img
                     src={src}
                     alt={alt}
                     loading="lazy"
-                    className="
-                        block
-                        h-auto
-                        max-h-[460px]
-                        max-w-full
-                        rounded-lg
-                        border border-slate-200
-                        bg-white
-                        object-contain
-                        shadow-sm
-                    "
-                />
+                    className="block h-auto max-h-[520px] max-w-full rounded-xl border border-slate-200 bg-white object-contain shadow-sm"/>
             </div>
         </div>
     );
