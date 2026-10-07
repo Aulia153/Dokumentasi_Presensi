@@ -27,9 +27,9 @@ const tutorialUser = [
             {
                 id: "sso",
                 title: "Aturan Penggunaan SSO",
-                type: "steps",
+                type: "info",
                 description:
-                    "Akun SSO Anda bisa dipakai login di beberapa HP sekaligus, dan ini memang disengaja, supaya Anda tetap bisa presensi saat ganti HP baru atau dalam situasi darurat. Tapi ada satu hal penting yang perlu Anda tahu: kalau Anda login di HP lain, akun Anda TIDAK otomatis keluar dari HP sebelumnya. Artinya, siapa pun yang memegang HP lama Anda masih bisa membuka akun dan melakukan presensi atas nama Anda. Karena itu, ada beberapa aturan yang wajib Anda ikuti.",
+                    "Aplikasi Presensi Sidoarjo memberikan fleksibilitas akses di mana akun SSO Anda dapat diakses dari beberapa perangkat HP secara bersamaan. Fitur ini dirancang untuk memudahkan pegawai yang beralih ke HP baru atau perlu melakukan presensi dalam situasi darurat. Namun, perlu diperhatikan bahwa sistem tidak otomatis mengeluarkan (log out) akun Anda dari HP sebelumnya. Oleh karena itu, fleksibilitas ini membutuhkan kedisiplinan serta kesadaran ekstra dari setiap pegawai dalam menjaga keamanan data pribadi dan akun kepegawaian. Pada halaman ini, Anda akan dijelaskan beberapa aturan dalam menggunakan akun SSO.",
                 sections: [
                     {
                         title: "Semua Aktivitas di Akun Anda Adalah Tanggung Jawab Anda",
@@ -37,14 +37,14 @@ const tutorialUser = [
                             "Setiap presensi, perubahan data, atau aktivitas apa pun yang tercatat di akun SSO Anda dianggap sebagai perbuatan Anda sendiri, meskipun sebenarnya dilakukan orang lain. Jadi, jangan sampai akun Anda dipegang orang lain.",
                     },
                     {
-                        title: "Kalau Pinjam HP Orang Lain, Langsung Log Out",
+                        title: "Wajib Log Out Manual Saat Meminjam HP",
                         description:
-                            "Dalam kondisi mendesak, misalnya HP Anda mati, Anda mungkin perlu meminjam HP rekan kerja untuk presensi. Setelah selesai, WAJIB langsung klik Log Out. Kalau tidak, akun Anda akan tetap aktif di HP tersebut dan bisa disalahgunakan.",
+                            "Jika Anda terpaksa meminjam HP rekan kerja dalam keadaan terdesak, selalu lakukan log out segera setelah presensi selesai. Jika tidak, akun Anda akan tetap tertinggal dalam kondisi aktif di HP tersebut.",
                     },
                     {
-                        title: "Ganti HP Baru? Bersihkan HP Lama Dulu",
+                        title: "Bersihkan Akses di Perangkat Lama Saat Ganti HP baru",
                         description:
-                            "Sebelum pindah ke HP baru, buka aplikasi Presensi di HP lama Anda dan klik Log Out, atau langsung hapus (uninstall) aplikasinya. Kalau tidak, akun Anda akan terus aktif di HP lama meskipun HP itu sudah tidak Anda pakai atau sudah dijual.",
+                            "Saat Anda berganti ke HP baru, pastikan Anda telah melakukan log out atau menghapus (uninstall) aplikasi Presensi Sidoarjo dari HP lama Anda.",
                     },
                     {
                         title: "Jangan Bagikan NIP dan Kata Sandi ke Siapa Pun",
@@ -54,18 +54,22 @@ const tutorialUser = [
                     {
                         title: "Pindah ke HP Baru? Ikuti 4 Langkah Ini",
                         description:
-                            "Pertama, unduh aplikasi Presensi Sidoarjo di HP baru. Kedua, login menggunakan NIP dan kata sandi SSO Anda. Ketiga, selesaikan verifikasi keamanan berupa soal matematika sederhana. Keempat, klik Log Out di aplikasi Presensi pada HP lama Anda, atau hapus aplikasinya. Tidak perlu lapor ke admin atau melakukan konfigurasi khusus.",
+                            `Jika Anda mulai menggunakan HP baru, Anda tidak perlu melakukan konfigurasi khusus atau melapor ke admin. Cukup ikuti alur berikut:
+                        1. Unduh Aplikasi: Pasang aplikasi Presensi Sidoarjo di HP baru Anda.
+                        2. Masuk Akun: Masukkan NIP dan kata sandi SSO Anda.
+                        3. Verifikasi Keamanan: Selesaikan soal matematika sederhana yang muncul pada layar login.
+                        4. Amankan HP Lama: Pastikan Anda sudah mengklik tombol Log Out pada aplikasi Presensi Sidoarjo di HP lama Anda.`,
                     },
                 ],
                 tips:
-                    "Intinya satu: akun SSO itu seperti KTP digital Anda, jangan sampai dipegang orang lain. Kalau akun Anda tetap login di HP lama atau HP pinjaman, semua presensi yang tercatat di akun itu dianggap sebagai presensi Anda.",
+                    "Akun SSO Anda merupakan hal yang krusial, jangan sampai dipegang orang lain. Kalau akun Anda tetap login di HP lama atau HP pinjaman, semua presensi yang tercatat di akun itu dianggap sebagai presensi Anda.",
             },
 
             // ---- Child 2: Halaman Login ----
             {
                 id: "login-overview",
                 title: "Halaman Login",
-                type: "login",
+                type: "steps",
                 description:
                     "Untuk masuk ke aplikasi Presensi Sidoarjo, Anda menggunakan akun SSO Kominfo yang sudah terdaftar. Cukup login dan isi verifikasi keamanan sekali saja. Setelah itu, Anda tidak perlu mengulanginya setiap hari.",
                 sections: [
@@ -105,50 +109,48 @@ const tutorialUser = [
                 title: "Lupa Password",
                 type: "steps",
                 description:
-                    "Lupa kata sandi akun SSO? Tenang. Reset password tidak bisa dilakukan otomatis di aplikasi, tapi bisa dibantu langsung oleh tim Helpdesk Kominfo Sidoarjo via WhatsApp.",
+                    "Jika Anda lupa kata sandi akun SSO Kominfo, proses reset kata sandi tidak dapat dilakukan secara otomatis di dalam aplikasi, melainkan diproses secara manual oleh tim Helpdesk Dinas Kominfo Kabupaten Sidoarjo. Aplikasi Presensi Sidoarjo telah menyediakan tombol 'Lupa Password?' di halaman utama login untuk menghubungkan Anda secara langsung ke WhatsApp resmi Kominfo.",
                 sections: [
                     {
                         title: "Buka Halaman Login",
                         description:
-                            "Buka aplikasi Presensi Sidoarjo dan pastikan Anda berada di halaman login, sebelum masuk ke akun.",
+                            "Buka aplikasi Presensi Sidoarjo dan pastikan Anda berada di halaman login (sebelum masuk ke akun).",
                         image: image("login.jpg"),
                     },
                     {
-                        title: "Klik Tombol Lupa Password",
+                        title: "Klik Tombol Lupa Password?",
                         description:
-                            "Tekan tombol Lupa Password yang ada di bawah kolom login. Tombol ini langsung menghubungkan Anda ke WhatsApp resmi Kominfo.",
+                            "Tekan tombol 'Lupa Password?' yang terletak di bawah kolom login. Tombol ini langsung menghubungkan Anda ke WhatsApp resmi Kominfo.",
                         image: image("helpdeskl.jpg"),
                     },
                     {
-                        title: "Chat dengan Petugas Helpdesk",
+                        title: "Terhubung ke WhatsApp Resmi Kominfo",
                         description:
-                            "Anda akan otomatis diarahkan ke WhatsApp untuk memulai percakapan dengan petugas Helpdesk Kominfo Sidoarjo. Sampaikan bahwa Anda ingin mereset kata sandi. Sertakan NIP, Nama Lengkap, dan Unit Kerja atau OPD untuk keperluan verifikasi.",
+                            "Anda akan otomatis diarahkan ke WhatsApp untuk memulai percakapan dengan petugas Helpdesk Kominfo Sidoarjo. Sampaikan pesan bahwa Anda ingin mereset kata sandi. Sertakan NIP, Nama Lengkap, dan Unit Kerja atau OPD untuk keperluan verifikasi. Setelah data Anda diverifikasi, petugas akan memberikan kata sandi sementara yang bersifat acak (random password), yang bisa Anda pakai untuk login.",
 
                     },
 
                     {
-                        title: "Terima Kata Sandi Sementara",
+                        title: "Mengapa Wajib Mengubah Kata Sandi Setelah Direset?",
                         description:
-                            "Setelah data Anda diverifikasi, petugas akan memberikan kata sandi sementara yang bersifat acak, yang bisa Anda pakai untuk login.",
+                            `Setelah menerima kata sandi sementara dari Helpdesk Kominfo, Anda diwajibkan untuk segera mengubahnya melalui situs resmi sso.sidoarjokab.go.id karena alasan berikut:
+                        a. Kemudahan Akses: Kata sandi acak dari Helpdesk umumnya terdiri dari kombinasi huruf dan karakter yang rumit sehingga sulit dihafalkan untuk penggunaan harian.
+                        b. Kerahasiaan Data Pribadi: Mengubah kata sandi secara mandiri memastikan hanya Anda satu-satunya pihak yang memiliki akses ke akun SSO tersebut demi menjaga kerahasiaan data kepegawaian Anda.
+                        c. Catatan Sinkronisasi: Setelah berhasil mengubah kata sandi di situs SSO, mohon berikan jeda waktu 1–2 menit agar sistem dapat menyelesaikan proses sinkronisasi data sebelum Anda mencoba login kembali di aplikasi Presensi Sidoarjo.`,
                     },
-                    {
-                        title: "Login dengan Kata Sandi Sementara",
-                        description:
-                            "Gunakan kata sandi sementara dari petugas untuk login ke aplikasi Presensi Sidoarjo.",
-                    },
-                    {
-                        title: "Wajib Ganti Kata Sandi di Situs SSO",
-                        description:
-                            "Segera ganti kata sandi sementara Anda di situs resmi sso.sidoarjokab.go.id. Kata sandi dari Helpdesk biasanya panjang dan susah dihafal, dan hanya Anda yang boleh tahu kata sandi akun Anda.",
-                    },
-                    {
-                        title: "Tunggu 1 sampai 2 Menit Sebelum Login Ulang",
-                        description:
-                            "Setelah ganti kata sandi di SSO, beri jeda 1 sampai 2 menit supaya sistem menyelesaikan sinkronisasi data. Setelah itu, login kembali di aplikasi Presensi Sidoarjo dengan kata sandi baru Anda.",
-                    },
+
                 ],
                 tips:
-                    "Sebelum menghubungi Helpdesk, siapkan dulu NIP, Nama, dan OPD Anda supaya prosesnya cepat. Pastikan juga nomor WhatsApp Anda aktif.",
+                    `Sistem SSO Kominfo mensyaratkan kata sandi memiliki minimal 8 karakter dengan kombinasi huruf besar, huruf kecil, angka, dan simbol. Agar kata sandi baru Anda aman namun tetap mudah Anda ingat, gunakan rumus sederhana berikut:
+                        Rumus Kombinasi: [Kata Kunci Pilihan] + [Angka] + [Simbol]
+                            a. Pilih Kata yang Familiar : Gunakan nama tempat, hobi, atau frasa yang mudah Anda ingat, lalu ubah huruf pertamanya menjadi huruf besar.
+                            b. Tambahkan Angka Spesifik: Gunakan gabungan angka favorit atau tahun penting (hindari tanggal lahir yang terlalu mudah ditebak).
+                            c. Sisipkan Karakter Khusus/Simbol: Akhiri atau selipkan simbol seperti @, #, $, atau !. 
+                        
+                        Contoh Penerapan:
+                            a. Sidoarjo2026! (Gabungan nama kota, tahun, dan tanda seru)
+                            b. Delta35#Sda (Gabungan julukan, angka favorit, simbol, dan singkatan)
+                            c.  KopiHitam123@ (Gabungan frasa favorit, angka berurutan, dan simbol)`,
             },
 
             // Logout
@@ -204,8 +206,13 @@ const tutorialUser = [
                         number: 1,
                         title: "Kenali Warna Tombol Presensi",
                         description:
-                            "Sebelum melakukan presensi, perhatikan dulu warna tombol utama yang muncul di layar Beranda Anda, karena setiap warna memiliki arti yang berbeda. Tombol Abu abu menandakan bahwa Anda sedang tidak bisa melakukan presensi, misalnya karena jadwal kerja Anda sedang OFF, hari libur resmi, cuti, tugas belajar, atau sedang dalam proses banding administratif. Jika Anda menekan tombol ini, layar akan menampilkan alasan spesifik mengapa presensi tidak tersedia untuk Anda. Tombol Biru menandakan bahwa Anda siap melakukan Presensi Masuk. Tombol Merah menandakan bahwa Anda sudah berhasil melakukan Presensi Masuk, dan sekarang siap untuk melakukan Presensi Keluar. Sedangkan Tombol Hijau menandakan bahwa Anda sudah menyelesaikan presensi masuk dan presensi keluar untuk hari itu, sehingga tidak ada lagi yang perlu Anda lakukan.",
-                        image: image("home.png"),
+                            `Sebelum melakukan presensi, perhatikan dulu warna tombol utama yang muncul di layar Beranda Anda, karena setiap warna memiliki arti yang berbeda. 
+                           
+                            1. Tombol Abu abu (Nonaktif) menandakan bahwa Anda sedang tidak bisa melakukan presensi, misalnya karena jadwal kerja Anda sedang OFF, hari libur resmi, cuti, tugas belajar, atau sedang dalam proses banding administratif. Jika Anda menekan tombol ini, layar akan menampilkan alasan spesifik mengapa presensi tidak tersedia untuk Anda. 
+                            2. Tombol Biru (Check-in / Masuk) menandakan bahwa Anda siap melakukan Presensi Masuk. 
+                            3. Tombol Merah (Check-out / Keluar) menandakan bahwa Anda sudah berhasil melakukan Presensi Masuk, dan sekarang siap untuk melakukan Presensi Keluar. 
+                            4. Tombol Hijau (Done / Selesai) menandakan bahwa Anda sudah menyelesaikan presensi masuk dan presensi keluar untuk hari itu, sehingga tidak ada lagi yang perlu Anda lakukan.`,
+                        image: image("tombol.png"),
                     },
                     {
                         number: 2,
@@ -214,25 +221,20 @@ const tutorialUser = [
                             "Di halaman Beranda, Anda bisa melihat jam sistem secara real time, jam jadwal kerja Anda, serta indikator lokasi yang menunjukkan apakah Anda sedang berada dalam lokasi presensi atau berapa jarak fisik Anda ke titik kantor. Informasi ini sangat penting, karena presensi hanya bisa dilakukan jika Anda berada di dalam radius yang ditentukan. Jika Anda ingin melihat posisi Anda secara lebih jelas, tekan fitur Lokasi Saya. Fitur ini akan menampilkan peta yang memperlihatkan posisi Anda saat ini beserta lokasi presensi terdekat, sehingga Anda bisa memastikan bahwa Anda benar benar berada di area yang tepat.",
                         image: image("peta-lokasi.png"),
                     },
+
                     {
                         number: 3,
-                        title: "Aturan Foto Wajah",
+                        title: "Ketentuan Batas Waktu (Timer) & Batas Jam Presensi",
                         description:
-                            "Foto yang Anda ambil saat presensi wajib menampilkan satu wajah asli Anda secara jelas. Artinya, Anda tidak boleh menggunakan masker, kacamata hitam, atau penutup wajah lainnya yang menghalangi identifikasi. Anda juga tidak diperbolehkan menggunakan foto di dalam foto, misalnya memotret layar HP lain yang menampilkan wajah Anda. Semua aturan ini bertujuan untuk memastikan bahwa yang melakukan presensi benar benar Anda sendiri, bukan orang lain atau hanya sekadar gambar.",
-                        image: image("ambilfoto.jpg"),
+                            `⏳ Sistem Batas Waktu (Timer): Pengambilan foto dibatasi 60 detik dan halaman pratinjau (preview) dibatasi 120 detik. Jika waktu habis (meskipun layar HP Anda mati), sistem akan membatalkan proses dan mengembalikan Anda ke halaman Beranda. (Hal ini untuk memastikan titik GPS dan waktu foto diambil secara bersamaan).
+                            ⌛ Pergeseran Jam Presensi: Pastikan Anda menyelesaikan proses foto dan konfirmasi sebelum batas jam presensi berakhir. Jika Anda menekan tombol di detik-detik terakhir jam kerja tetapi terlalu lama di halaman foto/pratinjau, presensi dapat gagal/dibatalkan sistem karena waktu operasional presensi telah habis saat tombol konfirmasi diklik.`, image: image("jenis-hadir.jpg"),
                     },
                     {
                         number: 4,
-                        title: "Batas Waktu Foto dan Pratinjau",
+                        title: "Ketentuan Foto Wajah & Sanksi Pembatalan",
                         description:
-                            "Saat Anda mengambil foto wajah untuk presensi, waktu Anda dibatasi 60 detik. Setelah foto diambil, Anda akan dibawa ke halaman pratinjau atau preview, dan di halaman ini Anda punya waktu 120 detik untuk memeriksa foto serta memilih alasan kehadiran jika diperlukan. Jika waktu di salah satu tahap tersebut habis, meskipun layar HP Anda mati atau Anda menutup aplikasi, sistem akan otomatis membatalkan proses presensi dan mengembalikan Anda ke halaman Beranda. Aturan ini dibuat bukan untuk mempersulit, melainkan untuk memastikan bahwa titik GPS dan waktu pengambilan foto benar benar sinkron, sehingga data presensi Anda valid dan tidak bisa dimanipulasi.",
-                        image: image("jenis-hadir.jpg"),
-                    },
-                    {
-                        number: 5,
-                        title: "Foto dan Lokasi Anda Dipantau",
-                        description:
-                            "Perlu Anda ketahui bahwa seluruh foto dan koordinat presensi yang Anda kirimkan akan diverifikasi oleh sistem, dan juga dipantau secara berkala oleh Admin Kepegawaian OPD. Jika ditemukan indikasi manipulasi foto atau lokasi, presensi Anda dapat dibatalkan oleh Admin OPD. Dampaknya tidak main main, karena pembatalan presensi bisa memengaruhi rekapitulasi kehadiran Anda dan berpotensi menurunkan perhitungan Tambahan Penghasilan Pegawai atau TPP Anda. Jadi, selalu lakukan presensi dengan jujur dan sesuai ketentuan.",
+                            `📷 Aturan Foto Wajah: Foto presensi wajib menampilkan 1 wajah asli pegawai yang bersangkutan secara jelas (tanpa masker, kacamata hitam, atau foto di dalam foto/layar).
+                             🚨 Peringatan Penting: Seluruh foto dan koordinat presensi yang dikirimkan akan diverifikasi oleh sistem serta dipantau berkala oleh Admin Kepegawaian OPD. Setiap bentuk manipulasi foto atau lokasi dapat dikenakan sanksi pembatalan status presensi oleh Admin OPD dan berpotensi memengaruhi rekapitulasi kehadiran serta TPP Anda.`,
                     },
                     {
                         number: 6,
@@ -270,20 +272,32 @@ const tutorialUser = [
                     {
                         title: "Periksa Pratinjau Foto dan Lokasi",
                         description:
-                            "Setelah foto diambil, layar akan menampilkan pratinjau foto Anda beserta informasi lokasi tempat Anda berada. Jika sistem mendeteksi bahwa Anda berada di luar radius kantor, Anda wajib memilih alasan yang sesuai, misalnya Perjalanan Dinas atau FWA, sebelum bisa melanjutkan ke tahap berikutnya. Pilihan alasan ini akan tercatat dalam sistem dan menjadi bagian dari riwayat presensi Anda.",
-                        image: image("jenis-hadir.jpg"),
+                            "Setelah foto diambil, layar akan menampilkan pratinjau foto Anda beserta informasi lokasi tempat Anda berada. Jika sistem mendeteksi bahwa Anda berada di luar radius kantor, Anda wajib memilih alasan yang sesuai, misalnya Perjalanan Dinas atau FWA (Flexible Working Arrangement), sebelum bisa melanjutkan ke tahap berikutnya. Pilihan alasan ini akan tercatat dalam sistem dan menjadi bagian dari riwayat presensi Anda.",
+                        image: image("Pratinjau.png"),
                     },
                     {
                         title: "Konfirmasi Presensi Masuk",
                         description:
                             "Jika semua data sudah sesuai, tekan tombol konfirmasi. Setelah presensi berhasil diproses, Anda akan otomatis diarahkan ke halaman Riwayat Presensi, dan data kehadiran masuk Anda akan tercatat secara resmi di sistem.",
-                        image: image("verifhadir.jpg"),
+                        image: image("verifhadir.png"),
                     },
                     {
                         title: "Tombol Berubah Menjadi Merah",
                         description:
                             "Sebagai tanda bahwa Presensi Masuk Anda berhasil, tombol di halaman Beranda akan berubah warna dari biru menjadi merah. Tombol merah ini menandakan bahwa Anda sudah siap untuk melakukan Presensi Keluar saat jam kerja Anda berakhir nanti. Anda tidak perlu melakukan apa pun lagi sampai waktunya Presensi Keluar.",
                         image: image("dashboard.png"),
+                    },
+                    {
+                        title: "🟢 Batas Waktu Presensi Masuk (Check-in)",
+                        description:
+                            `   a. Waktu Awal Dibuka: Sistem mulai mengizinkan Presensi Masuk tepat 90 menit sebelum jam jadwal masuk kerja Anda.
+                                b. Batas Akhir Ditutup: Tombol Presensi Masuk tetap aktif hingga jam jadwal pulang kerja Anda.
+
+                                💡 Contoh Simulasi (Pegawai Reguler 07.30 – 16.00 WIB):
+                                -> Anda dapat melakukan Presensi Masuk mulai pukul 06.00 WIB (90 menit sebelum jam 07.30).
+                                -> Jika Anda baru melakukan presensi masuk setelah pukul 16.00 WIB, Anda dianggap Lupa Presensi Masuk.
+                                ⚠️ Konsekuensi Keterlambatan: Jika Anda baru melakukan presensi masuk setelah melewati jam jadwal pulang, maka status Anda otomatis dianggap Lupa Presensi Masuk oleh sistem.`,
+
                     },
                 ],
                 tips:
@@ -309,24 +323,36 @@ const tutorialUser = [
                         title: "Ambil Foto Wajah Anda",
                         description:
                             "Seperti pada Presensi Masuk, kamera depan HP Anda akan otomatis terbuka. Ambil foto swafoto atau selfie Anda secara langsung. Waktu pengambilan foto tetap dibatasi 60 detik, jadi pastikan Anda melakukannya dengan cepat dan jelas.",
-                        image: image("ambilfoto.jpg"),
+                        image: image("take-out.png"),
                     },
                     {
                         title: "Periksa Pratinjau Foto dan Lokasi",
                         description:
                             "Layar akan menampilkan pratinjau foto Anda beserta informasi lokasi. Jika Anda terdeteksi berada di luar radius kantor, akan muncul Notifikasi Peringatan SPT. Notifikasi ini bukan berarti presensi Anda gagal, tetapi Anda diwajibkan untuk mengunggah dokumen Surat Perintah Tugas atau SPT melalui menu Riwayat Presensi agar kehadiran Anda tetap sah secara administratif.",
-                        image: image("jenis-hadir.jpg"),
+                        image: image("Pratinjau.png"),
                     },
                     {
                         title: "Konfirmasi Presensi Keluar",
                         description:
                             "Jika seluruh data sudah sesuai, tekan tombol konfirmasi. Setelah berhasil, Anda akan otomatis diarahkan ke halaman Riwayat Presensi, dan data kehadiran keluar Anda akan tercatat secara resmi di sistem.",
-                        image: image("verifhadir.jpg"),
+                        image: image("verifhadir.png"),
                     },
                     {
                         title: "Tombol Berubah Menjadi Hijau",
                         description:
                             "Sebagai tanda bahwa Presensi Keluar Anda berhasil, tombol di halaman Beranda akan berubah warna dari merah menjadi hijau. Warna hijau ini menandakan bahwa Anda sudah menyelesaikan presensi masuk dan presensi keluar untuk hari itu, sehingga seluruh kewajiban presensi harian Anda sudah terpenuhi.",
+                        image: image("out.png"),
+                    },
+                    {
+                        title: "🔴 Batas Waktu Presensi Keluar (Check-out)",
+                        description:
+                            `   a. Waktu Awal Dibuka: Tombol Presensi Keluar akan otomatis muncul menggantikan tombol Masuk di layar Beranda segera setelah Anda berhasil menyelesaikan Presensi Masuk.
+                                b. Batas Akhir Ditutup: 
+                                🏢 Pegawai Reguler: Pukul 23:59 WIB pada hari yang sama (sebelum berganti hari).
+                                🔄 Pegawai SHIFT: Maksimal 6 jam setelah jam jadwal pulang kerja                                
+                                
+                                ⚠️ Konsekuensi Keterlambatan: Jika Anda baru melakukan presensi masuk setelah melewati jam jadwal pulang, maka status Anda otomatis dianggap Lupa Presensi Masuk oleh sistem.`,
+
                     },
                 ],
                 tips:
@@ -340,40 +366,72 @@ const tutorialUser = [
         id: "rpresensi",
         title: "Riwayat Presensi",
         icon: HiOutlineMapPin,
-        type: "rekap kehadiran",
+        type: "rekap",
         description:
             "Halaman Riwayat Presensi adalah tempat Anda memeriksa seluruh catatan kehadiran yang sudah Anda lakukan. Di halaman ini, Anda bisa melihat detail presensi mulai dari jam masuk, jam keluar, lokasi tempat Anda melakukan presensi, sampai status kehadiran Anda pada hari tersebut. Halaman ini juga menampilkan peringatan jika ada presensi yang memerlukan tindakan lanjutan, misalnya ketika Anda melakukan Presensi Keluar di luar lokasi kantor sehingga wajib mengunggah dokumen Surat Perintah Tugas. Dengan memeriksa halaman ini secara rutin, Anda bisa memastikan bahwa semua kehadiran Anda tercatat dengan benar dan tidak ada yang perlu diperbaiki.",
         sections: [
             {
                 number: 1,
-                title: "Lihat Riwayat Presensi Anda",
+                title: "Informasi Elemen Riwayat Presensi",
                 description:
-                    "Di halaman ini, Anda bisa melihat riwayat presensi yang sudah Anda lakukan secara detail, mulai dari jam presensi sampai lokasi saat presensi dilakukan, untuk periode satu minggu terakhir. Informasi ini sangat berguna untuk memastikan bahwa kehadiran Anda tercatat dengan benar, dan untuk memeriksa apakah ada presensi yang gagal atau belum diproses oleh sistem.",
+                    `Di halaman ini, Anda bisa melihat riwayat presensi yang sudah Anda lakukan secara detail, mulai dari jam presensi sampai lokasi saat presensi dilakukan, untuk periode satu minggu terakhir. Informasi ini sangat berguna untuk memastikan bahwa kehadiran Anda tercatat dengan benar, dan untuk memeriksa apakah ada presensi yang gagal atau belum diproses oleh sistem.
+                        📅 Tanggal Presensi: Tanggal dan hari pelaksanaan presensi.
+                        ⏰ Jam Aktual Masuk & Keluar: Catatan jam riil saat Anda menekan tombol presensi di aplikasi.
+                        🔴 Indikator Ikon Merah: Penanda khusus jika Anda tercatat mengalami keterlambatan masuk atau pulang sebelum waktunya.
+                        📍 Status Radius: Keterangan apakah presensi dilakukan Di Dalam Radius atau Di Luar Radius lokasi kantor.
+                        🛡️ Status Verifikasi Admin OPD: Keterangan status validasi dari Admin Kepegawaian OPD (Verified, Check In/Out Ditolak, atau Presensi Ditolak).
+                        📄 Unggah / Lihat Dokumentasi SPT: Akses tombol khusus untuk mengunggah berkas Surat Perintah Tugas (SPT) jika Anda melakukan presensi di luar radius kantor`,
                 image: image("riwayat-presensi.png"),
             },
             {
-                description:
-                    "Jika Anda melakukan Check out atau Presensi Keluar di luar lokasi kantor, akan muncul Notifikasi Peringatan SPT seperti ini. Notifikasi ini bukan berarti presensi Anda gagal, tetapi Anda diwajibkan untuk segera mengunggah dokumen Surat Perintah Tugas melalui halaman detail riwayat presensi, supaya kehadiran Anda tetap sah secara administratif.",
-                image: image("unggah-spt.png"),
-            },
-            {
                 number: 2,
-                title: "Filter Data Presensi",
+                title: "🏷️ Arti 3 Status Verifikasi Admin OPD",
                 description:
-                    "Untuk mempermudah pencarian, tersedia filter tahunan dan bulanan. Dengan filter ini, Anda bisa memantau status riwayat presensi Anda dalam periode tertentu, misalnya untuk memeriksa kehadiran Anda selama satu bulan terakhir atau membandingkan kehadiran Anda di tahun sebelumnya.",
-                image: image("rekap-bulan-riwayat.png"),
+                    `Setiap data presensi yang Anda kirimkan akan diverifikasi secara berkala oleh Admin Kepegawaian OPD untuk memastikan keabsahan lokasi GPS, foto wajah, dan kelengkapan dokumen pendukung. Hasil peninjauan ini sangat penting karena menentukan keabsahan catatan kehadiran Anda dalam rekapitulasi TPP bulanan. Secara umum, terdapat 3 jenis status verifikasi yang dapat muncul pada halaman Riwayat Presensi Anda:
+                        ✅ Verified (Terverifikasi):
+                        Data presensi Anda (foto wajah, titik lokasi GPS, dan dokumen SPT jika ada) telah diperiksa dan dinyatakan sah/valid oleh Admin OPD. Catatan kehadiran ini aman dan siap masuk ke dalam perhitungan rekap TPP bulanan.
+                        
+                        ⚠️ Check In / Check Out Ditolak:
+                        Salah satu dari aktivitas presensi Anda (hanya jam masuk saja atau jam keluar saja) ditolak oleh Admin OPD.
+                        Penyebab umum: Foto verifikasi wajah saat presensi masuk atau keluar buram/gelap, lokasi berada di luar radius tanpa melampirkan SPT yang sesuai, atau berkas SPT dianggap tidak valid.
+
+                        ❌ Presensi Ditolak:
+                        Seluruh data presensi harian Anda pada tanggal tersebut (baik Presensi Masuk maupun Presensi Keluar) ditolak secara penuh oleh Admin OPD.
+                        Status ini berakibat Anda dianggap tidak melakukan presensi sama sekali pada hari/jadwal tersebut.`,
+                image: image("verifriwayat.png"),
             },
             {
                 number: 3,
+                title: "Filter Data Presensi",
                 description:
-                    "Di bagian Tahun, Anda hanya bisa melihat data tahun saat ini saja. Fitur ini memudahkan Anda ketika ingin melakukan pengecekan riwayat kehadiran Anda pada tahun ini.",
-                image: image("bulan-rekap.png"),
+                    "Fitur ini terletak di pojok kanan atas. Berfungsi untuk memantau status riwayat presensi Anda dalam periode tertentu, misalnya untuk memeriksa kehadiran Anda selama satu bulan terakhir di tahun ini.",
+                image: image("filter-riwayat.png"),
             },
             {
                 number: 4,
+                title: "Bagaimana Cara Mengunggah SPT (Surat Perintah Tugas)?",
                 description:
-                    "Dan di bagian Bulan, Anda bisa melihat rekap per bulan dalam setahun. Sama seperti filter tahun, pilihan bulan juga hanya berlaku untuk tahun saat ini saja. Sehingga Anda punya fleksibilitas penuh untuk memeriksa riwayat presensi Anda berdasarkan bulan sebelumnya",
-                image: image("riwayat-bulann.png"),
+                    `1. Langkah-langkah: 
+                        a. Klik Tombol "Unggah SPT": Cari tanggal presensi yang bersangkutan, lalu tekan tombol Unggah SPT.
+                        b. Masuk ke Halaman Detail Riwayat: Sistem akan secara otomatis mengarahkan Anda ke halaman Detail Riwayat Presensi.
+                        c. Pilih Berkas SPT: Pilih berkas dokumen dari penyimpanan HP Anda, lalu konfirmasi untuk mengirimkan file.
+
+                    2. Syarat & Ketentuan Berkas SPT
+                        📄 Format Berkas: Dokumen wajib berformat PDF.
+                        💾 Ukuran Maksimal File: Ukuran file tidak boleh melebihi 5 MB.
+                        🔒 Batas Pengunggahan (1 Hari = 1 SPT = 1 Kali Upload): Untuk 1 hari presensi, Anda hanya dapat mengunggah 1 dokumen SPT. Pengunggahan ini hanya dapat dilakukan 1 kali saja.
+                        ⚠️ Keabsahan Dokumen: Pastikan file yang Anda unggah sudah benar, jelas, dan dapat dipertanggungjawabkan keabsahannya, karena Anda tidak dapat mengunggah ulang jika terjadi kesalahan pilih file.
+
+                    3. Tips Pengunggahan & Cara Mengecek Dokumen Terunggah
+                        📶 Perhatikan Koneksi Internet: Koneksi internet yang tidak stabil atau lambat dapat membuat proses pengiriman file menjadi lama atau bahkan timeout. Pastikan Anda berada di area dengan sinyal yang stabil saat mengunggah.
+                        👁️ Memeriksa Dokumen Terunggah: Setelah proses unggah berhasil, tombol pada baris riwayat presensi tersebut akan otomatis berubah menjadi Lihat Detail. Anda dapat menekan tombol tersebut kapan saja untuk melihat kembali file SPT yang telah terkirim ke dalam sistem.`,
+                image: image("unggah-spt.png"),
+            },
+            {
+                number: 5,
+                title: "💡 Apa yang Harus Dilakukan Jika Ditolak?",
+                description:
+                    "Jika Anda mendapati status Check In/Out Ditolak atau Presensi Ditolak, segera hubungi Admin Kepegawaian OPD di unit kerja Anda untuk mengonfirmasi alasan penolakan serta melakukan klarifikasi/penyesuaian dokumen sebelum tanggal 2 bulan berikutnya (sebelum data dikunci permanen oleh sistem untuk perhitungan TPP).",
             },
         ],
         tips:
@@ -387,36 +445,72 @@ const tutorialUser = [
         id: "jadwal",
         title: "Jadwal Kerja",
         icon: HiOutlineCalendarDays,
-        type: "hari kerja",
+        type: "kerja",
         description:
-            "Halaman Jadwal Kerja menampilkan informasi jadwal kerja yang berlaku untuk Anda, termasuk jadwal reguler, jadwal shift, dan hari libur. Dengan memahami jadwal kerja Anda, Anda bisa mempersiapkan diri dengan lebih baik, misalnya mengetahui kapan Anda harus Presensi Masuk dan kapan Anda harus Presensi Keluar. Halaman ini juga membantu Anda menghindari kesalahan seperti mencoba presensi pada hari libur, atau melewatkan jadwal shift yang seharusnya Anda jalani. Pastikan Anda memeriksa halaman ini secara rutin, terutama jika jadwal kerja Anda berubah ubah atau berbasis shift.",
+            `Menu Jadwal Kerja menyajikan rincian jam kerja harian Anda secara terstruktur dalam satu tampilan bulanan. Secara otomatis, sistem akan langsung mengarahkan dan memberikan penanda khusus pada jadwal hari berjalan agar Anda dapat memantaunya dengan cepat.`,
         sections: [
             {
                 number: 1,
-                title: "Lihat Jadwal Kerja Anda",
+                title: "Informasi Elemen Jadwal Kerja",
                 description:
-                    "Di halaman ini, Anda bisa melihat riwayat Jadwal Kerja secara detail untuk satu minggu ke depan, apakah jadwal Anda reguler, shift, atau libur. Informasi ini memudahkan Anda mempersiapkan diri, misalnya mengatur waktu keberangkatan ke kantor atau menyesuaikan aktivitas pribadi dengan jadwal kerja Anda.",
+                    `Di halaman ini, Anda bisa melihat riwayat Jadwal Kerja secara detail untuk satu minggu ke depan, apakah jadwal Anda reguler, shift, atau libur. Informasi ini memudahkan Anda mempersiapkan diri, misalnya mengatur waktu keberangkatan ke kantor atau menyesuaikan aktivitas pribadi dengan jadwal kerja Anda. Berikut informasi yang tampil pada daftar jadwal kerja Anda:
+
+                    📅 Tanggal & Hari: Urutan tanggal beserta nama hari dalam satu bulan.
+                    🏷️ Label "Hari Ini": Penanda visual khusus pada baris tanggal berjalan saat ini.
+                    ⏰ Jam Masuk & Pulang: Batas ketentuan jam operasional untuk Presensi Masuk dan Presensi Keluar.
+                    🏢 Jenis Kerja: Keterangan apakah Anda masuk dalam skema jam kerja Reguler atau SHIFT.
+                    📌 Status Kehadiran: Keterangan khusus jika tanggal tersebut berstatus OFF / Libur atau Cuti`,
                 image: image("jadwal.png"),
             },
             {
                 number: 2,
-                title: "Filter Data Jadwal",
+                title: "Filter Data Jadwal Kerja",
                 description:
-                    "Ada juga filter tahunan dan bulanan, supaya Anda bisa memantau status jadwal kerja Anda dalam periode tertentu. Fitur filter ini sangat berguna jika Anda ingin melihat pola jadwal kerja Anda selama beberapa bulan, atau memeriksa jadwal shift Anda di bulan bulan tertentu.",
-                image: image("filter-jadwal1.png"),
+                    `Pemfilteran jadwal memudahkan Anda untuk melihat perencanaan jam kerja pada bulan-bulan berikutnya maupun mengecek kembali riwayat jadwal pada bulan sebelumnya. Fitur ini membantu Anda mempersiapkan dan mengonfirmasi jam kerja lebih awal. Berikut langkah-langkah menggunakan fitur filter jadwal:
+                    a. Buka menu Jadwal Kerja.
+                    b. Pada bagian atas layar, tekan menu dropdown Filter Bulan & Tahun.
+                    c. Pilih Bulan dan Tahun yang ingin Anda lihat.
+                    d. Tampilan jadwal akan otomatis diperbarui sesuai dengan periode bulan yang Anda pilih.                    `,
+                image: image("filterjadwal.png"),
             },
             {
                 number: 3,
+                title: "Apa yang harus dilakukan jika jadwal kerja saya tidak muncul atau tidak sesuai?",
                 description:
-                    "Di bagian Tahun, Anda bisa memilih untuk melihat data tahun ini, dan tahun berikutnya. Dengan begitu, Anda bisa membandingkan jadwal kerja Anda dari waktu ke waktu, misalnya untuk melihat perubahan pola shift.",
-                image: image("filter-jadwal2.png"),
+                    `Kendala jadwal kerja yang kosong atau tidak sesuai dengan kondisi riil dinas dapat menyebabkan tombol presensi di Beranda menjadi tidak aktif (disabled) atau mencatat keterlambatan yang tidak seharusnya. Mengingat perubahan jadwal oleh Admin OPD membutuhkan waktu proses dan baru bisa berlaku minimal untuk H+1, pengecekan jadwal sebaiknya dilakukan secara berkala sebelum hari H. Berikut langkah penanganannya:
+                     
+                     a. Lakukan Refresh Halaman: Tarik layar ke bawah (pull-to-refresh) pada halaman Jadwal Kerja atau Beranda untuk memutakhirkan data dari server.
+                     b. Koordinasi dengan Admin Kepegawaian OPD: Jika jadwal masih kosong atau salah (misalnya: Anda seharusnya masuk Shift Pagi tetapi di aplikasi tertulis OFF atau Shift Malam), segera hubungi Admin Kepegawaian OPD unit kerja Anda sebelum H+1 agar jadwal dapat disesuaikan tepat waktu`,
             },
             {
                 number: 4,
+                title: "Arti status atau keterangan yang tampil pada halaman Jadwal Kerja",
                 description:
-                    "Dan di bagian Bulan, Anda bisa melihat rekap per bulan dalam setahun. Sama seperti filter tahun, pilihan bulan juga mencakup tahun ini, dan tahun depan, sehingga Anda punya fleksibilitas penuh untuk memeriksa jadwal kerja Anda.",
-                image: image("bulan-jadwal.png"),
+                    `Setiap tanggal pada daftar jadwal dilengkapi dengan label status untuk memperjelas kewajiban kehadiran Anda pada hari tersebut. Memahami label ini penting agar Anda dapat membedakan hari kerja efektif dan hari bebas presensi. Berikut adalah rincian arti status pada jadwal kerja:
+
+                    🔵 Reguler: Jam kerja standar instansi (baik skema 5 hari kerja maupun 6 hari kerja sesuai ketentuan OPD masing-masing) dengan jam masuk dan pulang yang telah ditentukan.
+                    🟣 SHIFT: Jam kerja khusus pegawai dinas bergilir (shift) yang jam masuk dan pulangnya disesuaikan dengan pola roster kerja.
+                    ⚪ OFF / Libur: Hari bebas kerja (akhir pekan, libur nasional, atau hari libur shift), di mana tombol presensi harian akan dinonaktifkan.
+                    🟡 Cuti: Keterangan bahwa Anda terdata sedang menjalani cuti resmi yang telah disetujui di dalam sistem backend kepegawaian.`,
             },
+            {
+                number: 5,
+                title: "Apakah bisa mengubah atau menggeser jadwal kerja sendiri di aplikasi?",
+                description:
+                    "Seluruh penetapan dan pembaruan jadwal kerja diatur secara terpusat oleh Admin Kepegawaian OPD masing-masing. Pegawai tidak dapat mengubah, menggeser, atau menukar jam kerja secara mandiri langsung dari aplikasi mobile. Jika terdapat penyesuaian jadwal dinas atau tukar shift, perubahan oleh Admin OPD hanya dapat diproses dan berlaku minimal untuk H+1 (hari berikutnya, tidak bisa berlaku di hari H).",
+            },
+            {
+                number: 6,
+                title: "Apakah bisa melihat jadwal rekan kerja satu tim untuk berkoordinasi atau tukar shift?",
+                description:
+                    `Saat ini, aplikasi Presensi Sidoarjo belum menyediakan fitur untuk melihat jadwal kerja pegawai lain maupun menu penukaran shift secara langsung di dalam aplikasi. Tampilan pada menu Jadwal Kerja bersifat pribadi (privat) dan hanya menampilkan penetapan jam kerja milik akun Anda masing-masing. Oleh karena itu, proses koordinasi penukaran shift antar-rekan kerja masih harus dilakukan secara manual di luar aplikasi sebelum dilaporkan ke pengelola kepegawaian.
+                    
+                    🔄 Alur Penukaran Shift Kerja saat Ini:
+                    1. Koordinasi Internal: Lakukan kesepakatan penukaran jadwal shift secara langsung dengan rekan kerja yang bersangkutan.
+                    2. Lapor Admin Kepegawaian OPD: Sampaikan kesepakatan penukaran shift tersebut kepada Admin Kepegawaian OPD di unit kerja Anda.
+                    3. Penyesuaian di Sistem Backend (H+1): Admin OPD akan memperbarui jadwal Anda dan rekan kerja di sistem backend. Pastikan laporan disampaikan lebih awal karena perubahan jadwal oleh Admin OPD minimal berlaku untuk H+1 (tidak bisa diubah mendadak pada hari H).`,
+            },
+
         ],
         tips:
             "Cek jadwal kerja Anda secara rutin, terutama jika Anda bekerja dengan sistem shift. Jadwal shift yang tidak Anda sadari bisa membuat Anda melewatkan waktu presensi, dan hal itu bisa berdampak pada rekapitulasi kehadiran Anda.",

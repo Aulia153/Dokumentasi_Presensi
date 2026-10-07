@@ -92,8 +92,8 @@ const TutorialHeader = ({
 }) => {
     return (
         <header className="relative overflow-hidden border-b border-slate-200 bg-white">
-            <div className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-blue-50/70"/>
-            <div className="pointer-events-none absolute right-20 top-20 h-24 w-24 rounded-full bg-blue-100/40"/>
+            <div className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-blue-50/70" />
+            <div className="pointer-events-none absolute right-20 top-20 h-24 w-24 rounded-full bg-blue-100/40" />
 
             <div className="relative mx-auto w-full max-w-6xl px-5 py-7 sm:px-8 lg:px-10">
 
@@ -114,10 +114,10 @@ const TutorialHeader = ({
 
                 {/* TITLE */}
                 <div className="mt-5 flex items-start gap-4">
-                    <div className="mt-1 h-10 w-1 shrink-0 rounded-full bg-blue-600"/>
+                    <div className="mt-1 h-10 w-1 shrink-0 rounded-full bg-blue-600" />
 
                     <div>
-                        
+
                         <p className="mb-1 text-xs font-bold uppercase tracking-[0.16em] text-blue-600">
                             Panduan Sistem
                         </p>
@@ -144,7 +144,7 @@ const TutorialHeader = ({
 const OverviewCard = ({ description }) => {
     return (
         <section className="relative mt-1 overflow-hidden rounded-2xl border border-blue-100 bg-gradient-to-br from-white to-blue-50/50 shadow-sm">
-            <div className="absolute left-0 top-0 h-full w-1 bg-blue-600"/>
+            <div className="absolute left-0 top-0 h-full w-1 bg-blue-600" />
 
             <div className="flex items-start gap-4 p-6 sm:p-7">
 
@@ -247,7 +247,7 @@ const TutorialSection = ({
                     </h3>
 
                     {section.description && (
-                        <p className="mt-2 max-w-4xl text-sm leading-7 text-slate-600 sm:text-base">
+                        <p className="mt-2 max-w-4xl text-sm leading-7 text-slate-600 sm:text-base whitespace-pre-line">
                             {section.description}
                         </p>
                     )}
@@ -298,7 +298,7 @@ const ImagePreview = ({
                     src={src}
                     alt={alt}
                     loading="lazy"
-                    className="block h-auto max-h-[520px] max-w-full rounded-xl border border-slate-200 bg-white object-contain shadow-sm"/>
+                    className="block h-auto max-h-[520px] max-w-full rounded-xl border border-slate-200 bg-white object-contain shadow-sm" />
             </div>
         </div>
     );
@@ -381,10 +381,9 @@ const FAQItem = ({
                             items-center justify-center
                             rounded-lg
                             text-sm font-bold
-                            ${
-                                open
-                                    ? "bg-blue-600 text-white"
-                                    : "bg-blue-50 text-blue-600"
+                            ${open
+                                ? "bg-blue-600 text-white"
+                                : "bg-blue-50 text-blue-600"
                             }
                         `}
                     >
@@ -400,10 +399,9 @@ const FAQItem = ({
                     className={`
                         h-5 w-5 shrink-0
                         transition-transform duration-200
-                        ${
-                            open
-                                ? "rotate-180 text-blue-600"
-                                : "text-slate-400"
+                        ${open
+                            ? "rotate-180 text-blue-600"
+                            : "text-slate-400"
                         }
                     `}
                 />
@@ -500,7 +498,7 @@ const TipsCard = ({ tips }) => {
                         Tips
                     </h2>
 
-                    <p className="mt-2 text-sm leading-7 text-amber-800 sm:text-base">
+                    <p className="mt-2 text-sm leading-7 text-amber-800 sm:text-base whitespace-pre-line">
                         {tips}
                     </p>
                 </div>
