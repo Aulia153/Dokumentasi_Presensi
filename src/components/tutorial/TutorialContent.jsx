@@ -4,6 +4,7 @@ import {
     HiOutlineChevronDown,
     HiOutlineInformationCircle,
     HiOutlineLightBulb,
+    HiOutlinePhoto,
 } from "react-icons/hi2";
 
 const TutorialContent = ({
@@ -28,53 +29,49 @@ const TutorialContent = ({
             : "Tutorial Admin";
 
     return (
-        <div className="min-h-screen bg-slate-50">
+        <div className="min-h-screen bg-slate-50/80">
             <TutorialHeader
                 tutorial={tutorial}
                 roleLabel={roleLabel}
             />
 
-            <main>
-                <div className="mx-auto w-full max-w-6xl px-5 py-8 sm:px-8 lg:px-10">
+            <main className="mx-auto w-full max-w-6xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
+                {/* INFORMASI HALAMAN */}
+                {tutorial.description && (
+                    <OverviewCard
+                        description={tutorial.description}
+                    />
+                )}
 
-                    {/* INFORMASI HALAMAN */}
-                    {tutorial.description && (
-                        <OverviewCard
-                            description={tutorial.description}
-                        />
-                    )}
+                {/* KONTEN UTAMA */}
+                {isFaq ? (
+                    <FAQContent
+                        questions={tutorial.questions ?? []}
+                    />
+                ) : (
+                    <>
+                        {/* GAMBAR UTAMA */}
+                        {tutorial.image && (
+                            <ImagePreview
+                                src={tutorial.image}
+                                alt={`Tampilan ${tutorial.title}`}
+                                main
+                            />
+                        )}
 
-                    {/* FAQ */}
-                    {isFaq ? (
-                        <FAQContent
-                            questions={tutorial.questions ?? []}
-                        />
-                    ) : (
-                        <>
-                            {/* GAMBAR UTAMA */}
-                            {tutorial.image && (
-                                <ImagePreview
-                                    src={tutorial.image}
-                                    alt={tutorial.title}
-                                    main
-                                />
-                            )}
+                        {/* PANDUAN PENGGUNAAN */}
+                        {tutorial.sections?.length > 0 && (
+                            <TutorialSections
+                                sections={tutorial.sections}
+                            />
+                        )}
+                    </>
+                )}
 
-                            {/* PANDUAN */}
-                            {tutorial.sections?.length > 0 && (
-                                <TutorialSections
-                                    sections={tutorial.sections}
-                                    isSteps={isSteps}
-                                />
-                            )}
-                        </>
-                    )}
-
-                    {/* TIPS */}
-                    {tutorial.tips && (
-                        <TipsCard tips={tutorial.tips} />
-                    )}
-                </div>
+                {/* TIPS */}
+                {tutorial.tips && (
+                    <TipsCard tips={tutorial.tips} />
+                )}
             </main>
 
             <TutorialFooter />
@@ -88,46 +85,52 @@ const TutorialContent = ({
 ============================================================ */
 
 const TutorialHeader = ({
-    tutorial, roleLabel,
+    tutorial,
+    roleLabel,
 }) => {
     return (
         <header className="relative overflow-hidden border-b border-slate-200 bg-white">
-            <div className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full bg-blue-50/70" />
-            <div className="pointer-events-none absolute right-20 top-20 h-24 w-24 rounded-full bg-blue-100/40" />
+            <div className="pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full bg-blue-50" />
 
-            <div className="relative mx-auto w-full max-w-6xl px-5 py-7 sm:px-8 lg:px-10">
+            <div className="pointer-events-none absolute right-20 top-24 h-24 w-24 rounded-full bg-blue-100/40" />
 
+            <div className="relative mx-auto max-w-6xl px-4 py-7 sm:px-6 sm:py-9 lg:px-8">
                 {/* BREADCRUMB */}
-                <div className="flex items-center gap-2 text-sm">
-                    <span className="font-semibold text-blue-600">
+                <nav
+                    aria-label="Breadcrumb"
+                    className="flex flex-wrap items-center gap-2 text-sm"
+                >
+                    <span className="font-semibold text-blue-700">
                         {roleLabel}
                     </span>
 
-                    <span className="text-slate-300">
-                        /
-                    </span>
+                    <span className="text-slate-300">/</span>
 
-                    <span className="truncate text-slate-400">
+                    <span className="max-w-full truncate text-slate-500">
                         {tutorial.title}
                     </span>
-                </div>
+                </nav>
 
-                {/* TITLE */}
-                <div className="mt-5 flex items-start gap-4">
-                    <div className="mt-1 h-10 w-1 shrink-0 rounded-full bg-blue-600" />
+                {/* JUDUL HALAMAN */}
+                <div className="mt-6 flex items-start gap-4">
+                    <div className="h-12 w-1 shrink-0 rounded-full bg-blue-600" />
 
-                    <div>
+                    <div className="min-w-0">
+                        <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-3 py-1">
+                            <span className="h-1.5 w-1.5 rounded-full bg-blue-600" />
 
-                        <p className="mb-1 text-xs font-bold uppercase tracking-[0.16em] text-blue-600">
-                            Panduan Sistem
-                        </p>
+                            <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-blue-700">
+                                Panduan Sistem
+                            </span>
+                        </div>
 
-                        <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+                        <h1 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
                             {tutorial.title}
                         </h1>
 
-                        <p className="mt-2 text-sm text-slate-500">
-                            Panduan dan penjelasan penggunaan Sistem Presensi Digital Kabupaten Sidoarjo.
+                        <p className="mt-3 max-w-2xl text-sm leading-6 text-slate-500 sm:text-base">
+                            Dokumentasi penggunaan Sistem Presensi
+                            Digital Kabupaten Sidoarjo.
                         </p>
                     </div>
                 </div>
@@ -141,29 +144,28 @@ const TutorialHeader = ({
    OVERVIEW
 ============================================================ */
 
-const OverviewCard = ({ description }) => {
+const OverviewCard = ({
+    description,
+}) => {
     return (
-        <section className="relative mt-1 overflow-hidden rounded-2xl border border-blue-100 bg-gradient-to-br from-white to-blue-50/50 shadow-sm">
-            <div className="absolute left-0 top-0 h-full w-1 bg-blue-600" />
-
-            <div className="flex items-start gap-4 p-6 sm:p-7">
-
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm shadow-blue-600/20">
+        <section className="mb-6 overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-sm transition-shadow duration-200 hover:shadow-md">
+            <div className="flex items-start gap-4 p-5 sm:p-6">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-blue-100 bg-blue-50 text-blue-700">
                     <HiOutlineInformationCircle className="h-5 w-5" />
                 </div>
 
-                <div className="min-w-0">
-                    <div className="flex flex-wrap items-center gap-3">
-                        <h2 className="text-lg font-bold text-slate-900 sm:text-xl">
+                <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                        <h2 className="text-base font-bold text-slate-900 sm:text-lg">
                             Tentang Halaman Ini
                         </h2>
 
-                        <span className="rounded-full bg-blue-50 px-2.5 py-1 text-[11px] font-semibold text-blue-600">
+                        <span className="rounded-full bg-blue-50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-blue-700">
                             Informasi
                         </span>
                     </div>
 
-                    <p className="mt-3 max-w-4xl text-sm leading-7 text-slate-600 sm:text-base">
+                    <p className="mt-3 whitespace-pre-line text-sm leading-7 text-slate-600 sm:text-base">
                         {description}
                     </p>
                 </div>
@@ -178,38 +180,31 @@ const OverviewCard = ({ description }) => {
 ============================================================ */
 
 const TutorialSections = ({
-    sections, isSteps,
+    sections,
 }) => {
     return (
-        <section className="mt-8">
-
-            {/* JUDUL */}
-            <div className="mb-6">
-                <p className="text-xs font-bold uppercase tracking-[0.14em] text-blue-600">
+        <section className="mt-6">
+            <div className="mb-5">
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-blue-700">
                     Panduan Penggunaan
                 </p>
 
-                <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-                    {isSteps
-                        ? "Langkah-langkah Penggunaan"
-                        : "Informasi dan Penggunaan"}
+                <h2 className="mt-2 text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
+                    Langkah dan Informasi Penggunaan
                 </h2>
 
-                {!isSteps && (
-                    <p className="mt-2 max-w-3xl text-sm leading-7 text-slate-500 sm:text-base">
-                        Berikut penjelasan mengenai fitur, aturan, dan hal-hal yang perlu diperhatikan saat menggunakan aplikasi.
-                    </p>
-                )}
+                <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-500">
+                    Pelajari setiap bagian berikut untuk memahami
+                    fungsi dan cara menggunakan fitur aplikasi.
+                </p>
             </div>
 
-            {/* SATU FORM PANDUAN */}
             <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-
                 {sections.map((section, index) => (
                     <TutorialSection
                         key={`${section.title}-${index}`}
                         section={section}
-                        isSteps={isSteps}
+                        index={index}
                         isLast={index === sections.length - 1}
                     />
                 ))}
@@ -225,36 +220,75 @@ const TutorialSections = ({
 
 const TutorialSection = ({
     section,
-    isSteps,
+    index,
     isLast,
 }) => {
+    // FORMAT NOMOR SAMA DI SEMUA MENU: 01, 02, 03, ...
+    const sectionNumber = String(index + 1).padStart(2, "0");
+
     return (
-        <div className={`relative px-6 py-7 sm:px-8 sm:py-8 ${!isLast ? "border-b border-slate-100" : ""}`}>
-            <div className="flex items-start gap-4">
+        <article
+            className={`
+                group relative px-5 py-6
+                transition-colors duration-200
+                hover:bg-blue-50/30
+                sm:px-7 sm:py-7 lg:px-8
+                ${!isLast ? "border-b border-slate-100" : ""}
+            `}
+        >
+            <div className="flex items-start gap-4 sm:gap-5">
+                {/* NOMOR KONSISTEN */}
+                <div className="relative flex shrink-0 items-center justify-center">
+                    <span
+                        className="
+                            absolute -left-5
+                            h-6 w-1
+                            rounded-r-full
+                            bg-blue-600
+                            opacity-0
+                            transition-opacity duration-200
+                            group-hover:opacity-100
+                            sm:-left-7 lg:-left-8
+                        "
+                    />
 
-                {/* NOMOR LANGKAH */}
-                {isSteps && section.number && (
-                    <div className="relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white shadow-sm shadow-blue-600/20">
-                        {section.number}
+                    <div
+                        className="
+                            flex h-10 w-10 shrink-0
+                            items-center justify-center
+                            rounded-xl
+                            border border-blue-100
+                            bg-blue-50
+                            text-sm font-bold
+                            text-blue-700
+                            transition-all duration-200
+                            group-hover:border-blue-600
+                            group-hover:bg-blue-600
+                            group-hover:text-white
+                            group-hover:shadow-md
+                            group-hover:shadow-blue-600/15
+                        "
+                        aria-label={`Bagian ${sectionNumber}`}
+                    >
+                        {sectionNumber}
                     </div>
-                )}
+                </div>
 
-                {/* ISI */}
+                {/* ISI KONTEN */}
                 <div className="min-w-0 flex-1">
-
-                    <h3 className="text-lg font-bold leading-7 text-slate-900 sm:text-xl">
+                    <h3 className="text-base font-bold leading-7 text-slate-900 transition-colors duration-200 group-hover:text-blue-800 sm:text-lg">
                         {section.title}
                     </h3>
 
                     {section.description && (
-                        <p className="mt-2 max-w-4xl text-sm leading-7 text-slate-600 sm:text-base whitespace-pre-line">
+                        <p className="mt-2 whitespace-pre-line text-sm leading-7 text-slate-600 sm:text-base">
                             {section.description}
                         </p>
                     )}
 
-                    {/* GAMBAR */}
+                    {/* GAMBAR PENDUKUNG */}
                     {section.image && (
-                        <div className="mt-6">
+                        <div className="mt-5">
                             <ImagePreview
                                 src={section.image}
                                 alt={section.title}
@@ -263,7 +297,7 @@ const TutorialSection = ({
                     )}
                 </div>
             </div>
-        </div>
+        </article>
     );
 };
 
@@ -273,34 +307,145 @@ const TutorialSection = ({
 ============================================================ */
 
 const ImagePreview = ({
-    src, alt, main = false,
+    src,
+    alt,
+    main = false,
 }) => {
-    if (!src) return null;
+    const [imageError, setImageError] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    useEffect(() => {
+        setImageError(false);
+        setIsExpanded(false);
+    }, [src]);
+
+    useEffect(() => {
+        if (!isExpanded) return;
+
+        const handleKeyDown = (event) => {
+            if (event.key === "Escape") {
+                setIsExpanded(false);
+            }
+        };
+
+        document.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            document.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [isExpanded]);
+
+    if (!src || imageError) return null;
 
     return (
-        <div
-            className={`overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm ${main ? "mb-8" : ""}`}>
+        <>
+            <figure
+                className={`
+                    overflow-hidden rounded-xl
+                    border border-slate-200
+                    bg-white
+                    transition-shadow duration-200
+                    hover:shadow-md
+                    ${main ? "mb-6" : ""}
+                `}
+            >
+                {/* HEADER GAMBAR */}
+                <div className="flex items-center justify-between gap-3 border-b border-slate-100 bg-slate-50 px-4 py-3">
+                    <div className="flex min-w-0 items-center gap-2.5">
+                        <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white text-blue-700 shadow-sm ring-1 ring-slate-200">
+                            <HiOutlinePhoto className="h-4 w-4" />
+                        </div>
 
-            {/* BROWSER HEADER */}
-            <div className="flex items-center gap-2 border-b border-slate-200 bg-slate-50 px-4 py-2.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-red-300" />
-                <span className="h-2.5 w-2.5 rounded-full bg-yellow-300" />
-                <span className="h-2.5 w-2.5 rounded-full bg-green-300" />
+                        <span className="truncate text-xs font-semibold text-slate-600 sm:text-sm">
+                            Tampilan Sistem
+                        </span>
+                    </div>
 
-                <span className="ml-2 text-xs font-medium text-slate-400">
-                    Tampilan Sistem
-                </span>
-            </div>
+                    <button
+                        type="button"
+                        onClick={() => setIsExpanded(true)}
+                        className="shrink-0 rounded-lg border border-blue-100 bg-white px-3 py-1.5 text-xs font-semibold text-blue-700 transition-colors duration-200 hover:border-blue-200 hover:bg-blue-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                        aria-label={`Perbesar gambar ${alt}`}
+                    >
+                        Perbesar
+                    </button>
+                </div>
 
-            {/* IMAGE */}
-            <div className="flex justify-center overflow-hidden bg-slate-100 p-3 sm:p-5">
-                <img
-                    src={src}
-                    alt={alt}
-                    loading="lazy"
-                    className="block h-auto max-h-[520px] max-w-full rounded-xl border border-slate-200 bg-white object-contain shadow-sm" />
-            </div>
-        </div>
+                {/* GAMBAR */}
+                <div
+                    className={`
+                        flex justify-center
+                        bg-slate-100/70 p-3
+                        sm:p-5
+                        ${main ? "lg:p-6" : ""}
+                    `}
+                >
+                    <button
+                        type="button"
+                        onClick={() => setIsExpanded(true)}
+                        className="block max-w-full cursor-zoom-in rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        aria-label={`Lihat gambar ${alt} dalam ukuran besar`}
+                    >
+                        <img
+                            src={src}
+                            alt={alt}
+                            loading="lazy"
+                            onError={() => setImageError(true)}
+                            className={`
+                                mx-auto block h-auto max-w-full
+                                rounded-lg border border-slate-200
+                                bg-white object-contain shadow-sm
+                                ${
+                                    main
+                                        ? "max-h-[480px] sm:max-h-[540px]"
+                                        : "max-h-[360px] sm:max-h-[400px]"
+                                }
+                            `}
+                        />
+                    </button>
+                </div>
+
+                {alt && (
+                    <figcaption className="border-t border-slate-100 px-4 py-2.5 text-xs leading-5 text-slate-500">
+                        {alt}
+                    </figcaption>
+                )}
+            </figure>
+
+            {/* MODAL GAMBAR */}
+            {isExpanded && (
+                <div
+                    className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/80 p-4 sm:p-8"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label={`Gambar ${alt}`}
+                    onClick={() => setIsExpanded(false)}
+                >
+                    <div className="relative flex max-h-full max-w-6xl flex-col items-center">
+                        <button
+                            type="button"
+                            onClick={() => setIsExpanded(false)}
+                            className="mb-3 self-end rounded-lg bg-white px-4 py-2 text-sm font-semibold text-slate-800 transition-colors hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                        >
+                            Tutup ✕
+                        </button>
+
+                        <img
+                            src={src}
+                            alt={alt}
+                            className="max-h-[80vh] max-w-full rounded-xl bg-white object-contain shadow-2xl"
+                            onClick={(event) => event.stopPropagation()}
+                        />
+
+                        {alt && (
+                            <p className="mt-3 text-center text-sm text-white">
+                                {alt}
+                            </p>
+                        )}
+                    </div>
+                </div>
+            )}
+        </>
     );
 };
 
@@ -309,23 +454,24 @@ const ImagePreview = ({
    FAQ
 ============================================================ */
 
-const FAQContent = ({ questions }) => {
+const FAQContent = ({
+    questions,
+}) => {
     if (!questions.length) return null;
 
     return (
-        <section className="mt-8">
-
+        <section className="mt-6">
             <div className="mb-5">
-                <p className="text-xs font-bold uppercase tracking-[0.12em] text-blue-600">
-                    Pertanyaan Umum
+                <p className="text-xs font-bold uppercase tracking-[0.14em] text-blue-700">
+                    Pusat Bantuan
                 </p>
 
-                <h2 className="mt-1 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-                    FAQ
+                <h2 className="mt-2 text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
+                    Pertanyaan yang Sering Diajukan
                 </h2>
 
-                <p className="mt-2 text-sm text-slate-500 sm:text-base">
-                    Pilih pertanyaan untuk melihat penjelasannya.
+                <p className="mt-2 text-sm leading-6 text-slate-500">
+                    Pilih pertanyaan untuk membaca penjelasan lebih lanjut.
                 </p>
             </div>
 
@@ -354,36 +500,24 @@ const FAQItem = ({
     const [open, setOpen] = useState(false);
 
     return (
-        <div
-            className={`
-                ${!isLast ? "border-b border-slate-100" : ""}
-            `}
-        >
+        <div className={!isLast ? "border-b border-slate-100" : ""}>
             <button
                 type="button"
                 onClick={() => setOpen((value) => !value)}
-                className="
-                    flex w-full
-                    items-center justify-between
-                    gap-4
-                    px-6 py-5
-                    text-left
-                    transition
-                    hover:bg-slate-50
-                    sm:px-8
-                "
+                aria-expanded={open}
+                className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left transition-colors duration-200 hover:bg-blue-50/40 sm:px-7"
             >
                 <div className="flex min-w-0 items-start gap-3">
-
                     <span
                         className={`
                             flex h-8 w-8 shrink-0
                             items-center justify-center
-                            rounded-lg
-                            text-sm font-bold
-                            ${open
-                                ? "bg-blue-600 text-white"
-                                : "bg-blue-50 text-blue-600"
+                            rounded-lg text-sm font-bold
+                            transition-colors duration-200
+                            ${
+                                open
+                                    ? "bg-blue-600 text-white"
+                                    : "border border-blue-100 bg-blue-50 text-blue-700"
                             }
                         `}
                     >
@@ -399,67 +533,56 @@ const FAQItem = ({
                     className={`
                         h-5 w-5 shrink-0
                         transition-transform duration-200
-                        ${open
-                            ? "rotate-180 text-blue-600"
-                            : "text-slate-400"
+                        ${
+                            open
+                                ? "rotate-180 text-blue-700"
+                                : "text-slate-400"
                         }
                     `}
                 />
             </button>
 
             {open && (
-                <div className="px-6 pb-6 sm:px-8">
-                    <div className="border-l-2 border-blue-100 pl-4">
-
+                <div className="px-5 pb-6 sm:px-7">
+                    <div className="space-y-4 border-l-2 border-blue-100 pl-4 sm:ml-11">
                         {item.answer && (
-                            <p className="text-sm leading-7 text-slate-600 sm:text-base">
+                            <p className="whitespace-pre-line text-sm leading-7 text-slate-600 sm:text-base">
                                 {item.answer}
                             </p>
                         )}
 
                         {item.items?.length > 0 && (
-                            <div className="space-y-3">
-                                {item.items.map(
-                                    (subItem, index) => (
-                                        <div key={index}>
-                                            <h4 className="text-sm font-semibold text-slate-800 sm:text-base">
-                                                {subItem.label}
-                                            </h4>
+                            <div className="space-y-4">
+                                {item.items.map((subItem, index) => (
+                                    <div key={index}>
+                                        <h4 className="text-sm font-semibold text-slate-800">
+                                            {subItem.label}
+                                        </h4>
 
-                                            <p className="mt-1 text-sm leading-6 text-slate-600">
-                                                {subItem.description}
-                                            </p>
-                                        </div>
-                                    )
-                                )}
+                                        <p className="mt-1 text-sm leading-6 text-slate-600">
+                                            {subItem.description}
+                                        </p>
+                                    </div>
+                                ))}
                             </div>
                         )}
 
                         {item.steps?.length > 0 && (
                             <div className="space-y-3">
-                                {item.steps.map(
-                                    (step, index) => (
-                                        <div
-                                            key={index}
-                                            className="flex items-start gap-3"
-                                        >
-                                            <span className="
-                                                flex h-6 w-6 shrink-0
-                                                items-center justify-center
-                                                rounded-full
-                                                bg-blue-50
-                                                text-xs font-bold
-                                                text-blue-600
-                                            ">
-                                                {index + 1}
-                                            </span>
+                                {item.steps.map((step, index) => (
+                                    <div
+                                        key={index}
+                                        className="flex items-start gap-3"
+                                    >
+                                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-blue-100 bg-blue-50 text-xs font-bold text-blue-700">
+                                            {String(index + 1).padStart(2, "0")}
+                                        </span>
 
-                                            <p className="text-sm leading-6 text-slate-600">
-                                                {step}
-                                            </p>
-                                        </div>
-                                    )
-                                )}
+                                        <p className="text-sm leading-6 text-slate-600">
+                                            {step}
+                                        </p>
+                                    </div>
+                                ))}
                             </div>
                         )}
                     </div>
@@ -474,36 +597,27 @@ const FAQItem = ({
    TIPS
 ============================================================ */
 
-const TipsCard = ({ tips }) => {
+const TipsCard = ({
+    tips,
+}) => {
     return (
-        <section className="
-            mt-8
-            rounded-2xl
-            border border-amber-200
-            bg-amber-50/70
-        ">
+        <aside className="mt-7 overflow-hidden rounded-2xl border border-amber-200/80 bg-amber-50/70">
             <div className="flex items-start gap-4 p-5 sm:p-6">
-
-                <div className="
-                    flex h-10 w-10 shrink-0
-                    items-center justify-center
-                    rounded-xl
-                    bg-amber-100
-                ">
-                    <HiOutlineLightBulb className="h-5 w-5 text-amber-600" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-amber-200/70 bg-white text-amber-600 shadow-sm">
+                    <HiOutlineLightBulb className="h-5 w-5" />
                 </div>
 
-                <div className="min-w-0">
-                    <h2 className="text-lg font-bold text-amber-900">
-                        Tips
+                <div className="min-w-0 flex-1">
+                    <h2 className="text-base font-bold text-amber-950 sm:text-lg">
+                        Tips Penggunaan
                     </h2>
 
-                    <p className="mt-2 text-sm leading-7 text-amber-800 sm:text-base whitespace-pre-line">
+                    <p className="mt-2 whitespace-pre-line text-sm leading-7 text-amber-900/80 sm:text-base">
                         {tips}
                     </p>
                 </div>
             </div>
-        </section>
+        </aside>
     );
 };
 
@@ -514,27 +628,20 @@ const TipsCard = ({ tips }) => {
 
 const TutorialFooter = () => {
     return (
-        <footer className="mt-8 border-t border-slate-200 bg-white">
-            <div className="
-                mx-auto
-                flex max-w-6xl
-                flex-col
-                items-center
-                justify-between
-                gap-2
-                px-5 py-5
-                text-center
-                sm:flex-row
-                sm:px-8
-                sm:text-left
-                lg:px-10
-            ">
-                <p className="text-sm font-semibold text-slate-700">
-                    Dokumentasi Presensi Digital
-                </p>
+        <footer className="mt-10 border-t border-slate-200 bg-white">
+            <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 py-5 text-center sm:flex-row sm:px-6 sm:text-left lg:px-8">
+                <div>
+                    <p className="text-sm font-semibold text-slate-700">
+                        Dokumentasi Presensi Digital
+                    </p>
+
+                    <p className="mt-1 text-xs text-slate-400">
+                        Kabupaten Sidoarjo
+                    </p>
+                </div>
 
                 <p className="text-xs text-slate-400">
-                    © 2026 Presensi Digital Kabupaten Sidoarjo
+                    © 2026 Presensi Digital
                 </p>
             </div>
         </footer>
