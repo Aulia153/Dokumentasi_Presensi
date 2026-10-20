@@ -15,8 +15,7 @@ const UserTutorial = () => {
         .flatMap((item) => item.children ?? [])
         .find((child) => child.id === activeItem);
 
-    // Tentukan tutorial yang ditampilkan
-    // Prioritas: child → parent → null
+
     const activeTutorial = activeChild || activeParent || null;
 
     return (
@@ -26,7 +25,7 @@ const UserTutorial = () => {
                 setActiveItem={setActiveItem}
             />
 
-            <main className="flex-1 min-w-0 ml-80">
+            <main className="<flex-1 min-w-0 lg:ml-80">
                 {activeTutorial ? (
                     <TutorialContent tutorial={activeTutorial} />
                 ) : (
@@ -50,7 +49,7 @@ const WelcomeUser = ({ tutorialUser, setActiveItem }) => {
     return (
         <div className="min-h-screen">
             {/* HERO */}
-            <section className="bg-gradient-to-br from-blue-50 via-white to-indigo-50 px-8 py-14">
+            <section className="bg-gradient-to-br from-blue-50 via-white to-indigo-50 px-8 py-14 pt-16 pl-14 lg:pt-14 lg:pl-8">
                 <div className="mx-auto max-w-6xl">
                     <span className="inline-flex items-center rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700">
                         Dokumentasi Sistem

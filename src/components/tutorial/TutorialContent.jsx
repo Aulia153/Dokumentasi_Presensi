@@ -19,6 +19,7 @@ const TutorialContent = ({
     }, [tutorial?.id]);
 
     if (!tutorial) return null;
+    tutorial
 
     const isFaq = tutorial.type === "faq";
     const isSteps = tutorial.type === "steps";
@@ -89,7 +90,7 @@ const TutorialHeader = ({
     roleLabel,
 }) => {
     return (
-        <header className="relative overflow-hidden border-b border-slate-200 bg-white">
+        <header className="relative overflow-hidden border-b border-slate-200 bg-white pt-16 pl-12 sm:pl-16 lg:pt-0 lg:pl-0">
             <div className="pointer-events-none absolute -right-16 -top-20 h-64 w-64 rounded-full bg-blue-50" />
 
             <div className="pointer-events-none absolute right-20 top-24 h-24 w-24 rounded-full bg-blue-100/40" />
@@ -395,10 +396,9 @@ const ImagePreview = ({
                                 mx-auto block h-auto max-w-full
                                 rounded-lg border border-slate-200
                                 bg-white object-contain shadow-sm
-                                ${
-                                    main
-                                        ? "max-h-[480px] sm:max-h-[540px]"
-                                        : "max-h-[360px] sm:max-h-[400px]"
+                                ${main
+                                    ? "max-h-[480px] sm:max-h-[540px]"
+                                    : "max-h-[360px] sm:max-h-[400px]"
                                 }
                             `}
                         />
@@ -514,10 +514,9 @@ const FAQItem = ({
                             items-center justify-center
                             rounded-lg text-sm font-bold
                             transition-colors duration-200
-                            ${
-                                open
-                                    ? "bg-blue-600 text-white"
-                                    : "border border-blue-100 bg-blue-50 text-blue-700"
+                            ${open
+                                ? "bg-blue-600 text-white"
+                                : "border border-blue-100 bg-blue-50 text-blue-700"
                             }
                         `}
                     >
@@ -533,10 +532,9 @@ const FAQItem = ({
                     className={`
                         h-5 w-5 shrink-0
                         transition-transform duration-200
-                        ${
-                            open
-                                ? "rotate-180 text-blue-700"
-                                : "text-slate-400"
+                        ${open
+                            ? "rotate-180 text-blue-700"
+                            : "text-slate-400"
                         }
                     `}
                 />
