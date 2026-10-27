@@ -212,7 +212,7 @@ const tutorialUser = [
                             2. Tombol Biru (Check-in / Masuk) menandakan bahwa Anda siap melakukan Presensi Masuk. 
                             3. Tombol Merah (Check-out / Keluar) menandakan bahwa Anda sudah berhasil melakukan Presensi Masuk, dan sekarang siap untuk melakukan Presensi Keluar. 
                             4. Tombol Hijau (Done / Selesai) menandakan bahwa Anda sudah menyelesaikan presensi masuk dan presensi keluar untuk hari itu, sehingga tidak ada lagi yang perlu Anda lakukan.`,
-                        image: image("tombol.png"),
+                        image: image("tomboll.png"),
                     },
                     {
                         number: 2,
@@ -356,7 +356,7 @@ const tutorialUser = [
                                 -> Pegawai Reguler: Pukul 23:59 WIB pada hari yang sama (sebelum berganti hari).
                                 -> Pegawai Shift: Maksimal 6 jam setelah jam jadwal pulang kerja.                                
                                 
-                                . Konsekuensi Keterlambatan: Jika Anda baru melakukan presensi masuk setelah melewati jam jadwal pulang, maka status Anda otomatis dianggap Lupa Presensi Masuk oleh sistem.`,
+                                Konsekuensi Keterlambatan: Jika Anda baru melakukan presensi masuk setelah melewati jam jadwal pulang, maka status Anda otomatis dianggap Lupa Presensi Masuk oleh sistem.`,
 
                     },
                 ],
