@@ -7,7 +7,6 @@ import {
 import Home from "../pages/Home";
 import AdminTutorial from "../pages/AdminTutorial";
 import UserTutorial from "../pages/UserTutorial";
-import NotFound from "../pages/NotFound";
 
 const AppRoutes = () => {
 
@@ -23,7 +22,6 @@ const AppRoutes = () => {
                     element={<Home />}
                 />
 
-
                 {/* TUTORIAL ADMIN */}
 
                 <Route
@@ -36,14 +34,6 @@ const AppRoutes = () => {
                 <Route
                     path="/user"
                     element={<UserTutorial />}
-                />
-
-
-                {/* 404 */}
-
-                <Route
-                    path="*"
-                    element={<NotFound />}
                 />
 
             </Routes>
