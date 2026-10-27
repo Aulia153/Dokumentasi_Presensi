@@ -287,6 +287,30 @@ const TutorialSection = ({
                         </p>
                     )}
 
+                    {/* POIN PENJELASAN */}
+                    {section.points?.length > 0 && (
+                        <ul className="mt-4 space-y-3">
+                            {section.points.map((point, index) => (
+                                <li
+                                    key={index}
+                                    className="flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
+
+                                    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-blue-600" />
+
+                                    <div className="min-w-0">
+                                        <h4 className="text-sm font-semibold text-slate-800 sm:text-base">
+                                            {point.title}
+                                        </h4>
+
+                                        <p className="mt-1 text-sm leading-6 text-slate-600">
+                                            {point.description}
+                                        </p>
+                                    </div>    
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+
                     {/* GAMBAR PENDUKUNG */}
                     {section.image && (
                         <div className="mt-5">
@@ -373,14 +397,11 @@ const ImagePreview = ({
                 </div>
 
                 {/* GAMBAR */}
-                <div
-                    className={`
-                        flex justify-center
-                        bg-slate-100/70 p-3
-                        sm:p-5
-                        ${main ? "lg:p-6" : ""}
-                    `}
-                >
+                <div className={`
+                    flex justify-center bg-slate-100/70 p-3 sm:p-5
+                    ${main ? "lg:p-6" : ""}
+                `}>
+
                     <button
                         type="button"
                         onClick={() => setIsExpanded(true)}
@@ -393,14 +414,11 @@ const ImagePreview = ({
                             loading="lazy"
                             onError={() => setImageError(true)}
                             className={`
-                                mx-auto block h-auto max-w-full
-                                rounded-lg border border-slate-200
-                                bg-white object-contain shadow-sm
+                                mx-auto block h-auto max-w-full rounded-lg border border-slate-200 bg-white object-contain shadow-sm
                                 ${main
                                     ? "max-h-[480px] sm:max-h-[540px]"
                                     : "max-h-[360px] sm:max-h-[400px]"
-                                }
-                            `}
+                                }`}
                         />
                     </button>
                 </div>
@@ -427,7 +445,7 @@ const ImagePreview = ({
                             onClick={() => setIsExpanded(false)}
                             className="mb-3 self-end rounded-lg bg-white px-4 py-2 text-sm font-semibold text-slate-800 transition-colors hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                         >
-                            Tutup ✕
+                            Tutup 
                         </button>
 
                         <img
@@ -449,176 +467,51 @@ const ImagePreview = ({
     );
 };
 
-
-/* ============================================================
-   FAQ
-============================================================ */
-
-const FAQContent = ({
-    questions,
-}) => {
-    if (!questions.length) return null;
-
-    return (
-        <section className="mt-6">
-            <div className="mb-5">
-                <p className="text-xs font-bold uppercase tracking-[0.14em] text-blue-700">
-                    Pusat Bantuan
-                </p>
-
-                <h2 className="mt-2 text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
-                    Pertanyaan yang Sering Diajukan
-                </h2>
-
-                <p className="mt-2 text-sm leading-6 text-slate-500">
-                    Pilih pertanyaan untuk membaca penjelasan lebih lanjut.
-                </p>
-            </div>
-
-            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-                {questions.map((item, index) => (
-                    <FAQItem
-                        key={`${item.question}-${index}`}
-                        item={item}
-                        isLast={index === questions.length - 1}
-                    />
-                ))}
-            </div>
-        </section>
-    );
-};
-
-
-/* ============================================================
-   FAQ ITEM
-============================================================ */
-
-const FAQItem = ({
-    item,
-    isLast,
-}) => {
-    const [open, setOpen] = useState(false);
-
-    return (
-        <div className={!isLast ? "border-b border-slate-100" : ""}>
-            <button
-                type="button"
-                onClick={() => setOpen((value) => !value)}
-                aria-expanded={open}
-                className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left transition-colors duration-200 hover:bg-blue-50/40 sm:px-7"
-            >
-                <div className="flex min-w-0 items-start gap-3">
-                    <span
-                        className={`
-                            flex h-8 w-8 shrink-0
-                            items-center justify-center
-                            rounded-lg text-sm font-bold
-                            transition-colors duration-200
-                            ${open
-                                ? "bg-blue-600 text-white"
-                                : "border border-blue-100 bg-blue-50 text-blue-700"
-                            }
-                        `}
-                    >
-                        ?
-                    </span>
-
-                    <span className="text-sm font-semibold leading-6 text-slate-800 sm:text-base">
-                        {item.question}
-                    </span>
-                </div>
-
-                <HiOutlineChevronDown
-                    className={`
-                        h-5 w-5 shrink-0
-                        transition-transform duration-200
-                        ${open
-                            ? "rotate-180 text-blue-700"
-                            : "text-slate-400"
-                        }
-                    `}
-                />
-            </button>
-
-            {open && (
-                <div className="px-5 pb-6 sm:px-7">
-                    <div className="space-y-4 border-l-2 border-blue-100 pl-4 sm:ml-11">
-                        {item.answer && (
-                            <p className="whitespace-pre-line text-sm leading-7 text-slate-600 sm:text-base">
-                                {item.answer}
-                            </p>
-                        )}
-
-                        {item.items?.length > 0 && (
-                            <div className="space-y-4">
-                                {item.items.map((subItem, index) => (
-                                    <div key={index}>
-                                        <h4 className="text-sm font-semibold text-slate-800">
-                                            {subItem.label}
-                                        </h4>
-
-                                        <p className="mt-1 text-sm leading-6 text-slate-600">
-                                            {subItem.description}
-                                        </p>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-
-                        {item.steps?.length > 0 && (
-                            <div className="space-y-3">
-                                {item.steps.map((step, index) => (
-                                    <div
-                                        key={index}
-                                        className="flex items-start gap-3"
-                                    >
-                                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-blue-100 bg-blue-50 text-xs font-bold text-blue-700">
-                                            {String(index + 1).padStart(2, "0")}
-                                        </span>
-
-                                        <p className="text-sm leading-6 text-slate-600">
-                                            {step}
-                                        </p>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                </div>
-            )}
-        </div>
-    );
-};
-
-
 /* ============================================================
    TIPS
 ============================================================ */
 
-const TipsCard = ({
-    tips,
-}) => {
+const TipsCard = ({ tips }) => {
+    if (!tips || (Array.isArray(tips) && tips.length === 0)) {
+        return null;
+    }
+
+    const tipsItems = Array.isArray(tips) ? tips : [tips];
+
     return (
         <aside className="mt-7 overflow-hidden rounded-2xl border border-amber-200/80 bg-amber-50/70">
             <div className="flex items-start gap-4 p-5 sm:p-6">
+
+                {/* IKON */}
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-amber-200/70 bg-white text-amber-600 shadow-sm">
                     <HiOutlineLightBulb className="h-5 w-5" />
                 </div>
 
+                {/* ISI */}
                 <div className="min-w-0 flex-1">
                     <h2 className="text-base font-bold text-amber-950 sm:text-lg">
                         Tips Penggunaan
                     </h2>
 
-                    <p className="mt-2 whitespace-pre-line text-sm leading-7 text-amber-900/80 sm:text-base">
-                        {tips}
-                    </p>
+                    <ul className="mt-3 space-y-2.5">
+                        {tipsItems.map ((tips, index) => (
+                            <li 
+                                key={index}
+                                className="flex items-start gap-3 text-sm leading-6 text-amber-900/80 sm:text-base">
+                                
+                                <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500" />
+
+                                <span className="min-w-0 flex-1">
+                                    {tips}
+                                </span>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             </div>
         </aside>
     );
 };
-
 
 /* ============================================================
    FOOTER
