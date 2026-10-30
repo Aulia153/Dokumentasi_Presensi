@@ -28,25 +28,22 @@ README ini menjelaskan **cara mengubah isi dan tampilan** website: mengedit tuto
 
 ## 1. Menjalankan project
 
-Butuh **Node.js** (disarankan versi LTS terbaru) dan **Git**.
-
 ```bash
 git clone https://github.com/Aulia153/Dokumentasi_Presensi.git
 cd Dokumentasi_Presensi
-npm install        # sekali saja, untuk mengunduh dependensi
-npm run dev        # jalankan server pengembangan (biasanya http://localhost:5173)
+npm install        # untuk mengunduh dependensi di awal, hanya sekali saja
+npm run dev        # untuk menjalankan server secara lokal (http://localhost:5173)
 ```
 
 Perintah lain:
 
 | Perintah          | Fungsi                                              |
 | ----------------- | --------------------------------------------------- |
-| `npm run dev`     | Mode pengembangan, halaman refresh otomatis saat file disimpan |
-| `npm run build`   | Membuat versi produksi di folder `dist/`            |
+| `npm run dev`     | Berjalan di server lokal, dalam masa pengembangan, halaman akan refresh otomatis saat file disimpan |
+| `npm run build`   | Membuat folder `dist/` (berisi semua kode dengan size yang lebih ringan)           |
 | `npm run preview` | Melihat hasil `build` secara lokal                  |
-| `npm run lint`    | Mengecek kesalahan kode dengan Oxlint               |
 
-> Biasakan menjalankan `npm run build` sebelum push. Kalau build gagal di komputer Anda, deploy-nya juga akan gagal.
+> Biasakan untuk menjalankan `npm run build` sebelum push di github. Kalau build gagal di komputer Anda, deploy-nya juga akan gagal.
 
 ---
 
@@ -54,71 +51,50 @@ Perintah lain:
 
 ```
 Dokumentasi_Presensi/
-├── index.html                  # judul tab browser, favicon
-├── public/                     # file statis (favicon.svg, dll)
+├── index.html                  # berisi judul, tab browser, favicon
+├── public/                     
 └── src/
-    ├── main.jsx                # titik awal aplikasi
-    ├── App.jsx                 # memanggil AppRoutes
-    ├── index.css               # Tailwind + font + animasi + scrollbar
+    ├── main.jsx                # halaman utama aplikasi
+    ├── App.jsx                 # memanggil routes/AppRoutes
+    ├── index.css               # Berisi style Tailwind + font + animasi + scrollbar
     ├── routes/
-    │   └── AppRoutes.jsx       # daftar alamat URL → halaman
+    │   └── AppRoutes.jsx       # Berisi list alamat URL tiap halaman
     ├── pages/
-    │   ├── Home.jsx            # beranda (pilih Admin / Pengguna)
-    │   ├── AdminTutorial.jsx   # halaman /admin
-    │   └── UserTutorial.jsx    # halaman /user
+    │   ├── Home.jsx            # Halaman beranda (pilih Admin / Pengguna)
+    │   ├── AdminTutorial.jsx   # Halaman /admin
+    │   └── UserTutorial.jsx    # Halaman /user
     ├── data/
-    │   ├── tutorialAdmin.jsx   # ISI tutorial Admin (teks, gambar, menu)
-    │   └── tutorialUser.jsx    # ISI tutorial Pengguna
+    │   ├── tutorialAdmin.jsx   # Halaman untuk mengisi konten tutorial Admin 
+    │   └── tutorialUser.jsx    # Halaman untuk mengisi konten tutorial Pengguna
     ├── components/
     │   ├── layout/
     │   │   ├── SidebarAdmin.jsx   # sidebar halaman /admin
     │   │   └── SidebarUser.jsx    # sidebar halaman /user
     │   ├── tutorial/
-    │   │   └── TutorialContent.jsx  # tampilan satu tutorial (judul, gambar, langkah, tips)
+    │   │   └── TutorialContent.jsx  # mengatur tampilan bagian tutorial (judul, gambar, langkah, tips)
     │   └── common/
-    │       ├── RoleCard.jsx    # kartu "Admin OPD" / "Pengguna" di beranda
+    │       ├── RoleCard.jsx    # Berisi style dari kartu "Admin OPD" / "Pengguna" di beranda
     │       └── Button.jsx
-    ├── layouts/                # MainLayout & MainLayoutUser
+    ├── layouts/                # Berisi halaman MainLayout yang digunakan untuk memanggil komponen sidebar
     └── assets/
-        ├── admin/<folder>/     # gambar tutorial Admin, dikelompokkan per menu
-        └── user/               # gambar tutorial Pengguna
+        ├── admin/<folder>/     # Berisi gambar tutorial Admin
+        └── user/               # Berisi gambar tutorial Pengguna
 ```
 
-**Aturan praktis:**
+**Tutorial mengubah kode secara hardcode:**
 
-| Ingin mengubah…                         | Buka file…                                  |
+| Jika ingin mengubah                     | Maka buka file pada folder                     |
 | --------------------------------------- | ------------------------------------------- |
 | Teks/langkah/tips tutorial Admin        | `src/data/tutorialAdmin.jsx`                |
 | Teks/langkah/tips tutorial Pengguna     | `src/data/tutorialUser.jsx`                 |
-| Menu di sidebar (nama, ikon, urutan)    | file `data/` yang sama (menu dibuat dari data) |
 | Tampilan sidebar                        | `components/layout/SidebarAdmin.jsx` / `SidebarUser.jsx` |
-| Tampilan isi tutorial                   | `components/tutorial/TutorialContent.jsx`   |
+| Tampilan styling dari tutorial                   | `components/tutorial/TutorialContent.jsx`   |
 | Beranda                                 | `pages/Home.jsx`, `components/common/RoleCard.jsx` |
 | Alamat URL / halaman baru               | `routes/AppRoutes.jsx`                      |
-| Warna global, font                      | `index.css`                                 |
+| Style css (Warna, font)                      | `index.css`                                 |
 
----
 
-## 3. Cara kerja singkat
-
-Pahami alur ini dan hampir semua perubahan jadi mudah:
-
-```
-data/tutorialAdmin.jsx   ──►  SidebarAdmin.jsx   (membuat daftar menu di kiri)
-        │
-        └────────────────►  AdminTutorial.jsx   (mencari tutorial yang sedang dipilih)
-                                   │
-                                   ▼
-                          TutorialContent.jsx   (menampilkan isinya)
-```
-
-- **Isi dan menu berasal dari satu sumber**: array di `data/tutorialAdmin.jsx` atau `data/tutorialUser.jsx`. Mengubah data otomatis mengubah sidebar *dan* isi halaman.
-- Tutorial yang dipilih disimpan di state `activeItem` (berisi `id` tutorial). **Pindah tutorial tidak mengubah URL**; alamatnya tetap `/admin` atau `/user`.
-- Karena pencarian memakai `id`, **setiap `id` harus unik** dalam satu file data.
-
----
-
-## 4. Mengubah isi tutorial
+## 3. Cara Mengubah isi tutorial
 
 Struktur data (contoh dari `tutorialAdmin.jsx`):
 
@@ -132,7 +108,7 @@ Struktur data (contoh dari `tutorialAdmin.jsx`):
         {
             id: "login-overview",      // TUTORIAL (child), id harus unik
             title: "Halaman Login",
-            type: "overview",
+            type: "steps",
             description: "Penjelasan singkat di bagian atas halaman.",
             image: image("login", "login-page.png"),   // gambar utama (opsional)
 
@@ -150,23 +126,7 @@ Struktur data (contoh dari `tutorialAdmin.jsx`):
 },
 ```
 
-### Field yang tersedia
-
-| Field                    | Wajib? | Fungsi |
-| ------------------------ | ------ | ------ |
-| `id`                     | Ya     | Pengenal unik. Jangan sama dengan `id` lain |
-| `title`                  | Ya     | Judul di sidebar dan di atas halaman |
-| `type`                   | Tidak  | Label jenis (`steps`, `overview`, `info`, dst.). Lihat catatan di bawah |
-| `description`            | Tidak  | Paragraf pengantar |
-| `image`                  | Tidak  | Gambar utama di atas langkah |
-| `sections`               | Tidak  | Daftar langkah |
-| `sections[].title`       | Ya*    | Judul langkah |
-| `sections[].description` | Tidak  | Penjelasan langkah. `\n` dibaca sebagai baris baru |
-| `sections[].image`       | Tidak  | Gambar untuk langkah itu |
-| `sections[].points`      | Tidak  | Daftar poin kecil: `[{ title, description }, ...]` |
-| `tips`                   | Tidak  | Kotak "Tips" di bagian bawah |
-
-### Contoh pekerjaan umum
+### Simulasi
 
 **Mengubah kalimat**: cari kalimatnya dengan `Ctrl+Shift+F` (cari di seluruh project) di VS Code, lalu edit teksnya.
 
@@ -187,80 +147,10 @@ description: "Muncul konfirmasi \"Keluar dari Sistem?\".",
 
 **Menghapus tutorial**: hapus seluruh blok `{ ... },` child tersebut. Kalau semua child dalam satu menu dihapus, hapus juga menu utamanya.
 
-> **Catatan tentang `type`:** di kode saat ini, `TutorialContent.jsx` hanya membedakan `type: "faq"` dari yang lain. Nilai `steps`, `overview`, `info`, `home`, dll. tampil dengan tata letak yang sama. Jadi cukup ikuti pola yang sudah ada. Lihat juga [bagian 12](#12-masalah-yang-ditemukan-di-kode-saat-ini) tentang `faq`.
 
-### Perbedaan Admin dan Pengguna
+## 4. Mengganti & menambah gambar
 
-- **Admin**: hanya `children` yang bisa menjadi halaman tutorial. Menu utama tanpa `children` tidak akan menampilkan apa-apa.
-- **Pengguna**: menu utama **boleh langsung menjadi halaman** tanpa `children` (contoh: menu *Rekap*, *Kerja*, *Profil* di `tutorialUser.jsx`).
-- `tutorialUser.jsx` memakai `description` di level menu utama dan `image("nama-file.png")` (satu argumen). `tutorialAdmin.jsx` memakai `image("folder", "nama-file.png")` (dua argumen).
-
----
-
-## 5. Menambah tutorial / menu baru
-
-### a. Menambah tutorial di menu yang sudah ada
-
-Tambahkan objek baru di `children` menu tersebut:
-
-```jsx
-children: [
-    // ... tutorial lama ...
-    {
-        id: "reset-password",          // unik!
-        title: "Reset Password",
-        type: "steps",
-        description: "Cara mereset password akun.",
-        sections: [
-            { title: "Buka halaman login", description: "..." },
-        ],
-        tips: "Hubungi admin jika gagal.",
-    },
-],
-```
-
-### b. Menambah menu utama baru
-
-1. Pilih ikon di <https://react-icons.github.io/react-icons/icons/hi2/> (gunakan yang berawalan `HiOutline`).
-2. Tambahkan nama ikon di `import` bagian atas file data:
-
-```jsx
-import {
-    HiOutlineLockClosed, HiOutlineHome,
-    HiOutlineBell,                      // ← ikon baru
-} from "react-icons/hi2";
-```
-
-3. Tambahkan objek menu di array `tutorialAdmin` (atau `tutorialUser`):
-
-```jsx
-{
-    id: "notifikasi",
-    title: "Notifikasi",
-    icon: HiOutlineBell,
-    children: [
-        {
-            id: "notifikasi-lihat",
-            title: "Melihat Notifikasi",
-            type: "steps",
-            description: "...",
-            sections: [{ title: "Buka menu Notifikasi", description: "..." }],
-        },
-    ],
-},
-```
-
-Selesai. Sidebar, kartu "Akses Cepat" di halaman Admin, dan jumlah menu/tutorial akan ikut ter-update otomatis.
-
-### c. Mengubah urutan menu
-
-Urutan di sidebar = urutan di array. Pindahkan blok `{ ... },` ke atas atau bawah.
-
----
-
-## 6. Mengganti & menambah gambar
-
-Gambar dibaca otomatis dari folder `src/assets/` memakai `import.meta.glob`.
+Gambar akan dibaca otomatis dari folder `src/assets/` memakai `import.meta.glob`.
 
 **Admin**: letakkan di `src/assets/admin/<nama-folder>/<nama-file>`
 
@@ -292,9 +182,8 @@ Hal yang perlu diperhatikan:
 
 ---
 
-## 7. Mengubah sidebar (navbar)
-
-Website ini **tidak memakai navbar di atas**; navigasinya berupa **sidebar di kiri**. Ada dua file terpisah:
+## 7. Mengubah sidebar 
+Sidebar ini navigasinya berupa **sidebar di kiri**. Ada dua file terpisah:
 
 - `src/components/layout/SidebarAdmin.jsx` → halaman `/admin`
 - `src/components/layout/SidebarUser.jsx` → halaman `/user`
@@ -334,21 +223,13 @@ Kalau ingin lebih sempit, ubah **keduanya** ke nilai yang sama, misalnya `lg:w-7
 
 Cari kelas `blue-` di file sidebar (contoh `bg-blue-50`, `text-blue-700`) lalu ganti ke warna Tailwind lain, misalnya `emerald-` atau `indigo-`.
 
-### Ingin menambah navbar di atas?
-
-1. Buat `src/components/layout/Navbar.jsx`.
-2. Panggil `<Navbar />` di dalam `AdminTutorial.jsx` / `UserTutorial.jsx` (di atas `<main>`), atau di `Home.jsx`.
-3. Karena sidebar bersifat `fixed` dan setinggi layar penuh, tambahkan jarak atas pada sidebar/konten agar tidak tertimpa.
-
-> `MainLayout.jsx` dan `MainLayoutUser.jsx` ada di folder `layouts/`, tetapi `AdminTutorial.jsx` dan `UserTutorial.jsx` saat ini memanggil sidebar langsung dan tidak memakainya.
-
 ---
 
 ## 8. Mengubah halaman Beranda
 
 File: `src/pages/Home.jsx`.
 
-Dua kartu pilihan role dibuat dengan `RoleCard`:
+Terdapat dua kartu pilihan role dibuat dengan `RoleCard`:
 
 ```jsx
 <RoleCard
@@ -392,51 +273,11 @@ import Faq from "../pages/Faq";
 import { Link } from "react-router-dom";
 <Link to="/faq">Lihat FAQ</Link>
 ```
-
-> Urutan route: `path="*"` (404) harus tetap **paling bawah**.
-
 ---
 
-## 10. Mengubah warna, font, judul tab
+## 10. Mengubah style
 
 - **Judul tab browser**: `index.html` → `<title>dokumentasi</title>`
 - **Favicon**: ganti `public/favicon.svg`
-- **Warna**: dikontrol lewat kelas Tailwind (`bg-blue-600`, `text-slate-700`, dll.) di setiap komponen. Untuk mengganti tema biru ke warna lain, gunakan fitur *Find & Replace* di VS Code (`Ctrl+Shift+H`): ganti `blue-` menjadi `indigo-` (cek hasilnya dulu sebelum "Replace All").
-- **Font**: `index.css` memakai `Poppins`, tetapi font ini belum dimuat. Tambahkan di `<head>` pada `index.html`:
-
-```html
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
-```
-
 - **Animasi, scrollbar, warna blok teks**: `src/index.css`.
-
 ---
-
-## 11. Alur Git: simpan perubahan ke GitHub
-
-```bash
-git pull                              # ambil versi terbaru dulu
-git checkout -b edit-tutorial-login   # (disarankan) buat branch sendiri
-
-# ... edit file, cek di npm run dev ...
-
-npm run build                         # pastikan tidak error
-git status                            # lihat file yang berubah
-git add .
-git commit -m "Perbarui tutorial login admin"
-git push origin edit-tutorial-login   # lalu buat Pull Request di GitHub
-```
-
-Kalau langsung bekerja di branch utama: `git push` saja.
-
-Tips pesan commit: awali dengan kata kerja dan sebutkan apa yang berubah, misalnya `Tambah tutorial reset password user`, `Perbaiki gambar sidebar`, `Ubah warna tombol beranda`.
-
-> **Catatan deploy:** project ini memakai `BrowserRouter`. Pada hosting statis (Netlify, Vercel, GitHub Pages, dll.) buka langsung `/admin` atau tekan refresh bisa menghasilkan 404 kalau hosting belum diatur untuk mengarahkan semua alamat ke `index.html`. Cek pengaturan *SPA fallback / rewrites* pada hosting yang dipakai.
-
----
-
-## Teknologi
-
-React 19 · Vite · Tailwind CSS 4 · React Router 7 · React Icons · Oxlint
