@@ -182,7 +182,7 @@ Hal yang perlu diperhatikan:
 
 ---
 
-## 7. Mengubah sidebar 
+## 5. Mengubah sidebar 
 Sidebar ini navigasinya berupa **sidebar di kiri**. Ada dua file terpisah:
 
 - `src/components/layout/SidebarAdmin.jsx` → halaman `/admin`
@@ -225,7 +225,7 @@ Cari kelas `blue-` di file sidebar (contoh `bg-blue-50`, `text-blue-700`) lalu g
 
 ---
 
-## 8. Mengubah halaman Beranda
+## 6. Mengubah halaman Beranda
 
 File: `src/pages/Home.jsx`.
 
@@ -247,7 +247,7 @@ Terdapat dua kartu pilihan role dibuat dengan `RoleCard`:
 
 ---
 
-## 9. Menambah halaman / route baru
+## 7. Menambah halaman / route baru
 
 Contoh: halaman `/faq`.
 
@@ -275,7 +275,7 @@ import { Link } from "react-router-dom";
 ```
 ---
 
-## 10. Mengubah style
+## 8. Mengubah style
 
 - **Judul tab browser**: `index.html` → `<title>dokumentasi</title>`
 - **Favicon**: ganti `public/favicon.svg`
