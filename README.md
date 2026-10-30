@@ -7,24 +7,6 @@ Website dokumentasi/tutorial **Aplikasi Presensi Sidoarjo** (Diskominfo Kabupate
 
 README ini menjelaskan **cara mengubah isi dan tampilan** website: mengedit tutorial, menambah menu, mengubah sidebar ("navbar"), mengganti gambar, sampai mengirim perubahan ke GitHub.
 
----
-
-## Daftar Isi
-
-1. [Menjalankan project](#1-menjalankan-project)
-2. [Peta struktur folder](#2-peta-struktur-folder)
-3. [Cara kerja singkat](#3-cara-kerja-singkat)
-4. [Mengubah isi tutorial](#4-mengubah-isi-tutorial)
-5. [Menambah tutorial / menu baru](#5-menambah-tutorial--menu-baru)
-6. [Mengganti & menambah gambar](#6-mengganti--menambah-gambar)
-7. [Mengubah sidebar (navbar)](#7-mengubah-sidebar-navbar)
-8. [Mengubah halaman Beranda](#8-mengubah-halaman-beranda)
-9. [Menambah halaman / route baru](#9-menambah-halaman--route-baru)
-10. [Mengubah warna, font, judul tab](#10-mengubah-warna-font-judul-tab)
-11. [Alur Git: simpan perubahan ke GitHub](#11-alur-git-simpan-perubahan-ke-github)
-12. [Masalah yang ditemukan di kode saat ini](#12-masalah-yang-ditemukan-di-kode-saat-ini)
-
----
 
 ## 1. Menjalankan project
 
