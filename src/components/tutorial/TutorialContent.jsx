@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 import {
-    HiOutlineChevronDown,
     HiOutlineInformationCircle,
     HiOutlineLightBulb,
     HiOutlinePhoto,
@@ -19,10 +18,6 @@ const TutorialContent = ({
     }, [tutorial?.id]);
 
     if (!tutorial) return null;
-    tutorial
-
-    const isFaq = tutorial.type === "faq";
-    const isSteps = tutorial.type === "steps";
 
     const roleLabel =
         role === "user"
@@ -30,7 +25,7 @@ const TutorialContent = ({
             : "Tutorial Admin";
 
     return (
-        <div className="min-h-screen bg-slate-50/80">
+        <div className="min-h-screen bg-slate-50/80 tutorial-page">
             <TutorialHeader
                 tutorial={tutorial}
                 roleLabel={roleLabel}
@@ -44,42 +39,30 @@ const TutorialContent = ({
                     />
                 )}
 
-                {/* KONTEN UTAMA */}
-                {isFaq ? (
-                    <FAQContent
-                        questions={tutorial.questions ?? []}
+                {/* GAMBAR UTAMA */}
+                {tutorial.image && (
+                    <ImagePreview
+                        src={tutorial.image}
+                        alt={`Tampilan ${tutorial.title}`}
+                        main
                     />
-                ) : (
-                    <>
-                        {/* GAMBAR UTAMA */}
-                        {tutorial.image && (
-                            <ImagePreview
-                                src={tutorial.image}
-                                alt={`Tampilan ${tutorial.title}`}
-                                main
-                            />
-                        )}
-
-                        {/* PANDUAN PENGGUNAAN */}
-                        {tutorial.sections?.length > 0 && (
-                            <TutorialSections
-                                sections={tutorial.sections}
-                            />
-                        )}
-                    </>
                 )}
 
-                {/* TIPS */}
+                {/* PANDUAN PENGGUNAAN */}
+                {tutorial.sections?.length > 0 && (
+                    <TutorialSections
+                        sections={tutorial.sections}
+                    />
+                )}
+
+                {/* TIPS PENGGUNAAN */}
                 {tutorial.tips && (
                     <TipsCard tips={tutorial.tips} />
                 )}
             </main>
-
-            <TutorialFooter />
         </div>
     );
 };
-
 
 /* ============================================================
    HEADER
@@ -140,7 +123,6 @@ const TutorialHeader = ({
     );
 };
 
-
 /* ============================================================
    OVERVIEW
 ============================================================ */
@@ -174,7 +156,6 @@ const OverviewCard = ({
         </section>
     );
 };
-
 
 /* ============================================================
    TUTORIAL SECTIONS
@@ -214,7 +195,6 @@ const TutorialSections = ({
     );
 };
 
-
 /* ============================================================
    SINGLE SECTION
 ============================================================ */
@@ -224,7 +204,6 @@ const TutorialSection = ({
     index,
     isLast,
 }) => {
-    // FORMAT NOMOR SAMA DI SEMUA MENU: 01, 02, 03, ...
     const sectionNumber = String(index + 1).padStart(2, "0");
 
     return (
@@ -238,7 +217,7 @@ const TutorialSection = ({
             `}
         >
             <div className="flex items-start gap-4 sm:gap-5">
-                {/* NOMOR KONSISTEN */}
+                {/* NOMOR BAGIAN */}
                 <div className="relative flex shrink-0 items-center justify-center">
                     <span
                         className="
@@ -287,30 +266,6 @@ const TutorialSection = ({
                         </p>
                     )}
 
-                    {/* POIN PENJELASAN */}
-                    {section.points?.length > 0 && (
-                        <ul className="mt-4 space-y-3">
-                            {section.points.map((point, index) => (
-                                <li
-                                    key={index}
-                                    className="flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4">
-
-                                    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-blue-600" />
-
-                                    <div className="min-w-0">
-                                        <h4 className="text-sm font-semibold text-slate-800 sm:text-base">
-                                            {point.title}
-                                        </h4>
-
-                                        <p className="mt-1 text-sm leading-6 text-slate-600">
-                                            {point.description}
-                                        </p>
-                                    </div>    
-                                </li>
-                            ))}
-                        </ul>
-                    )}
-
                     {/* GAMBAR PENDUKUNG */}
                     {section.image && (
                         <div className="mt-5">
@@ -325,7 +280,6 @@ const TutorialSection = ({
         </article>
     );
 };
-
 
 /* ============================================================
    IMAGE PREVIEW
@@ -397,11 +351,14 @@ const ImagePreview = ({
                 </div>
 
                 {/* GAMBAR */}
-                <div className={`
-                    flex justify-center bg-slate-100/70 p-3 sm:p-5
-                    ${main ? "lg:p-6" : ""}
-                `}>
-
+                <div
+                    className={`
+                        flex justify-center
+                        bg-slate-100/70 p-3
+                        sm:p-5
+                        ${main ? "lg:p-6" : ""}
+                    `}
+                >
                     <button
                         type="button"
                         onClick={() => setIsExpanded(true)}
@@ -414,11 +371,14 @@ const ImagePreview = ({
                             loading="lazy"
                             onError={() => setImageError(true)}
                             className={`
-                                mx-auto block h-auto max-w-full rounded-lg border border-slate-200 bg-white object-contain shadow-sm
+                                mx-auto block h-auto max-w-full
+                                rounded-lg border border-slate-200
+                                bg-white object-contain shadow-sm
                                 ${main
                                     ? "max-h-[480px] sm:max-h-[540px]"
                                     : "max-h-[360px] sm:max-h-[400px]"
-                                }`}
+                                }
+                            `}
                         />
                     </button>
                 </div>
@@ -445,7 +405,7 @@ const ImagePreview = ({
                             onClick={() => setIsExpanded(false)}
                             className="mb-3 self-end rounded-lg bg-white px-4 py-2 text-sm font-semibold text-slate-800 transition-colors hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                         >
-                            Tutup 
+                            Tutup ✕
                         </button>
 
                         <img
@@ -472,70 +432,50 @@ const ImagePreview = ({
 ============================================================ */
 
 const TipsCard = ({ tips }) => {
-    if (!tips || (Array.isArray(tips) && tips.length === 0)) {
-        return null;
-    }
+    // Mendukung tips berbentuk string, array, atau objek { title, content }.
+    const tipsTitle =
+        !Array.isArray(tips) && typeof tips === "object"
+            ? tips.title || "Tips Penggunaan"
+            : "Tips Penggunaan";
 
-    const tipsItems = Array.isArray(tips) ? tips : [tips];
+    const tipsContent =
+        !Array.isArray(tips) && typeof tips === "object"
+            ? tips.content
+            : tips;
+
+    const tipsList = Array.isArray(tipsContent)
+        ? tipsContent
+        : typeof tipsContent === "string"
+            ? tipsContent
+                .split("\n")
+                .map((tip) => tip.trim())
+                .filter(Boolean)
+            : [];
+
+    if (tipsList.length === 0) return null;
 
     return (
         <aside className="mt-7 overflow-hidden rounded-2xl border border-amber-200/80 bg-amber-50/70">
             <div className="flex items-start gap-4 p-5 sm:p-6">
-
-                {/* IKON */}
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-amber-200/70 bg-white text-amber-600 shadow-sm">
                     <HiOutlineLightBulb className="h-5 w-5" />
                 </div>
 
-                {/* ISI */}
                 <div className="min-w-0 flex-1">
                     <h2 className="text-base font-bold text-amber-950 sm:text-lg">
-                        Tips Penggunaan
+                        {tipsTitle}
                     </h2>
 
-                    <ul className="mt-3 space-y-2.5">
-                        {tipsItems.map ((tips, index) => (
-                            <li 
-                                key={index}
-                                className="flex items-start gap-3 text-sm leading-6 text-amber-900/80 sm:text-base">
-                                
-                                <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500" />
-
-                                <span className="min-w-0 flex-1">
-                                    {tips}
-                                </span>
+                    <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-7 text-amber-900/80 sm:text-base">
+                        {tipsList.map((tip, index) => (
+                            <li key={`${index}-${tip}`}>
+                                {tip}
                             </li>
                         ))}
                     </ul>
                 </div>
             </div>
         </aside>
-    );
-};
-
-/* ============================================================
-   FOOTER
-============================================================ */
-
-const TutorialFooter = () => {
-    return (
-        <footer className="mt-10 border-t border-slate-200 bg-white">
-            <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 py-5 text-center sm:flex-row sm:px-6 sm:text-left lg:px-8">
-                <div>
-                    <p className="text-sm font-semibold text-slate-700">
-                        Dokumentasi Presensi Digital
-                    </p>
-
-                    <p className="mt-1 text-xs text-slate-400">
-                        Kabupaten Sidoarjo
-                    </p>
-                </div>
-
-                <p className="text-xs text-slate-400">
-                    © 2026 Presensi Digital
-                </p>
-            </div>
-        </footer>
     );
 };
 

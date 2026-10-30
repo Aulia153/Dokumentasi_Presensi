@@ -1,53 +1,55 @@
 import { useState } from "react";
-
-import SidebarUser from "../components/layout/SidebarUser";
+import MainLayout from "../layouts/MainLayout";
 import TutorialContent from "../components/tutorial/TutorialContent";
 import tutorialUser from "../data/tutorialUser";
 
 const UserTutorial = () => {
     const [activeItem, setActiveItem] = useState(null);
 
-    // Cari parent dulu
-    const activeParent = tutorialUser.find((item) => item.id === activeItem);
+    // Cari parent berdasarkan ID
+    const activeParent = tutorialUser.find(
+        (item) => item.id === activeItem
+    );
 
-    // Cari child di dalam semua parent
+    // Cari child berdasarkan ID
     const activeChild = tutorialUser
         .flatMap((item) => item.children ?? [])
         .find((child) => child.id === activeItem);
 
-
     const activeTutorial = activeChild || activeParent || null;
 
     return (
-        <div className="flex min-h-screen bg-slate-50">
-            <SidebarUser
-                activeItem={activeItem}
-                setActiveItem={setActiveItem}
-            />
-
-            <main className="<flex-1 min-w-0 lg:ml-80">
-                {activeTutorial ? (
-                    <TutorialContent tutorial={activeTutorial} />
-                ) : (
-                    <WelcomeUser
-                        tutorialUser={tutorialUser}
-                        setActiveItem={setActiveItem}
-                    />
-                )}
-            </main>
-        </div>
+        <MainLayout
+            role="user"
+            activeItem={activeItem}
+            setActiveItem={setActiveItem}
+        >
+            {activeTutorial ? (
+                <TutorialContent
+                    tutorial={activeTutorial}
+                    role="user"
+                />
+            ) : (
+                <WelcomeUser
+                    tutorialUser={tutorialUser}
+                    setActiveItem={setActiveItem}
+                />
+            )}
+        </MainLayout>
     );
 };
 
+// HALAMAN SELAMAT DATANG PENGGUNA
 const WelcomeUser = ({ tutorialUser, setActiveItem }) => {
     const totalMenu = tutorialUser.length;
+
     const totalTutorial = tutorialUser.reduce(
         (acc, item) => acc + (item.children?.length ?? 1),
         0
     );
 
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen bg-slate-50">
             {/* HERO */}
             <section className="bg-gradient-to-br from-blue-50 via-white to-indigo-50 px-8 py-14 pt-16 pl-14 lg:pt-14 lg:pl-8">
                 <div className="mx-auto max-w-6xl">
@@ -74,23 +76,33 @@ const WelcomeUser = ({ tutorialUser, setActiveItem }) => {
 
                     <div className="mt-8 flex flex-wrap gap-3">
                         <button
-                            onClick={() => setActiveItem("login-overview")}
+                            type="button"
+                            onClick={() =>
+                                setActiveItem("login-overview")
+                            }
                             className="rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-blue-700 hover:shadow-md"
                         >
                             Mulai Tutorial
                         </button>
                     </div>
 
+                    {/* STATISTIK */}
                     <div className="mt-10 grid max-w-2xl grid-cols-2 gap-4">
                         <div className="rounded-2xl border border-blue-100 bg-white/80 p-5 shadow-sm">
-                            <p className="text-sm text-slate-500">Menu Tutorial</p>
+                            <p className="text-sm text-slate-500">
+                                Menu Tutorial
+                            </p>
+
                             <p className="mt-1 text-2xl font-bold text-slate-900">
                                 {totalMenu}
                             </p>
                         </div>
 
                         <div className="rounded-2xl border border-blue-100 bg-white/80 p-5 shadow-sm">
-                            <p className="text-sm text-slate-500">Total Panduan</p>
+                            <p className="text-sm text-slate-500">
+                                Total Panduan
+                            </p>
+
                             <p className="mt-1 text-2xl font-bold text-slate-900">
                                 {totalTutorial}
                             </p>
@@ -106,6 +118,7 @@ const WelcomeUser = ({ tutorialUser, setActiveItem }) => {
                         <h2 className="text-2xl font-bold text-slate-900">
                             Mulai Dari Mana?
                         </h2>
+
                         <p className="mt-1 text-slate-500">
                             Pilih fitur yang ingin kamu pelajari.
                         </p>
@@ -115,7 +128,6 @@ const WelcomeUser = ({ tutorialUser, setActiveItem }) => {
                         {tutorialUser.map((menu) => {
                             const Icon = menu.icon;
 
-                            // Kalau punya children, klik parent → buka child pertama
                             const targetId = menu.children?.length
                                 ? menu.children[0].id
                                 : menu.id;
@@ -123,12 +135,15 @@ const WelcomeUser = ({ tutorialUser, setActiveItem }) => {
                             return (
                                 <button
                                     key={menu.id}
+                                    type="button"
                                     onClick={() => setActiveItem(targetId)}
                                     className="group rounded-2xl border border-slate-200 bg-white p-6 text-left shadow-sm transition duration-200 hover:-translate-y-1 hover:border-blue-200 hover:shadow-md"
                                 >
                                     <div className="flex items-start justify-between">
                                         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-blue-600 transition group-hover:bg-blue-600 group-hover:text-white">
-                                            {Icon && <Icon className="h-6 w-6" />}
+                                            {Icon && (
+                                                <Icon className="h-6 w-6" />
+                                            )}
                                         </div>
 
                                         <span className="text-xl text-slate-300 transition group-hover:translate-x-1 group-hover:text-blue-500">

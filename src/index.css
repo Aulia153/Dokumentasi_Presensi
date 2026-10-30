@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+:root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --text: #0f172a;
+    --text-muted: #64748b;
+    --background: #f8fafc;
+    --surface: #ffffff;
+    --border: #e2e8f0;
+    --radius: 12px;
+    --font: Arial, Helvetica, sans-serif;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -10,12 +22,19 @@ html {
 
 body {
     margin: 0;
-    font-family: "Poppins", sans-serif;
-    background: #f8fafc;
-    color: #0f172a;
+    font-family: var(--font);
+    background: var(--background);
+    color: var(--text);
 }
 
-/* Tutorial animation */
+button, input, select, textarea {
+    font: inherit;
+}
+
+img {
+    max-width: 100%;
+}
+
 @keyframes tutorialFade {
     from {
         opacity: 0;
@@ -32,14 +51,9 @@ body {
     animation: tutorialFade 0.35s ease-out;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -59,5 +73,18 @@ body {
 @media (max-width: 1023px) {
     body {
         overflow-x: hidden;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
     }
 }

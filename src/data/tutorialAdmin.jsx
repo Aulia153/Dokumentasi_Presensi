@@ -680,29 +680,6 @@ const tutorialAdmin = [
             },
         ],
     },
-
-    {
-        id: "lapor",
-        title: "lpor",
-        children: [
-            {
-                id: "aktif",
-                title: "aktif hari ini",
-                type: "steps",
-                description: "hari ini 1 orang yang tampil",
-
-                 sections: [
-                    {
-                        title: "Buka Skor Displin",
-                        description:
-                            "Pilih menu Laporan > Skor Disiplin.",
-                        image: image("laporan", "skor-disiplin.png"),
-                    },
-                 ],
-            },
-        ]
-    }
-    
 ];
 
 export default tutorialAdmin;
